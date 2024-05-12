@@ -10,7 +10,6 @@
 		88B077652BF1804C002142BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B077642BF1804C002142BC /* AppDelegate.swift */; };
 		88B077672BF1804C002142BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B077662BF1804C002142BC /* SceneDelegate.swift */; };
 		88B077692BF1804C002142BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B077682BF1804C002142BC /* ViewController.swift */; };
-		88B0776C2BF1804C002142BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 88B0776B2BF1804C002142BC /* Base */; };
 		88B0776E2BF1804E002142BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88B0776D2BF1804E002142BC /* Assets.xcassets */; };
 		88B077712BF1804E002142BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 88B077702BF1804E002142BC /* Base */; };
 /* End PBXBuildFile section */
@@ -20,7 +19,6 @@
 		88B077642BF1804C002142BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88B077662BF1804C002142BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		88B077682BF1804C002142BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		88B0776B2BF1804C002142BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		88B0776D2BF1804E002142BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88B077702BF1804E002142BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88B077722BF1804E002142BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,15 +54,102 @@
 		88B077632BF1804C002142BC /* KREAM */ = {
 			isa = PBXGroup;
 			children = (
-				88B077642BF1804C002142BC /* AppDelegate.swift */,
-				88B077662BF1804C002142BC /* SceneDelegate.swift */,
-				88B077682BF1804C002142BC /* ViewController.swift */,
-				88B0776A2BF1804C002142BC /* Main.storyboard */,
-				88B0776D2BF1804E002142BC /* Assets.xcassets */,
-				88B0776F2BF1804E002142BC /* LaunchScreen.storyboard */,
-				88B077722BF1804E002142BC /* Info.plist */,
+				88B077782BF183EA002142BC /* Application */,
+				88B077792BF18547002142BC /* Global */,
+				88B0777B2BF1855A002142BC /* Network */,
+				88B0777A2BF1854D002142BC /* Presentation */,
 			);
 			path = KREAM;
+			sourceTree = "<group>";
+		};
+		88B077782BF183EA002142BC /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				88B077642BF1804C002142BC /* AppDelegate.swift */,
+				88B077662BF1804C002142BC /* SceneDelegate.swift */,
+				88B077722BF1804E002142BC /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		88B077792BF18547002142BC /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				88B077802BF185AA002142BC /* Extension */,
+				88B077822BF185C1002142BC /* Utility */,
+				88B077812BF185B1002142BC /* Resources */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		88B0777A2BF1854D002142BC /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				88B0776F2BF1804E002142BC /* LaunchScreen.storyboard */,
+				88B077682BF1804C002142BC /* ViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		88B0777B2BF1855A002142BC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				88B0777C2BF1857A002142BC /* DTO */,
+				88B0777F2BF1858E002142BC /* Foundation */,
+				88B0777E2BF18588002142BC /* Router */,
+				88B0777D2BF18582002142BC /* Service */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		88B0777C2BF1857A002142BC /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		88B0777D2BF18582002142BC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		88B0777E2BF18588002142BC /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		88B0777F2BF1858E002142BC /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		88B077802BF185AA002142BC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		88B077812BF185B1002142BC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				88B0776D2BF1804E002142BC /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		88B077822BF185C1002142BC /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +212,6 @@
 			files = (
 				88B0776E2BF1804E002142BC /* Assets.xcassets in Resources */,
 				88B077712BF1804E002142BC /* Base in Resources */,
-				88B0776C2BF1804C002142BC /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +231,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		88B0776A2BF1804C002142BC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				88B0776B2BF1804C002142BC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		88B0776F2BF1804E002142BC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,7 +370,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8T2JAAS967;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KREAM/Info.plist;
+				INFOPLIST_FILE = KREAM/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -322,7 +398,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8T2JAAS967;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KREAM/Info.plist;
+				INFOPLIST_FILE = KREAM/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
