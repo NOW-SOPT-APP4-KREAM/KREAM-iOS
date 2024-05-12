@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		886DD2A42BF18759000F4D7E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 886DD2A32BF18759000F4D7E /* Moya */; };
+		886DD2A72BF1876B000F4D7E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 886DD2A62BF1876B000F4D7E /* SnapKit */; };
+		886DD2AA2BF18777000F4D7E /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 886DD2A92BF18777000F4D7E /* Then */; };
+		886DD2AD2BF187A8000F4D7E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 886DD2AC2BF187A8000F4D7E /* Kingfisher */; };
 		88B077652BF1804C002142BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B077642BF1804C002142BC /* AppDelegate.swift */; };
 		88B077672BF1804C002142BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B077662BF1804C002142BC /* SceneDelegate.swift */; };
 		88B077692BF1804C002142BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B077682BF1804C002142BC /* ViewController.swift */; };
@@ -29,6 +33,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				886DD2AD2BF187A8000F4D7E /* Kingfisher in Frameworks */,
+				886DD2A42BF18759000F4D7E /* Moya in Frameworks */,
+				886DD2AA2BF18777000F4D7E /* Then in Frameworks */,
+				886DD2A72BF1876B000F4D7E /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +176,12 @@
 			dependencies = (
 			);
 			name = KREAM;
+			packageProductDependencies = (
+				886DD2A32BF18759000F4D7E /* Moya */,
+				886DD2A62BF1876B000F4D7E /* SnapKit */,
+				886DD2A92BF18777000F4D7E /* Then */,
+				886DD2AC2BF187A8000F4D7E /* Kingfisher */,
+			);
 			productName = KREAM;
 			productReference = 88B077612BF1804C002142BC /* KREAM.app */;
 			productType = "com.apple.product-type.application";
@@ -196,6 +210,12 @@
 				Base,
 			);
 			mainGroup = 88B077582BF1804C002142BC;
+			packageReferences = (
+				886DD2A22BF18759000F4D7E /* XCRemoteSwiftPackageReference "Moya" */,
+				886DD2A52BF1876B000F4D7E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				886DD2A82BF18777000F4D7E /* XCRemoteSwiftPackageReference "Then" */,
+				886DD2AB2BF187A8000F4D7E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 88B077622BF1804C002142BC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -439,6 +459,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		886DD2A22BF18759000F4D7E /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+		886DD2A52BF1876B000F4D7E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		886DD2A82BF18777000F4D7E /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		886DD2AB2BF187A8000F4D7E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		886DD2A32BF18759000F4D7E /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 886DD2A22BF18759000F4D7E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		886DD2A62BF1876B000F4D7E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 886DD2A52BF1876B000F4D7E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		886DD2A92BF18777000F4D7E /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 886DD2A82BF18777000F4D7E /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		886DD2AC2BF187A8000F4D7E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 886DD2AB2BF187A8000F4D7E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 88B077592BF1804C002142BC /* Project object */;
 }
