@@ -210,6 +210,7 @@
 		88B077582BF1804C002142BC = {
 			isa = PBXGroup;
 			children = (
+				886DD2AF2BF189D8000F4D7E /* .swiftlint.yml */,
 				88B077632BF1804C002142BC /* KREAM */,
 				88B077622BF1804C002142BC /* Products */,
 				886DD2B42BF19675000F4D7E /* Frameworks */,
@@ -227,7 +228,6 @@
 		88B077632BF1804C002142BC /* KREAM */ = {
 			isa = PBXGroup;
 			children = (
-				886DD2AF2BF189D8000F4D7E /* .swiftlint.yml */,
 				88B077782BF183EA002142BC /* Application */,
 				88B077792BF18547002142BC /* Global */,
 				88B0777B2BF1855A002142BC /* Network */,
