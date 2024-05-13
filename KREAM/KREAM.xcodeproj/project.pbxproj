@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		885F96992BF1B97D003FAF2E /* AppleSDGothicNeo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F96982BF1B97D003FAF2E /* AppleSDGothicNeo.swift */; };
+		885F96AC2BF1C597003FAF2E /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F96AB2BF1C597003FAF2E /* AppTabBarController.swift */; };
 		886DD2A42BF18759000F4D7E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 886DD2A32BF18759000F4D7E /* Moya */; };
 		886DD2A72BF1876B000F4D7E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 886DD2A62BF1876B000F4D7E /* SnapKit */; };
 		886DD2AA2BF18777000F4D7E /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 886DD2A92BF18777000F4D7E /* Then */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		885F96982BF1B97D003FAF2E /* AppleSDGothicNeo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSDGothicNeo.swift; sourceTree = "<group>"; };
+		885F96AB2BF1C597003FAF2E /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
 		886DD2AF2BF189D8000F4D7E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		886DD2B82BF198EE000F4D7E /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		88B077612BF1804C002142BC /* KREAM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KREAM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				88B077682BF1804C002142BC /* ViewController.swift */,
+				885F96AB2BF1C597003FAF2E /* AppTabBarController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -418,7 +421,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -430,6 +434,7 @@
 				886DD2B92BF198EE000F4D7E /* String+.swift in Sources */,
 				88B077692BF1804C002142BC /* ViewController.swift in Sources */,
 				88B077652BF1804C002142BC /* AppDelegate.swift in Sources */,
+				885F96AC2BF1C597003FAF2E /* AppTabBarController.swift in Sources */,
 				88B077672BF1804C002142BC /* SceneDelegate.swift in Sources */,
 				885F96992BF1B97D003FAF2E /* AppleSDGothicNeo.swift in Sources */,
 			);
