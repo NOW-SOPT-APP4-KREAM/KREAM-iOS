@@ -37,7 +37,7 @@ final class AppTabBarController: UITabBarController {
         viewControllerList.enumerated().forEach { index, viewController in
             let tab = AppTab.allCases[index]
             viewController.tabBarItem = UITabBarItem(title: tab.rawValue, image: tab.image, tag: index)
-            viewController.tabBarItem.setTitleTextAttributes(AppleSDGothicNeo.Body7(.bold).attributes, for: .normal)
+            viewController.tabBarItem.setTitleTextAttributes(AppleSDGothicNeo.body7(.bold).attributes, for: .normal)
         }
         
         self.setViewControllers(viewControllerList, animated: true)

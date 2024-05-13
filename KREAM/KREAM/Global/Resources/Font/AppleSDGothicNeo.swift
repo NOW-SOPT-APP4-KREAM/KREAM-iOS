@@ -11,43 +11,43 @@ import UIKit
 /// AppleSDGothicNeo 폰트체를 사용합니다.
 enum AppleSDGothicNeo {
     /// IOS/Head1_ios: Heavy, Bold
-    case Head1(_ weight: UIFont.Weight)
+    case head1(_ weight: UIFont.Weight)
     /// IOS/Head2_ios: Heavy_-2%
-    case Head2(_ weight: UIFont.Weight)
+    case head2(_ weight: UIFont.Weight)
     /// IOS/Body1_ios: Bold, Semibold, Regular
-    case Body1(_ weight: UIFont.Weight)
+    case body1(_ weight: UIFont.Weight)
     /// IOS/Body2_ios: Heavy, Bold, Semibold
-    case Body2(_ weight: UIFont.Weight)
+    case body2(_ weight: UIFont.Weight)
     /// IOS/Body3_ios: Bold
-    case Body3(_ weight: UIFont.Weight)
+    case body3(_ weight: UIFont.Weight)
     /// IOS/Body4_ios: Black, Bold, SemiBold, Regular, Regular_150%
-    case Body4(_ weight: UIFont.Weight, isLh150: Bool)
+    case body4(_ weight: UIFont.Weight, isLh150: Bool)
     /// IOS/Body5_ios: SemiBold, Regular
-    case Body5(_ weight: UIFont.Weight)
+    case body5(_ weight: UIFont.Weight)
     /// IOS/Body6_ios: Black, Bold, SemiBold, Regular
-    case Body6(_ weight: UIFont.Weight)
+    case body6(_ weight: UIFont.Weight)
     /// IOS/Body7_ios: Bold, SemiBold, Regular
-    case Body7(_ weight: UIFont.Weight)
+    case body7(_ weight: UIFont.Weight)
     /// IOS/Body8_ios: SemiBold
-    case Body8(_ weight: UIFont.Weight)
+    case body8(_ weight: UIFont.Weight)
     /// IOS/Custom
-    case Custom(size: CGFloat, weight: UIFont.Weight)
+    case custom(size: CGFloat, weight: UIFont.Weight)
     
     /// 폰트의 weight입니다
     var fontWeight: UIFont.Weight {
         switch self {
             
-        case    .Head1(let weight),
-                .Head2(let weight),
-                .Body1(let weight),
-                .Body2(let weight),
-                .Body3(let weight),
-                .Body4(let weight, _),
-                .Body5(let weight),
-                .Body6(let weight),
-                .Body7(let weight),
-                .Body8(let weight),
-                .Custom(_, let weight):
+        case    .head1(let weight),
+                .head2(let weight),
+                .body1(let weight),
+                .body2(let weight),
+                .body3(let weight),
+                .body4(let weight, _),
+                .body5(let weight),
+                .body6(let weight),
+                .body7(let weight),
+                .body8(let weight),
+                .custom(_, let weight):
             return weight
         }
     }
@@ -83,27 +83,27 @@ enum AppleSDGothicNeo {
     var fontSize: CGFloat {
         switch self {
             
-        case .Head1:
+        case .head1:
             return 19
-        case .Head2:
+        case .head2:
             return 17
-        case .Body1:
+        case .body1:
             return 16
-        case .Body2:
+        case .body2:
             return 15
-        case .Body3:
+        case .body3:
             return 14
-        case .Body4:
+        case .body4:
             return 13
-        case .Body5:
+        case .body5:
             return 12
-        case .Body6:
+        case .body6:
             return 11
-        case .Body7:
+        case .body7:
             return 10
-        case .Body8:
+        case .body8:
             return 9
-        case let .Custom(size, _):
+        case let .custom(size, _):
             return size
         }
     }
@@ -111,7 +111,7 @@ enum AppleSDGothicNeo {
     /// 폰트의 lineHeight입니다.
     var lineHeight: CGFloat? {
         switch self {
-        case let .Body4(_, isLh150):
+        case let .body4(_, isLh150):
             return isLh150 ? 1.5 : nil
         default:
             return nil
@@ -122,11 +122,11 @@ enum AppleSDGothicNeo {
     var letterSpacing: CGFloat? {
         switch self {
         
-        case .Head2:
+        case .head2:
             return -2
-        case .Body2(let weight):
+        case .body2(let weight):
             return weight == .heavy ? 7 : nil
-        case .Body7(let weight):
+        case .body7(let weight):
             return weight == .bold ? 3 : nil
         default:
             return nil
