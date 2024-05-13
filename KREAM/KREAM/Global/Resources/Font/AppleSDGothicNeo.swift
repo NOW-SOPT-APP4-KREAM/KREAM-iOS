@@ -132,4 +132,17 @@ enum AppleSDGothicNeo {
             return nil
         }
     }
+    
+    var attributes: [NSAttributedString.Key : Any] {
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = self.letterSpacing ?? 0
+        paragraphStyle.lineHeightMultiple = self.lineHeight ?? 1
+        
+        let attributes: [NSAttributedString.Key : Any] = [
+            .paragraphStyle : paragraphStyle,
+            .font : UIFont(name: self.fontName, size: self.fontSize) ?? .systemFont(ofSize: self.fontSize, weight: self.fontWeight)
+        ]
+        return attributes
+    }
 }
