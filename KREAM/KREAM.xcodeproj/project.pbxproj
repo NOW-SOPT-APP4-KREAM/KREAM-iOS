@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		885F96992BF1B97D003FAF2E /* AppleSDGothicNeo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F96982BF1B97D003FAF2E /* AppleSDGothicNeo.swift */; };
 		885F96AC2BF1C597003FAF2E /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F96AB2BF1C597003FAF2E /* AppTabBarController.swift */; };
+		885F96AF2BF1D27A003FAF2E /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F96AE2BF1D27A003FAF2E /* AppTab.swift */; };
 		886DD2A42BF18759000F4D7E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 886DD2A32BF18759000F4D7E /* Moya */; };
 		886DD2A72BF1876B000F4D7E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 886DD2A62BF1876B000F4D7E /* SnapKit */; };
 		886DD2AA2BF18777000F4D7E /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 886DD2A92BF18777000F4D7E /* Then */; };
@@ -17,7 +18,6 @@
 		886DD2B92BF198EE000F4D7E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886DD2B82BF198EE000F4D7E /* String+.swift */; };
 		88B077652BF1804C002142BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B077642BF1804C002142BC /* AppDelegate.swift */; };
 		88B077672BF1804C002142BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B077662BF1804C002142BC /* SceneDelegate.swift */; };
-		88B077692BF1804C002142BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B077682BF1804C002142BC /* ViewController.swift */; };
 		88B0776E2BF1804E002142BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88B0776D2BF1804E002142BC /* Assets.xcassets */; };
 		88B077712BF1804E002142BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 88B077702BF1804E002142BC /* Base */; };
 /* End PBXBuildFile section */
@@ -25,12 +25,12 @@
 /* Begin PBXFileReference section */
 		885F96982BF1B97D003FAF2E /* AppleSDGothicNeo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSDGothicNeo.swift; sourceTree = "<group>"; };
 		885F96AB2BF1C597003FAF2E /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
+		885F96AE2BF1D27A003FAF2E /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
 		886DD2AF2BF189D8000F4D7E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		886DD2B82BF198EE000F4D7E /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		88B077612BF1804C002142BC /* KREAM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KREAM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88B077642BF1804C002142BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88B077662BF1804C002142BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		88B077682BF1804C002142BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		88B0776D2BF1804E002142BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88B077702BF1804E002142BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88B077722BF1804E002142BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		885F969A2BF1C23C003FAF2E /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				88B077682BF1804C002142BC /* ViewController.swift */,
+				885F96AD2BF1D270003FAF2E /* Model */,
 				885F96AB2BF1C597003FAF2E /* AppTabBarController.swift */,
 			);
 			path = TabBar;
@@ -190,6 +190,14 @@
 			children = (
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		885F96AD2BF1D270003FAF2E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				885F96AE2BF1D27A003FAF2E /* AppTab.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		886DD2B42BF19675000F4D7E /* Frameworks */ = {
@@ -432,11 +440,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				886DD2B92BF198EE000F4D7E /* String+.swift in Sources */,
-				88B077692BF1804C002142BC /* ViewController.swift in Sources */,
 				88B077652BF1804C002142BC /* AppDelegate.swift in Sources */,
 				885F96AC2BF1C597003FAF2E /* AppTabBarController.swift in Sources */,
 				88B077672BF1804C002142BC /* SceneDelegate.swift in Sources */,
 				885F96992BF1B97D003FAF2E /* AppleSDGothicNeo.swift in Sources */,
+				885F96AF2BF1D27A003FAF2E /* AppTab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
