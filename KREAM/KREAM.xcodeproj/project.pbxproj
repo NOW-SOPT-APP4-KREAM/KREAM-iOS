@@ -57,6 +57,138 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		885F969A2BF1C23C003FAF2E /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				88B077682BF1804C002142BC /* ViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		885F969B2BF1C265003FAF2E /* ReleaseInfoPage */ = {
+			isa = PBXGroup;
+			children = (
+				885F96A12BF1C333003FAF2E /* ViewController */,
+				885F96A02BF1C32D003FAF2E /* Views */,
+				885F969F2BF1C31D003FAF2E /* Cells */,
+			);
+			path = ReleaseInfoPage;
+			sourceTree = "<group>";
+		};
+		885F969C2BF1C2E6003FAF2E /* RecommendationPage */ = {
+			isa = PBXGroup;
+			children = (
+				885F96A22BF1C33A003FAF2E /* ViewController */,
+				885F96A42BF1C345003FAF2E /* Views */,
+				885F96A32BF1C33F003FAF2E /* Cells */,
+			);
+			path = RecommendationPage;
+			sourceTree = "<group>";
+		};
+		885F969D2BF1C2F5003FAF2E /* SearchPage */ = {
+			isa = PBXGroup;
+			children = (
+				885F96A72BF1C355003FAF2E /* ViewController */,
+				885F96A62BF1C351003FAF2E /* Views */,
+				885F96A52BF1C34C003FAF2E /* Cells */,
+			);
+			path = SearchPage;
+			sourceTree = "<group>";
+		};
+		885F969E2BF1C302003FAF2E /* DetailInfoPage */ = {
+			isa = PBXGroup;
+			children = (
+				885F96AA2BF1C364003FAF2E /* ViewController */,
+				885F96A92BF1C360003FAF2E /* Views */,
+				885F96A82BF1C35B003FAF2E /* Cells */,
+			);
+			path = DetailInfoPage;
+			sourceTree = "<group>";
+		};
+		885F969F2BF1C31D003FAF2E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		885F96A02BF1C32D003FAF2E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		885F96A12BF1C333003FAF2E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		885F96A22BF1C33A003FAF2E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		885F96A32BF1C33F003FAF2E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		885F96A42BF1C345003FAF2E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		885F96A52BF1C34C003FAF2E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		885F96A62BF1C351003FAF2E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		885F96A72BF1C355003FAF2E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		885F96A82BF1C35B003FAF2E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		885F96A92BF1C360003FAF2E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		885F96AA2BF1C364003FAF2E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		886DD2B42BF19675000F4D7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,8 +248,12 @@
 		88B0777A2BF1854D002142BC /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				885F969B2BF1C265003FAF2E /* ReleaseInfoPage */,
+				885F969C2BF1C2E6003FAF2E /* RecommendationPage */,
+				885F969D2BF1C2F5003FAF2E /* SearchPage */,
+				885F969E2BF1C302003FAF2E /* DetailInfoPage */,
+				885F969A2BF1C23C003FAF2E /* TabBar */,
 				88B0776F2BF1804E002142BC /* LaunchScreen.storyboard */,
-				88B077682BF1804C002142BC /* ViewController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
