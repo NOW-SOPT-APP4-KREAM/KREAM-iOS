@@ -17,6 +17,7 @@ disabled_rules:
   - type_body_length                       # 타입 본문의 행 길이 제한
   - function_body_length                   # 함수 본문의 행 길이 제한
   - inclusive_language                     # 포괄적 언어 사용
+  - identifier_name                        # 1~2글자 변수 이름 제한
   - todo                                   # TODO, FIXME 주석 제한
   
   
@@ -27,7 +28,6 @@ opt_in_rules:
   - empty_string                           # == ""보다 isEmpty 선호
   - empty_collection_literal               # == [] 보다 isEmpty 선호
   - sorted_imports                         # import 시 알파벳 순 정렬
-  - used_import                            # 사용되지 않는 모듈 import 알림
 
 
 # 행 길이 커스텀 정의
@@ -39,7 +39,8 @@ line_length:
 
 # 룰 적용 제외할 파일
 excluded:
-  - KREAM/Application
+  - KREAM/Application/AppDelegate.swift
+  - KREAM/Application/SceneDelegate.swift
   
 
 # 문서의 끝

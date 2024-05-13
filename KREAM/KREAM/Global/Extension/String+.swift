@@ -20,9 +20,10 @@ extension String {
         paragraphStyle.lineHeightMultiple = type.lineHeight ?? 1
         attrString.setAttributes(
             [
-                .paragraphStyle : paragraphStyle,
-                .font : UIFont(name: type.fontName, size: type.fontSize) ?? .systemFont(ofSize: type.fontSize, weight: type.fontWeight),
-                .foregroundColor : textColor
+                .paragraphStyle: paragraphStyle,
+                .font: UIFont(name: type.fontName, size: type.fontSize) ?? 
+                    .systemFont(ofSize: type.fontSize, weight: type.fontWeight),
+                .foregroundColor: textColor
             ],
             range: NSRange(location: 0, length: attrString.length)
         )

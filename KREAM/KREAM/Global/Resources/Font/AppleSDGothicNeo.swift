@@ -133,15 +133,16 @@ enum AppleSDGothicNeo {
         }
     }
     
-    var attributes: [NSAttributedString.Key : Any] {
+    var attributes: [NSAttributedString.Key: Any] {
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = self.letterSpacing ?? 0
         paragraphStyle.lineHeightMultiple = self.lineHeight ?? 1
         
-        let attributes: [NSAttributedString.Key : Any] = [
-            .paragraphStyle : paragraphStyle,
-            .font : UIFont(name: self.fontName, size: self.fontSize) ?? .systemFont(ofSize: self.fontSize, weight: self.fontWeight)
+        let attributes: [NSAttributedString.Key: Any] = [
+            .paragraphStyle: paragraphStyle,
+            .font: UIFont(name: self.fontName, size: self.fontSize) ??
+                .systemFont(ofSize: self.fontSize, weight: self.fontWeight)
         ]
         return attributes
     }
