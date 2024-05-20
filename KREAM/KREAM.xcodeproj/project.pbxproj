@@ -20,6 +20,16 @@
 		88B077672BF1804C002142BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B077662BF1804C002142BC /* SceneDelegate.swift */; };
 		88B0776E2BF1804E002142BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88B0776D2BF1804E002142BC /* Assets.xcassets */; };
 		88B077712BF1804E002142BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 88B077702BF1804E002142BC /* Base */; };
+		9E3FBA5C2BFBA6240085B6F1 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA5B2BFBA6240085B6F1 /* NetworkResult.swift */; };
+		9E3FBA5E2BFBA6AB0085B6F1 /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA5D2BFBA6AB0085B6F1 /* MoyaLoggingPlugin.swift */; };
+		9E3FBA602BFBA71F0085B6F1 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA5F2BFBA71F0085B6F1 /* BaseTargetType.swift */; };
+		9E3FBA622BFBA7BA0085B6F1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA612BFBA7BA0085B6F1 /* Config.swift */; };
+		9E3FBA672BFBADC00085B6F1 /* ProductResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA662BFBADC00085B6F1 /* ProductResponseDTO.swift */; };
+		9E3FBA692BFBAE270085B6F1 /* DetailProductResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA682BFBAE270085B6F1 /* DetailProductResponseDTO.swift */; };
+		9E3FBA6B2BFBAE940085B6F1 /* ReleaseProductResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA6A2BFBAE940085B6F1 /* ReleaseProductResponseDTO.swift */; };
+		9E3FBA6D2BFBAF400085B6F1 /* RecommendProductResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA6C2BFBAF400085B6F1 /* RecommendProductResponseDTO.swift */; };
+		9E3FBA6F2BFBB09A0085B6F1 /* ScrapResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA6E2BFBB09A0085B6F1 /* ScrapResponseDTO.swift */; };
+		9E3FBA712BFBB10E0085B6F1 /* ScrapRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA702BFBB10E0085B6F1 /* ScrapRequestBody.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +44,16 @@
 		88B0776D2BF1804E002142BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88B077702BF1804E002142BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88B077722BF1804E002142BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E3FBA5B2BFBA6240085B6F1 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		9E3FBA5D2BFBA6AB0085B6F1 /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
+		9E3FBA5F2BFBA71F0085B6F1 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
+		9E3FBA612BFBA7BA0085B6F1 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		9E3FBA662BFBADC00085B6F1 /* ProductResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponseDTO.swift; sourceTree = "<group>"; };
+		9E3FBA682BFBAE270085B6F1 /* DetailProductResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductResponseDTO.swift; sourceTree = "<group>"; };
+		9E3FBA6A2BFBAE940085B6F1 /* ReleaseProductResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseProductResponseDTO.swift; sourceTree = "<group>"; };
+		9E3FBA6C2BFBAF400085B6F1 /* RecommendProductResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendProductResponseDTO.swift; sourceTree = "<group>"; };
+		9E3FBA6E2BFBB09A0085B6F1 /* ScrapResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapResponseDTO.swift; sourceTree = "<group>"; };
+		9E3FBA702BFBB10E0085B6F1 /* ScrapRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapRequestBody.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +303,8 @@
 		88B0777C2BF1857A002142BC /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				9E3FBA652BFBAB1B0085B6F1 /* RequestDTO */,
+				9E3FBA642BFBAAF90085B6F1 /* ResponseDTO */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -304,6 +326,10 @@
 		88B0777F2BF1858E002142BC /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				9E3FBA5B2BFBA6240085B6F1 /* NetworkResult.swift */,
+				9E3FBA5D2BFBA6AB0085B6F1 /* MoyaLoggingPlugin.swift */,
+				9E3FBA5F2BFBA71F0085B6F1 /* BaseTargetType.swift */,
+				9E3FBA612BFBA7BA0085B6F1 /* Config.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -330,6 +356,26 @@
 			children = (
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		9E3FBA642BFBAAF90085B6F1 /* ResponseDTO */ = {
+			isa = PBXGroup;
+			children = (
+				9E3FBA662BFBADC00085B6F1 /* ProductResponseDTO.swift */,
+				9E3FBA682BFBAE270085B6F1 /* DetailProductResponseDTO.swift */,
+				9E3FBA6A2BFBAE940085B6F1 /* ReleaseProductResponseDTO.swift */,
+				9E3FBA6C2BFBAF400085B6F1 /* RecommendProductResponseDTO.swift */,
+				9E3FBA6E2BFBB09A0085B6F1 /* ScrapResponseDTO.swift */,
+			);
+			path = ResponseDTO;
+			sourceTree = "<group>";
+		};
+		9E3FBA652BFBAB1B0085B6F1 /* RequestDTO */ = {
+			isa = PBXGroup;
+			children = (
+				9E3FBA702BFBB10E0085B6F1 /* ScrapRequestBody.swift */,
+			);
+			path = RequestDTO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,12 +484,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E3FBA672BFBADC00085B6F1 /* ProductResponseDTO.swift in Sources */,
 				886DD2B92BF198EE000F4D7E /* String+.swift in Sources */,
 				88B077652BF1804C002142BC /* AppDelegate.swift in Sources */,
+				9E3FBA692BFBAE270085B6F1 /* DetailProductResponseDTO.swift in Sources */,
+				9E3FBA602BFBA71F0085B6F1 /* BaseTargetType.swift in Sources */,
 				885F96AC2BF1C597003FAF2E /* AppTabBarController.swift in Sources */,
 				88B077672BF1804C002142BC /* SceneDelegate.swift in Sources */,
 				885F96992BF1B97D003FAF2E /* AppleSDGothicNeo.swift in Sources */,
 				885F96AF2BF1D27A003FAF2E /* AppTab.swift in Sources */,
+				9E3FBA712BFBB10E0085B6F1 /* ScrapRequestBody.swift in Sources */,
+				9E3FBA6F2BFBB09A0085B6F1 /* ScrapResponseDTO.swift in Sources */,
+				9E3FBA622BFBA7BA0085B6F1 /* Config.swift in Sources */,
+				9E3FBA5E2BFBA6AB0085B6F1 /* MoyaLoggingPlugin.swift in Sources */,
+				9E3FBA6B2BFBAE940085B6F1 /* ReleaseProductResponseDTO.swift in Sources */,
+				9E3FBA5C2BFBA6240085B6F1 /* NetworkResult.swift in Sources */,
+				9E3FBA6D2BFBAF400085B6F1 /* RecommendProductResponseDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +522,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BASE_URL = "http://13.54.157.89";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -529,6 +586,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BASE_URL = "http://13.54.157.89";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
