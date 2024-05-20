@@ -351,8 +351,9 @@
 		88FA86FD2BFBAB23002F3891 /* ItemInfoDetailCollectionViewCell  */ = {
 			isa = PBXGroup;
 			children = (
-				88FA86FE2BFBACAF002F3891 /* ItemDetail.swift */,
-				88FA87002BFBB2E2002F3891 /* ItemInfoDetailCollectionViewCell.swift */,
+				88FA87072BFBB3F1002F3891 /* Model */,
+				88FA87062BFBB3EC002F3891 /* View */,
+				88FA87052BFBB3E1002F3891 /* ViewController */,
 			);
 			path = "ItemInfoDetailCollectionViewCell ";
 			sourceTree = "<group>";
@@ -363,6 +364,29 @@
 				88FA87032BFBB32C002F3891 /* ComponentType.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		88FA87052BFBB3E1002F3891 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		88FA87062BFBB3EC002F3891 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				88FA87002BFBB2E2002F3891 /* ItemInfoDetailCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		88FA87072BFBB3F1002F3891 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				88FA86FE2BFBACAF002F3891 /* ItemDetail.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
