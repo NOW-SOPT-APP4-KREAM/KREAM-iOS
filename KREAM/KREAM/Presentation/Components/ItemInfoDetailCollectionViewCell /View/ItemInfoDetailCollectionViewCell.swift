@@ -5,9 +5,9 @@
 //  Created by 박민서 on 5/21/24.
 //
 
-import UIKit
 import SnapKit
 import Then
+import UIKit
 
 /// ItemInfoDetailCollectionViewCell의 Cell 표시 타입 enum입니다.
 enum ItemType {
@@ -73,4 +73,17 @@ final class ItemDetailCollectionViewCell: UICollectionViewCell {
     // MARK: setUpConstraint
     private func setUpConstraint() {
     }
+}
+
+// MARK: External Function
+extension ItemDetailCollectionViewCell {
+    /// Cell의 데이터를 설정합니다.
+    func configure(itemType: ItemType, itemDetail: ItemDetail) {
+        self.itemType = itemType
+        self.itemDetail = itemDetail
+    }
+}
+
+#Preview {
+    ItemDetailCollectionViewCell()
 }
