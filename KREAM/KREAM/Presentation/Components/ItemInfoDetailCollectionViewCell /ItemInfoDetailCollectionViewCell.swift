@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+/// ItemInfoDetailCollectionViewCell의 Cell 표시 타입 enum입니다.
+enum ItemType {
+    case full
+    case mid
+    case compact
+}

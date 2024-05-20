@@ -6,7 +6,6 @@
 //
 
 /// Item의 디테일 정보를 표시하기 위한 모델입니다
-/// - 사용 Views : asdfView
 struct ItemDetail {
     // item internal info
     let itemId: Int
