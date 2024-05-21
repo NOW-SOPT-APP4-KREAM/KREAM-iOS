@@ -152,6 +152,10 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         isSeenTag.do {
+            guard self.itemDetail?.isPreviouslySeen == true else {
+                $0.isHidden = true
+                return
+            }
             var config = UIButton.Configuration.filled()
 
             config.baseBackgroundColor = .blue02
@@ -168,15 +172,21 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         purchaseCountLabel.do {
-            $0.attributedText = "거래 309".toKreamFontString(.body6(.semibold), textColor: .black04)
+            guard let tradeVolume = self.itemDetail?.tradeVolume else {
+                $0.isHidden = true
+                return
+            }
+            $0.attributedText = "거래 \(tradeVolume)".toKreamFontString(.body6(.semibold), textColor: .black04)
         }
         
         bookmarkButton.do {
-            // TODO: 추후 추가된 asset으로 변경
-            if let bookmarked = self.itemDetail?.isBookmarked {
-                $0.setImage(UIImage(systemName: bookmarked ? "bookmark.fill" : "bookmark"), for: .normal)
-                $0.imageView?.tintColor = .black03
+            guard let isBookmarked = self.itemDetail?.isBookmarked else {
+                $0.isHidden = true
+                return
             }
+            // TODO: 추후 추가된 asset으로 변경
+            $0.setImage(UIImage(systemName: isBookmarked ? "bookmark.fill" : "bookmark"), for: .normal)
+            $0.imageView?.tintColor = .black03
         }
         
         // title section
@@ -191,7 +201,11 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         brandName.do {
-            $0.attributedText = "Adidas".toKreamFontString(.body4(.black, isLh150: false), textColor: .black02)
+            guard let brandName = self.itemDetail?.brandName else {
+                $0.isHidden = true
+                return
+            }
+            $0.attributedText = brandName.toKreamFontString(.body4(.black, isLh150: false), textColor: .black02)
         }
         
         checkMark.do {
@@ -206,7 +220,11 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         itemNameKor.do {
-            $0.attributedText = "아디다스 독일 아디컬러 클래식 삼선  티셔츠".toKreamFontString(.body6(.regular), textColor: .black08)
+            guard let koreanName = self.itemDetail?.koreanName else {
+                $0.isHidden = true
+                return
+            }
+            $0.attributedText = koreanName.toKreamFontString(.body6(.regular), textColor: .black08)
         }
         
         // tag section
@@ -216,6 +234,10 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         isExpressTag.do {
+            guard self.itemDetail?.isExpress == true else {
+                $0.isHidden = true
+                return
+            }
             var config = UIButton.Configuration.filled()
             
             config.baseForegroundColor = .green02
@@ -223,8 +245,10 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
             config.cornerStyle = .small
             config.contentInsets = .init(top: 3, leading: 3, bottom: 3, trailing: 3)
             // TODO: 추후 추가된 asset으로 변경
-            config.image = UIImage(systemName: "bolt")?.resized(to: .init(width: 14, height: 16))?.withRenderingMode(.alwaysTemplate)
+            config.image = UIImage(systemName: "bolt")?
+                .resized(to: .init(width: 14, height: 16))?.withRenderingMode(.alwaysTemplate)
             config.imagePadding = 2
+            config.titleLineBreakMode = .byTruncatingTail // 라인 브레이크 모드를 설정하여 텍스트가 줄바꿈되지 않도록 합니다.
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
                 outgoing.font = UIFont.kreamFont(.body7(.regular))
@@ -236,12 +260,17 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         isCouponTag.do {
+            guard self.itemDetail?.isCoupon == true else {
+                $0.isHidden = true
+                return
+            }
             var config = UIButton.Configuration.filled()
             
             config.baseForegroundColor = .black05
             config.baseBackgroundColor = .gray05
             config.cornerStyle = .small
             config.contentInsets = .init(top: 3, leading: 3, bottom: 3, trailing: 3)
+            config.titleLineBreakMode = .byTruncatingTail
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
                 outgoing.font = UIFont.kreamFont(.body7(.regular))
@@ -253,12 +282,17 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         isFreeShipTag.do {
+            guard self.itemDetail?.isFreeShip == true else {
+                $0.isHidden = true
+                return
+            }
             var config = UIButton.Configuration.filled()
             
             config.baseForegroundColor = .black05
             config.baseBackgroundColor = .gray05
             config.cornerStyle = .small
             config.contentInsets = .init(top: 3, leading: 3, bottom: 3, trailing: 3)
+            config.titleLineBreakMode = .byTruncatingTail
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
                 outgoing.font = UIFont.kreamFont(.body7(.regular))
@@ -282,6 +316,7 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         optionStack.do {
+           
             $0.axis = .horizontal
             $0.spacing = 12
         }
@@ -291,21 +326,33 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         isBuyNowPriceTag.do {
+            guard self.itemDetail?.isBuyNowPrice == true else {
+                $0.isHidden = true
+                return
+            }
             $0.attributedText = "즉시 구매가".toKreamFontString(.body7(.semibold), textColor: .black06)
         }
         
         bookmarkCountTag.do {
+            guard let bookmarkCount = self.itemDetail?.bookmarkCount else {
+                $0.isHidden = true
+                return
+            }
             // TODO: 추후 추가된 asset으로 변경
             $0.setImage(UIImage(systemName: "bookmark"), for: .normal)
             $0.imageView?.tintColor = .black06
-            $0.setAttributedTitle("3만".toKreamFontString(.body6(.semibold), textColor: .black06), for: .normal)
+            $0.setAttributedTitle(bookmarkCount.toKreamFontString(.body6(.semibold), textColor: .black06), for: .normal)
         }
         
         heartCountTag.do {
+            guard let heartCount = self.itemDetail?.heartCount else {
+                $0.isHidden = true
+                return
+            }
             // TODO: 추후 추가된 asset으로 변경
             $0.setImage(UIImage(systemName: "doc.plaintext"), for: .normal)
             $0.imageView?.tintColor = .black06
-            $0.setAttributedTitle("104".toKreamFontString(.body6(.semibold), textColor: .black06), for: .normal)
+            $0.setAttributedTitle(heartCount.toKreamFontString(.body6(.semibold), textColor: .black06), for: .normal)
         }
         
     }
@@ -350,6 +397,7 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
             $0.top.equalTo(titleSectionStack.snp.bottom).offset(4)
             $0.leading.equalToSuperview().offset(4)
             $0.trailing.equalToSuperview().offset(-4)
+            $0.height.equalTo(20)
         }
 
         // bottom section
@@ -377,7 +425,7 @@ extension ItemInfoDetailCollectionViewCell {
             itemDetail: ItemDetail(
                 itemId: 1,
                 isPreviouslySeen: true,
-                tradeVolume: "거래 1.9만",
+                tradeVolume: "1.9만",
                 imageUrl: "asdf",
                 isBookmarked: true,
                 brandName: "adidas",
