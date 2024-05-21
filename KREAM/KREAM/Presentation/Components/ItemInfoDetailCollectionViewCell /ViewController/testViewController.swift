@@ -49,7 +49,7 @@ class TestViewController: UIViewController {
                 itemId: 1,
                 isPreviouslySeen: true,
                 tradeVolume: "4,532",
-                imageUrl: "asdf",
+                imageUrl: "https://www.dictionary.com/e/wp-content/uploads/2018/03/asdfmovie-300x300.jpg",
                 isBookmarked: false,
                 brandName: "New Balance",
                 isCheck: true,

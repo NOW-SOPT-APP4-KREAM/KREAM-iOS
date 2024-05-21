@@ -8,6 +8,7 @@
 import SnapKit
 import Then
 import UIKit
+import Kingfisher
 
 final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
     
@@ -146,7 +147,11 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         
         // image section
         imageView.do {
-            $0.image = UIImage(systemName: "tshirt.fill")
+            if let imageUrl = self.itemDetail?.imageUrl {
+                self.imageView.kf.setImage(with: URL(string: imageUrl), placeholder: UIImage(systemName: "tshirt.fill"))
+            } else {
+                $0.image = UIImage(systemName: "tshirt.fill")
+            }
             $0.tintColor = .black03
             $0.contentMode = .scaleAspectFit
             $0.backgroundColor = .gray06
@@ -479,7 +484,7 @@ extension ItemInfoDetailCollectionViewCell: ComponentType {
                 itemId: 1,
                 isPreviouslySeen: true,
                 tradeVolume: "1.9만",
-                imageUrl: "asdf",
+                imageUrl: "https://c0.klipartz.com/pngpicture/685/946/gratis-png-zapato-de-zapato-de-oxford-zapatos-de-calzado-de-brogue-zapatos-de-hombres-thumbnail.png",
                 isBookmarked: true,
                 brandName: nil,
                 isCheck: false,
