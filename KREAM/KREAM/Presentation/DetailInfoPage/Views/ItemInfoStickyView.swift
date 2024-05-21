@@ -13,6 +13,10 @@ class ItemInfoStickyView : UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setUpStyle()
+        setLayout()
+        setConstraints()
+
     }
     
     required init?(coder: NSCoder) {
@@ -56,7 +60,7 @@ class ItemInfoStickyView : UIView {
             $0.textColor = .black
         }
         scrapImageView.do {
-            $0.image = UIImage(named: "scrap")
+            $0.image = UIImage(named: "icn_scrap")
         }
         purchaseLabel.do {
             $0.attributedText = "구매".toKreamFontString(.custom(size: 16, weight: .bold))
@@ -87,80 +91,68 @@ class ItemInfoStickyView : UIView {
     
     //MARK: - Layout
     private func setLayout() {
-        [purchaseLabelView, sellLabelView, numberLabel, scrapImageView, purchaseLabel, priceLabel, purchasesubLabel, sellLabel, priceSellLabel, sellLabel].forEach{
+        [purchaseLabelView, sellLabelView, numberLabel, scrapImageView, purchaseLabel, priceLabel, purchasesubLabel, sellLabel, priceSellLabel, sellSubLabel].forEach {
             self.addSubview($0)
         }
+    }
+    
+    private func setConstraints() {
         
-        purchaseLabelView.snp.makeConstraints{
+        scrapImageView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(23)
+            $0.leading.equalToSuperview().offset(22.5)
+            $0.width.height.equalTo(24)
+        }
+        
+        numberLabel.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(10)
+            $0.leading.equalToSuperview().offset(21)
+        }
+    
+        purchaseLabelView.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(4)
             $0.leading.equalToSuperview().offset(67)
             $0.width.equalTo(147)
             $0.height.equalTo(49)
         }
         
-        sellLabelView.snp.makeConstraints{
+        purchaseLabel.snp.makeConstraints {
+            $0.top.equalTo(purchaseLabelView.snp.top).offset(15)
+            $0.leading.equalTo(purchaseLabelView.snp.leading).offset(10)
+        }
+        
+        priceLabel.snp.makeConstraints {
+            $0.top.equalTo(purchaseLabelView.snp.top).offset(9)
+            $0.trailing.equalTo(purchaseLabelView.snp.trailing).offset(-39)
+        }
+        
+        purchasesubLabel.snp.makeConstraints {
+            $0.bottom.equalTo(purchaseLabelView.snp.bottom).offset(-9)
+            $0.trailing.equalTo(purchaseLabelView.snp.trailing).offset(-37)
+        }
+        
+        sellLabelView.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(4)
-            $0.trailing.equalToSuperview().offset(-8)
+            $0.leading.equalTo(purchaseLabelView.snp.trailing).offset(6)
             $0.width.equalTo(147)
             $0.height.equalTo(49)
         }
         
-        numberLabel.snp.makeConstraints{
-            $0.bottom.equalToSuperview().inset(10)
-            $0.leading.equalToSuperview().offset(18)
-            $0.width.equalTo(33)
-            $0.height.equalTo(13)
-        }
-        
-        scrapImageView.snp.makeConstraints{
-            $0.bottom.equalToSuperview().inset(23)
-            $0.leading.equalToSuperview().offset(22.5)
-            $0.width.height.equalTo(24)
-        }
-        
-        purchaseLabel.snp.makeConstraints{
-            $0.top.equalTo(purchaseLabelView.snp.top).offset(15)
-            $0.leading.equalTo(purchaseLabelView.snp.leading).offset(10)
-            $0.width.equalTo(28)
-            $0.width.equalTo(19)
-        }
-        
-        priceLabel.snp.makeConstraints{
-            $0.top.equalTo(purchaseLabelView.snp.top).offset(9)
-            $0.trailing.equalTo(purchaseLabelView.snp.trailing).offset(-39)
-            $0.width.equalTo(49)
-            $0.width.equalTo(16)
-        }
-        
-        purchasesubLabel.snp.makeConstraints{
-            $0.bottom.equalTo(purchaseLabelView.snp.bottom).offset(9)
-            $0.trailing.equalTo(purchaseLabelView.snp.trailing).offset(-37)
-            $0.width.equalTo(51)
-            $0.width.equalTo(13)
-        }
-        
-        sellLabel.snp.makeConstraints{
+        sellLabel.snp.makeConstraints {
             $0.top.equalTo(sellLabelView.snp.top).offset(15)
             $0.leading.equalTo(sellLabelView.snp.leading).offset(10)
-            $0.width.equalTo(28)
-            $0.width.equalTo(19)
         }
         
-        priceSellLabel.snp.makeConstraints{
+        priceSellLabel.snp.makeConstraints {
             $0.top.equalTo(sellLabelView.snp.top).offset(9)
             $0.trailing.equalTo(sellLabelView.snp.trailing).offset(-38)
-            $0.width.equalTo(50)
-            $0.width.equalTo(16)
         }
-        
-        sellLabel.snp.makeConstraints{
-            $0.bottom.equalTo(sellLabelView.snp.bottom).offset(9)
+        sellSubLabel.snp.makeConstraints {
+            $0.bottom.equalTo(sellLabelView.snp.bottom).offset(-9)
             $0.trailing.equalTo(sellLabelView.snp.trailing).offset(-37)
-            $0.width.equalTo(50)
-            $0.width.equalTo(13)
+
         }
     }
-    
 }
 
 #Preview {
