@@ -159,8 +159,8 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
             var config = UIButton.Configuration.filled()
 
             config.baseBackgroundColor = .blue02
-            config.cornerStyle = .small
-            config.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
+            config.cornerStyle = .medium
+            config.contentInsets = .init(top: 3, leading: 4, bottom: 3, trailing: 4)
             config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
                 var outgoing = incoming
                 outgoing.font = UIFont.kreamFont(.custom(size: 9, weight: .semibold))
@@ -209,14 +209,20 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         checkMark.do {
-            $0.image = UIImage(systemName: "checkmark.circle.fill")
-            $0.tintColor = .purple
+            if self.itemDetail?.isCheck ?? false {
+                $0.image = UIImage(systemName: "checkmark.circle.fill")
+                $0.tintColor = .purple
+            } else {
+                $0.isHidden = true
+            }
         }
         
         itemNameEng.do {
-            $0.numberOfLines = 2
+            guard let itemType = self.itemType else { return }
+            $0.numberOfLines = (itemType == .full || itemType == .bigMid) ? 2 : 1
             $0.attributedText = "Adidas German Adicolor Classic 3-Stripe T- shirt Black"
                 .toKreamFontString(.body5(.semibold), textColor: .black02)
+            $0.lineBreakMode = .byTruncatingTail
         }
         
         itemNameKor.do {
@@ -225,6 +231,7 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
                 return
             }
             $0.attributedText = koreanName.toKreamFontString(.body6(.regular), textColor: .black08)
+            $0.lineBreakMode = .byTruncatingTail
         }
         
         // tag section
@@ -371,7 +378,7 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         purchaseCountLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(5)
+            $0.top.equalToSuperview().offset(6)
             $0.leading.greaterThanOrEqualTo(isSeenTag.snp.trailing)
             $0.trailing.equalToSuperview().offset(-6)
         }
@@ -383,13 +390,23 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         
         // title section
         titleSectionStack.snp.makeConstraints {
-            $0.top.equalTo(imageView.snp.bottom).offset(9)
+            $0.top.equalTo(imageView.snp.bottom).offset(8)
             $0.leading.equalToSuperview().offset(4)
             $0.trailing.equalToSuperview().offset(-4)
         }
         
+        itemNameEng.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+        }
+        
+        itemNameKor.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+        }
+        
         checkMark.snp.makeConstraints {
-            $0.size.equalTo(12)
+            if self.itemDetail?.isCheck ?? false {
+                $0.size.equalTo(12)
+            }
         }
         
         // tag section
@@ -397,12 +414,26 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
             $0.top.equalTo(titleSectionStack.snp.bottom).offset(4)
             $0.leading.equalToSuperview().offset(4)
             $0.trailing.equalToSuperview().offset(-4)
-            $0.height.equalTo(20)
+
+            if (itemDetail?.isExpress ?? false) ||
+                (itemDetail?.isCoupon ?? false) ||
+                (itemDetail?.isFreeShip ?? false) {
+                $0.height.equalTo(20)
+            } else {
+                $0.height.equalTo(0)
+            }
         }
 
         // bottom section
         bottomSectionStack.snp.makeConstraints {
-            $0.top.equalTo(tagSectionStack.snp.bottom).offset(9)
+            if (itemDetail?.isExpress ?? false) ||
+                (itemDetail?.isCoupon ?? false) ||
+                (itemDetail?.isFreeShip ?? false) {
+                $0.top.equalTo(tagSectionStack.snp.bottom).offset(9)
+            } else {
+                $0.top.equalTo(tagSectionStack.snp.bottom).offset(0)
+            }
+            
             $0.leading.equalToSuperview().offset(4)
             $0.trailing.equalToSuperview().offset(-4)
         }
@@ -428,14 +459,15 @@ extension ItemInfoDetailCollectionViewCell {
                 tradeVolume: "1.9만",
                 imageUrl: "asdf",
                 isBookmarked: true,
-                brandName: "adidas",
+                brandName: nil,
+                isCheck: false,
                 englishName: "Adidas German Adicolor Classic 3-Stripe T- shirt Black",
-                koreanName: "아디다스 독일 아디컬러 클래식 삼선  티셔츠",
-                isExpress: true,
-                isCoupon: true,
-                isFreeShip: true,
+                koreanName: nil,
+                isExpress: false,
+                isCoupon: false,
+                isFreeShip: false,
                 price: "447,000원",
-                isBuyNowPrice: true,
+                isBuyNowPrice: false,
                 bookmarkCount: "3만",
                 heartCount: "104"
             )

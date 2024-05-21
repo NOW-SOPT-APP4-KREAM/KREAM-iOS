@@ -23,9 +23,9 @@ enum ItemType {
         case .bigMid:
             return .init(width: 143, height: 264)
         case .smallMid:
-            return .init(width: 109, height: 165)
+            return .init(width: 109, height: 170)
         case .compact:
-            return .init(width: 96, height: 137)
+            return .init(width: 96, height: 140)
         }
     }
     

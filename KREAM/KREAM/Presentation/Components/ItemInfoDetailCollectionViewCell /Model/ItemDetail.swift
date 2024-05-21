@@ -16,6 +16,7 @@ struct ItemDetail {
     let isBookmarked: Bool? // 전달되지 않을 수도 있으면 optional
     // middle info
     let brandName: String?
+    let isCheck: Bool
     let englishName: String
     let koreanName: String?
     // tag info

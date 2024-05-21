@@ -17,29 +17,34 @@ class TestViewController: UIViewController {
         super.viewDidLoad()
         self.view.addSubview(cell)
         
+        let cellType = ItemType.full
+        
         cell.configure(
-            itemType: .full,
+            itemType: cellType,
             itemDetail: ItemDetail(
                 itemId: 1,
                 isPreviouslySeen: true,
-                tradeVolume: "거래 1.9만",
+                tradeVolume: "4,532",
                 imageUrl: "asdf",
-                isBookmarked: true,
-                brandName: "adidas",
+                isBookmarked: false,
+                brandName: "New Balance",
+                isCheck: true,
                 englishName: "Adidas German Adicolor Classic 3-Stripe T- shirt Black",
-                koreanName: "아디다스 독일 아디컬러 클래식 삼선  티셔츠",
+                koreanName: "Afsd",
                 isExpress: true,
-                isCoupon: true,
-                isFreeShip: true,
+                isCoupon: false,
+                isFreeShip: false,
                 price: "447,000원",
                 isBuyNowPrice: true,
-                bookmarkCount: "3만",
-                heartCount: "104"
+                bookmarkCount: "asdf",
+                heartCount: "asdf"
             )
         )
         
+//        cell.backgroundColor = .red
+        
         cell.snp.makeConstraints {
-            $0.size.equalTo(ItemType.full.cellSize)
+            $0.size.equalTo(cellType.cellSize)
             $0.center.equalToSuperview()
         }
     }
