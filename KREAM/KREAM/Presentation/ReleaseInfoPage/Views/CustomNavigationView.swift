@@ -16,20 +16,14 @@ enum NavigationType {
 }
 
 final class CustomNavigationView: UIView {
-   let searchTextField = UITextField()
-   private let container = UIView()
-   private let cancelBtn = UIButton()
-   private let alarmBtn = UIButton()
-   private let cancel = UILabel()
-   private let alarm = UIImageView()
-   private var navigationType: NavigationType = .cancel
    
+   let searchTextField = UITextField()
    private let rightBtn = UIButton()
+   private var navigationType: NavigationType = .cancel
    
    // MARK: Init
    override init(frame: CGRect) {
       super.init(frame: frame)
-      self.navigationType = .alarm
       setUpViews()
       setUpLayout()
       setUpStyle()
