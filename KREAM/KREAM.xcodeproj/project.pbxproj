@@ -26,6 +26,7 @@
 		88FA87092BFBE475002F3891 /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA87082BFBE475002F3891 /* ItemType.swift */; };
 		88FA870D2BFD06A2002F3891 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA870C2BFD06A2002F3891 /* UIFont+.swift */; };
 		88FA870F2BFD06B2002F3891 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA870E2BFD06B2002F3891 /* UIImage+.swift */; };
+		88FA87112BFD07DF002F3891 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA87102BFD07DF002F3891 /* testViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		88FA87082BFBE475002F3891 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		88FA870C2BFD06A2002F3891 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		88FA870E2BFD06B2002F3891 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		88FA87102BFD07DF002F3891 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,6 +379,7 @@
 		88FA87052BFBB3E1002F3891 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				88FA87102BFD07DF002F3891 /* testViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				885F96992BF1B97D003FAF2E /* AppleSDGothicNeo.swift in Sources */,
 				88FA87042BFBB32C002F3891 /* ComponentType.swift in Sources */,
 				88FA870F2BFD06B2002F3891 /* UIImage+.swift in Sources */,
+				88FA87112BFD07DF002F3891 /* testViewController.swift in Sources */,
 				885F96AF2BF1D27A003FAF2E /* AppTab.swift in Sources */,
 				88FA87012BFBB2E2002F3891 /* ItemDetailCollectionViewCell.swift in Sources */,
 			);
