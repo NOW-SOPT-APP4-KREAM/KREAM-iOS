@@ -19,7 +19,31 @@ class TestViewController: UIViewController {
         
         let cellType = ItemType.full
         
-        cell.configure(
+//        cell.configure(
+//            itemType: cellType,
+//            itemDetail: ItemDetail(
+//                itemId: 1,
+//                isPreviouslySeen: true,
+//                tradeVolume: "4,532",
+//                imageUrl: "asdf",
+//                isBookmarked: false,
+//                brandName: "New Balance",
+//                isCheck: true,
+//                englishName: "Adidas German Adicolor Classic 3-Stripe T- shirt Black",
+//                koreanName: "Afsd",
+//                isExpress: true,
+//                isCoupon: false,
+//                isFreeShip: false,
+//                price: "447,000원",
+//                isBuyNowPrice: true,
+//                bookmarkCount: "asdf",
+//                heartCount: "asdf"
+//            )
+//        )
+        
+//        cell.backgroundColor = .red
+        
+        cell.interface(input: .init(
             itemType: cellType,
             itemDetail: ItemDetail(
                 itemId: 1,
@@ -37,11 +61,11 @@ class TestViewController: UIViewController {
                 price: "447,000원",
                 isBuyNowPrice: true,
                 bookmarkCount: "asdf",
-                heartCount: "asdf"
-            )
-        )
-        
-//        cell.backgroundColor = .red
+                heartCount: "asdf"),
+            bookmarkButtonDidTap: { id in
+                print(id)
+            }
+        ))
         
         cell.snp.makeConstraints {
             $0.size.equalTo(cellType.cellSize)

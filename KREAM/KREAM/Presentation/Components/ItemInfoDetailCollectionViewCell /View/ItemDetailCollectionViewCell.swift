@@ -440,13 +440,34 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
     }
 }
 
-// MARK: External Function
-extension ItemInfoDetailCollectionViewCell {
+// MARK: Internal Function
+private extension ItemInfoDetailCollectionViewCell {
     /// Cell의 데이터를 설정합니다.
     func configure(itemType: ItemType, itemDetail: ItemDetail) {
         self.itemType = itemType
         self.itemDetail = itemDetail
     }
+}
+
+// MARK: ComponentType
+extension ItemInfoDetailCollectionViewCell: ComponentType {
+    
+    func interface(input: Input) -> Output {
+        self.configure(itemType: input.itemType, itemDetail: input.itemDetail)
+        self.bookmarkButton.addAction(UIAction { _ in
+            input.bookmarkButtonDidTap(self.itemDetail?.itemId)
+        }, for: .touchUpInside)
+        return Output()
+    }
+    
+    struct Input {
+        let itemType: ItemType
+        let itemDetail: ItemDetail
+        let bookmarkButtonDidTap: (_ itemId: Int?) -> Void
+    }
+    
+    struct Output {} // 딱히 VC로 내보낼 내부 함수나 데이터가 없음!
+    
 }
 
 #Preview {
