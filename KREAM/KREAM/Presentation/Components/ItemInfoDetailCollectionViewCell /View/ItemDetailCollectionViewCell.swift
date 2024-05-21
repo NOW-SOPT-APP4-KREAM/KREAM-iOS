@@ -53,7 +53,7 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
     // MARK: Input Functions
     // 매개변수로 들어가는 UIButton은 이곳의 Button입니다
     // 이곳에서 함수 실행 후 다시 return 받아야하는 값이 없기 때문에 `-> Void` 입니다.
-//    private var bookmarkButtonDidTap: ((UIButton) -> Void)?
+    private var bookmarkButtonDidTap: ((_ itemId: Int?) -> Void)?
     
     // MARK: Output Functions
     // 매개변수로 들어가는 Bool은 외부에서 입력받는 값, Int는 itemDetail의 itemId입니다.
@@ -78,7 +78,10 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
     
     // MARK: setUpViews
     private func setUpViews() {
-        
+        self.bookmarkButton.addAction(UIAction { [weak self] _ in
+            guard let bookmarkButtonDidTap = self?.bookmarkButtonDidTap else { return }
+            bookmarkButtonDidTap(self?.itemDetail?.itemId)
+        }, for: .touchUpInside)
     }
      
     // MARK: setUpLayout
@@ -454,9 +457,7 @@ extension ItemInfoDetailCollectionViewCell: ComponentType {
     
     func interface(input: Input) -> Output {
         self.configure(itemType: input.itemType, itemDetail: input.itemDetail)
-        self.bookmarkButton.addAction(UIAction { _ in
-            input.bookmarkButtonDidTap(self.itemDetail?.itemId)
-        }, for: .touchUpInside)
+        self.bookmarkButtonDidTap = input.bookmarkButtonDidTap
         return Output()
     }
     
