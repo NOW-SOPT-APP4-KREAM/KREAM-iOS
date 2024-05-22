@@ -55,6 +55,8 @@ final class SearchResultViewController: UIViewController {
     
     // MARK: setUpViews
     private func setUpViews() {
+        self.view.backgroundColor = .white
+        
         searchResultCollectionView.register(ItemInfoDetailCollectionViewCell.self, forCellWithReuseIdentifier: ItemInfoDetailCollectionViewCell.id)
         searchResultCollectionView.dataSource = self
         
@@ -169,7 +171,7 @@ final class SearchResultViewController: UIViewController {
             $0.top.equalTo(listBackView).offset(18)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(215)
-            $0.bottom.equalTo(listBackView).offset(10)
+            $0.bottom.equalTo(listBackView).offset(-10)
         }
     }
 }
@@ -259,8 +261,4 @@ extension SearchResultViewController: UICollectionViewDataSource {
         )
         return cell
     }
-}
-
-#Preview {
-    SearchResultViewController()
 }
