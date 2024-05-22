@@ -40,6 +40,7 @@ final class SearchResultViewController: UIViewController {
         setUpLayout()
         setUpStyle()
         setUpConstraint()
+        interface()
     }
     
     // MARK: setUpViews
@@ -109,6 +110,29 @@ final class SearchResultViewController: UIViewController {
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(215)
         }
+    }
+}
+
+// MARK: Interface
+private extension SearchResultViewController {
+    func interface() {
+        _ = searchResultHeader.interface(
+            input: .init(
+                resultCount: "1,234",
+                layoutChangeButtonDidTap: { column in
+                    if column == 2 {
+                        self.searchResultCollectionView.setCollectionViewLayout(
+                            self.twoColumnLayout,
+                            animated: true
+                        )
+                    } else {
+                        self.searchResultCollectionView.setCollectionViewLayout(
+                            self.threeColumnLayout,
+                            animated: true)
+                    }
+                }
+            )
+        )
     }
 }
 
