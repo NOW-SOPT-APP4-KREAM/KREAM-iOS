@@ -13,13 +13,18 @@ final class SearchResultViewController: UIViewController {
     
     // MARK: Properties
     private let cellType: ItemType = .full
+    private lazy var initColumnLayout = UICollectionViewFlowLayout().then {
+        $0.itemSize = cellType.cellSize
+        $0.minimumLineSpacing = 7
+        $0.sectionInset = .init(top: 10, left: 16, bottom: 10, right: 16)
+    }
     private lazy var twoColumnLayout = UICollectionViewFlowLayout().then {
         $0.itemSize = cellType.cellSize
         $0.minimumLineSpacing = 7
         $0.sectionInset = .init(top: 10, left: 16, bottom: 10, right: 16)
     }
     private lazy var threeColumnLayout = UICollectionViewFlowLayout().then {
-        $0.itemSize = CGSize(width: 109, height: cellType.cellSize.height)
+        $0.itemSize = CGSize(width: 109, height: 274) // 3열용 size
         $0.minimumLineSpacing = 7
         $0.sectionInset = .init(top: 10, left: 16, bottom: 10, right: 16)
     }
@@ -30,10 +35,11 @@ final class SearchResultViewController: UIViewController {
     private let searchSegmentControl = SearchSegmentControlView()
     private let filterTabView = SearchFilterTabsView()
     private let searchResultHeader = SearchResultHeaderView()
-    private lazy var searchResultCollectionView = UICollectionView(frame: .zero, collectionViewLayout: self.twoColumnLayout)
-    private let relatedBackView = Divider(color: .gray03)
+    private lazy var searchResultCollectionView = UICollectionView(frame: .zero, collectionViewLayout: self.initColumnLayout)
+    private let relatedBackView = Divider(color: .gray05)
     private let searchRelatedListView = SearchRelatedListView()
-    private let listBackView = Divider(color: .gray03)
+    private lazy var secondSearchResultCollectionView = UICollectionView(frame: .zero, collectionViewLayout: self.twoColumnLayout)
+    private let listBackView = Divider(color: .gray05)
     private let searchResultListView = SearchResultListView()
     
     // MARK: Life Cycle - viewDidLoad
@@ -51,6 +57,9 @@ final class SearchResultViewController: UIViewController {
     private func setUpViews() {
         searchResultCollectionView.register(ItemInfoDetailCollectionViewCell.self, forCellWithReuseIdentifier: ItemInfoDetailCollectionViewCell.id)
         searchResultCollectionView.dataSource = self
+        
+        secondSearchResultCollectionView.register(ItemInfoDetailCollectionViewCell.self, forCellWithReuseIdentifier: ItemInfoDetailCollectionViewCell.id)
+        secondSearchResultCollectionView.dataSource = self
     }
     
     // MARK: setUpLayout
@@ -63,6 +72,7 @@ final class SearchResultViewController: UIViewController {
             searchResultCollectionView,
             relatedBackView,
             searchRelatedListView,
+            secondSearchResultCollectionView,
             listBackView,
             searchResultListView
         ].forEach { scrollView.addSubview($0) }
@@ -73,6 +83,10 @@ final class SearchResultViewController: UIViewController {
     // MARK: setUpStyle
     private func setUpStyle() {
         searchResultCollectionView.do {
+            $0.isScrollEnabled = false
+        }
+        
+        secondSearchResultCollectionView.do {
             $0.isScrollEnabled = false
         }
         
@@ -135,11 +149,17 @@ final class SearchResultViewController: UIViewController {
         searchRelatedListView.snp.makeConstraints {
             $0.top.equalTo(relatedBackView).offset(7)
             $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalTo(relatedBackView).offset(7)
+            $0.bottom.equalTo(relatedBackView).offset(-7)
+        }
+        
+        secondSearchResultCollectionView.snp.makeConstraints {
+            $0.top.equalTo(relatedBackView.snp.bottom)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(1700)
         }
         
         listBackView.snp.makeConstraints {
-            $0.top.equalTo(relatedBackView.snp.bottom)
+            $0.top.equalTo(secondSearchResultCollectionView.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(233)
             $0.bottom.equalTo(scrollView.contentLayoutGuide)
@@ -149,7 +169,7 @@ final class SearchResultViewController: UIViewController {
             $0.top.equalTo(listBackView).offset(18)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(215)
-            $0.bottom.equalTo(scrollView.contentLayoutGuide)
+            $0.bottom.equalTo(listBackView).offset(10)
         }
     }
 }
@@ -161,6 +181,11 @@ private extension SearchResultViewController {
         searchResultCollectionView.layoutIfNeeded()
         searchResultCollectionView.snp.updateConstraints {
             $0.height.equalTo(searchResultCollectionView.contentSize.height)
+        }
+        
+        secondSearchResultCollectionView.layoutIfNeeded()
+        secondSearchResultCollectionView.snp.updateConstraints {
+            $0.height.equalTo(secondSearchResultCollectionView.contentSize.height)
         }
     }
 }
@@ -177,10 +202,18 @@ private extension SearchResultViewController {
                             self.twoColumnLayout,
                             animated: true
                         )
+                        self.secondSearchResultCollectionView.setCollectionViewLayout(
+                            self.twoColumnLayout,
+                            animated: true
+                        )
                     } else {
                         self.searchResultCollectionView.setCollectionViewLayout(
                             self.threeColumnLayout,
                             animated: true)
+                        self.secondSearchResultCollectionView.setCollectionViewLayout(
+                            self.threeColumnLayout,
+                            animated: true
+                        )
                     }
                     self.adjustCollectionViewHeight()
                 }
