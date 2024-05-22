@@ -9,14 +9,28 @@ import UIKit
 import SnapKit
 import Then
 
+enum SearchResultColumn: Int {
+    case two = 2
+    case three = 3
+}
+
 final class SearchResultHeaderView: UIView {
     
     // MARK: Properties
+    private var columns: SearchResultColumn = .two {
+        didSet {
+            refreshUI()
+        }
+    }
+    
     // MARK: Views
     private let resultCountLabel = UILabel()
     private let filterButton = UIButton()
     private let layoutChangeButton = UIButton()
     private let divider = Divider(color: .gray06)
+    
+    // MARK: Input Functions
+    private var layoutChange: ((_ columns: Int) -> Void)?
     
     // MARK: Init
     override init(frame: CGRect) {
@@ -33,7 +47,7 @@ final class SearchResultHeaderView: UIView {
     
     // MARK: setUpViews
     private func setUpViews() {
-        
+        layoutChangeButton.addTarget(self, action: #selector(layoutChangeButtonDidTap), for: .touchUpInside)
     }
     
     // MARK: setUpLayout
@@ -74,7 +88,6 @@ final class SearchResultHeaderView: UIView {
         
         layoutChangeButton.do {
             $0.setImage(UIImage(systemName: "square.grid.2x2"), for: .normal)
-//            $0.setImage(UIImage(systemName: "square.grid.3x3"), for: .normal)
             $0.tintColor = .black06
         }
     }
@@ -89,6 +102,7 @@ final class SearchResultHeaderView: UIView {
         layoutChangeButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().offset(-16)
             $0.centerY.equalToSuperview()
+            $0.size.equalTo(16)
         }
         
         divider.snp.makeConstraints {
@@ -105,12 +119,39 @@ final class SearchResultHeaderView: UIView {
     }
 }
 
-#Preview{
-    PreviewController(SearchResultHeaderView(), snp: { view in
-        view.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(40)
-            $0.center.equalToSuperview()
+// MARK: Internal Logic
+private extension SearchResultHeaderView {
+    func refreshUI() {
+        // column 버튼 UI refresh
+        switch self.columns {
+            
+        case .two:
+            self.layoutChangeButton.setImage(UIImage(systemName: "square.grid.2x2"), for: .normal)
+        case .three:
+            self.layoutChangeButton.setImage(UIImage(systemName: "square.grid.3x3"), for: .normal)
         }
-    })
+    }
+}
+
+// MARK: External Function
+private extension SearchResultHeaderView {
+    @objc func layoutChangeButtonDidTap() {
+        self.columns = (self.columns == .two) ? .three : .two
+        self.layoutChange?(self.columns.rawValue)
+    }
+}
+
+// MARK: ComponentType
+extension SearchResultHeaderView: ComponentType {
+    func interface(input: Input) -> Output {
+        self.resultCountLabel.text = "상품 \(input.resultCount)"
+        return Output()
+    }
+    
+    struct Input {
+        let resultCount: String
+        let layoutChangeButtonDidTap: (_ columns: Int) -> Void
+    }
+    
+    struct Output {}
 }
