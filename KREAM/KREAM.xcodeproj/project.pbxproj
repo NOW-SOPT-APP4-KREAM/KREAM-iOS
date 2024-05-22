@@ -30,6 +30,10 @@
 		9E3FBA6D2BFBAF400085B6F1 /* RecommendProductResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA6C2BFBAF400085B6F1 /* RecommendProductResponseDTO.swift */; };
 		9E3FBA6F2BFBB09A0085B6F1 /* ScrapResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA6E2BFBB09A0085B6F1 /* ScrapResponseDTO.swift */; };
 		9E3FBA712BFBB10E0085B6F1 /* ScrapRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA702BFBB10E0085B6F1 /* ScrapRequestBody.swift */; };
+		9E3FBA772BFBBE5F0085B6F1 /* ReleaseInfoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA762BFBBE5F0085B6F1 /* ReleaseInfoPageViewController.swift */; };
+		9E3FBA792BFBD6BC0085B6F1 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA782BFBD6BC0085B6F1 /* UITextField+.swift */; };
+		9E3FBA7B2BFBD7700085B6F1 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA7A2BFBD7700085B6F1 /* CustomNavigationView.swift */; };
+		9E3FBA7D2BFBDB0B0085B6F1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA7C2BFBDB0B0085B6F1 /* UIView+.swift */; };
 		88FA86FF2BFBACAF002F3891 /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA86FE2BFBACAF002F3891 /* ItemDetail.swift */; };
 		88FA87012BFBB2E2002F3891 /* ItemDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA87002BFBB2E2002F3891 /* ItemDetailCollectionViewCell.swift */; };
 		88FA87042BFBB32C002F3891 /* ComponentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA87032BFBB32C002F3891 /* ComponentType.swift */; };
@@ -68,6 +72,10 @@
 		9E3FBA6C2BFBAF400085B6F1 /* RecommendProductResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendProductResponseDTO.swift; sourceTree = "<group>"; };
 		9E3FBA6E2BFBB09A0085B6F1 /* ScrapResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapResponseDTO.swift; sourceTree = "<group>"; };
 		9E3FBA702BFBB10E0085B6F1 /* ScrapRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapRequestBody.swift; sourceTree = "<group>"; };
+		9E3FBA762BFBBE5F0085B6F1 /* ReleaseInfoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseInfoPageViewController.swift; sourceTree = "<group>"; };
+		9E3FBA782BFBD6BC0085B6F1 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		9E3FBA7A2BFBD7700085B6F1 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
+		9E3FBA7C2BFBDB0B0085B6F1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +160,7 @@
 		885F96A02BF1C32D003FAF2E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9E3FBA7A2BFBD7700085B6F1 /* CustomNavigationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,6 +168,7 @@
 		885F96A12BF1C333003FAF2E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9E3FBA762BFBBE5F0085B6F1 /* ReleaseInfoPageViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -354,6 +364,8 @@
 			isa = PBXGroup;
 			children = (
 				886DD2B82BF198EE000F4D7E /* String+.swift */,
+				9E3FBA782BFBD6BC0085B6F1 /* UITextField+.swift */,
+				9E3FBA7C2BFBDB0B0085B6F1 /* UIView+.swift */,
 				88FA870C2BFD06A2002F3891 /* UIFont+.swift */,
 				88FA870E2BFD06B2002F3891 /* UIImage+.swift */,
 			);
@@ -563,14 +575,18 @@
 				9E3FBA602BFBA71F0085B6F1 /* BaseTargetType.swift in Sources */,
 				885F96AC2BF1C597003FAF2E /* AppTabBarController.swift in Sources */,
 				88B077672BF1804C002142BC /* SceneDelegate.swift in Sources */,
+				9E3FBA7B2BFBD7700085B6F1 /* CustomNavigationView.swift in Sources */,
 				885F96992BF1B97D003FAF2E /* AppleSDGothicNeo.swift in Sources */,
+				9E3FBA7D2BFBDB0B0085B6F1 /* UIView+.swift in Sources */,
 				88FA87042BFBB32C002F3891 /* ComponentType.swift in Sources */,
 				88FA870F2BFD06B2002F3891 /* UIImage+.swift in Sources */,
 				88FA87112BFD07DF002F3891 /* testViewController.swift in Sources */,
 				885F96AF2BF1D27A003FAF2E /* AppTab.swift in Sources */,
 				9E3FBA712BFBB10E0085B6F1 /* ScrapRequestBody.swift in Sources */,
+				9E3FBA792BFBD6BC0085B6F1 /* UITextField+.swift in Sources */,
 				9E3FBA6F2BFBB09A0085B6F1 /* ScrapResponseDTO.swift in Sources */,
 				9E3FBA622BFBA7BA0085B6F1 /* Config.swift in Sources */,
+				9E3FBA772BFBBE5F0085B6F1 /* ReleaseInfoPageViewController.swift in Sources */,
 				9E3FBA5E2BFBA6AB0085B6F1 /* MoyaLoggingPlugin.swift in Sources */,
 				9E3FBA6B2BFBAE940085B6F1 /* ReleaseProductResponseDTO.swift in Sources */,
 				9E3FBA5C2BFBA6240085B6F1 /* NetworkResult.swift in Sources */,
