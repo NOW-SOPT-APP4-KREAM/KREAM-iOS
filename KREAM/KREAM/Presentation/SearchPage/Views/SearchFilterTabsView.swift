@@ -14,6 +14,15 @@ final class SearchFilterTabsView: UIView {
     // MARK: Properties
 
     // MARK: Views
+    private let scrollView = UIScrollView()
+    private let tabStack = UIStackView()
+    private let freeShipBtn = UIButton()
+    private let dividerContainerView = UIView()
+    private let divider = Divider(color: .gray04)
+    private let categoryBtn = UIButton()
+    private let genderBtn = UIButton()
+    private let colorBtn = UIButton()
+    private let brandBtn = UIButton()
     
     // MARK: Internal Logic
     
@@ -32,24 +41,88 @@ final class SearchFilterTabsView: UIView {
     
     // MARK: setUpViews
     private func setUpViews() {
-
+        freeShipBtn.setTitle("빠른배송", for: .normal)
+        categoryBtn.setTitle("카테고리", for: .normal)
+        genderBtn.setTitle("성별", for: .normal)
+        colorBtn.setTitle("색상", for: .normal)
+        brandBtn.setTitle("브랜드", for: .normal)
     }
     
     // MARK: setUpLayout
     private func setUpLayout() {
+        
+        dividerContainerView.addSubview(divider)
+        
         [
-
-        ].forEach { self.addSubview($0) }
+            freeShipBtn,
+//            divider,
+            dividerContainerView,
+            categoryBtn,
+            genderBtn,
+            colorBtn,
+            brandBtn
+        ].forEach { tabStack.addArrangedSubview($0) }
+        
+        scrollView.addSubview(tabStack)
+        
+        self.addSubview(scrollView)
     }
     
     // MARK: setUpStyle
     private func setUpStyle() {
-
+        
+        applyButtonUI(to: freeShipBtn, leftImage: true)
+        
+        [
+            categoryBtn,
+            genderBtn,
+            colorBtn,
+            brandBtn
+        ].forEach { applyButtonUI(to: $0, rightImage: true)}
+        
+        tabStack.do {
+            $0.axis = .horizontal
+            $0.spacing = 6
+            $0.distribution = .equalSpacing
+        }
+        
+        scrollView.do {
+            $0.bouncesVertically = false
+            $0.showsHorizontalScrollIndicator = false
+        }
     }
     
     // MARK: setUpConstraint
     private func setUpConstraint() {
-
+        
+        dividerContainerView.snp.makeConstraints {
+            $0.width.equalTo(1)
+        }
+        
+        divider.snp.makeConstraints {
+            $0.height.equalTo(19)
+            $0.width.equalTo(1)
+            $0.center.equalToSuperview()
+        }
+        
+        [
+            freeShipBtn,
+            categoryBtn,
+            genderBtn,
+            colorBtn,
+            brandBtn
+        ].forEach { $0.snp.makeConstraints { $0.height.equalTo(30) } }
+        
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        tabStack.snp.makeConstraints {
+            $0.verticalEdges.equalTo(scrollView.contentLayoutGuide)
+            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide).inset(16)
+            $0.height.equalTo(30)
+        }
+        
     }
 }
 
@@ -76,6 +149,7 @@ private extension SearchFilterTabsView {
         
         // 좌측 이미지
         if leftImage {
+            // TODO: 추후 이미지 변경
             let image = UIImage(systemName: "bolt")?.resized(to: .init(width: 14, height: 16))?.withRenderingMode(.alwaysTemplate)
             configuration.baseForegroundColor = .green02
             configuration.image = image
@@ -85,6 +159,7 @@ private extension SearchFilterTabsView {
         
         // 우측 이미지
         if rightImage {
+            // TODO: 추후 이미지 변경
             let image = UIImage(systemName: "chevron.down")?.resized(to: .init(width: 8, height: 4))?.withRenderingMode(.alwaysTemplate)
             configuration.baseForegroundColor = .gray03
             configuration.image = image
@@ -96,13 +171,12 @@ private extension SearchFilterTabsView {
     }
 }
 
-#Preview {
+//#Preview {
 //    PreviewController(SearchFilterTabsView(), snp: { view in
 //        view.snp.makeConstraints {
-//            $0.width.equalTo(120)
-//            $0.height.equalTo(60)
 //            $0.center.equalToSuperview()
+//            $0.horizontalEdges.equalToSuperview()
+//            $0.height.equalTo(30)
 //        }
 //    })
-    SearchFilterTabsView()
-}
+//}
