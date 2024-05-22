@@ -26,7 +26,9 @@ struct DetailProductDataClass: Decodable {
 
     enum CodingKeys: String, CodingKey {
         case thumbnailURL = "thumbnailUrl"
+        // swiftlint:disable line_length
         case price, engTitle, title, recentPrice, variablePrice, variablePercent, releasePrice, modelNumber, releaseDate, styleCount, styles, isScrap, scrapCount, cellPrice
+        // swiftlint:enable line_length
     }
 }
 
