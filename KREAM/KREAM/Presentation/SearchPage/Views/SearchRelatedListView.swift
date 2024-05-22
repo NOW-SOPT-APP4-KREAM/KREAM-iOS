@@ -13,8 +13,12 @@ final class SearchRelatedListView: UIView {
     
     // MARK: Properties
     // MARK: Views
-    // top section
     private let relatedLabel = UILabel()
+    private lazy var searchRelatedCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
+        $0.itemSize = CGSize(width: 170, height: 42)
+        $0.minimumLineSpacing = 3
+        $0.minimumInteritemSpacing = 6
+    })
     
     // MARK: Init
     override init(frame: CGRect) {
@@ -31,13 +35,15 @@ final class SearchRelatedListView: UIView {
     
     // MARK: setUpViews
     private func setUpViews() {
-        
+        searchRelatedCollectionView.register(SearchRelatedCollectionViewCell.self, forCellWithReuseIdentifier: SearchRelatedCollectionViewCell.id)
+        searchRelatedCollectionView.dataSource = self
     }
     
     // MARK: setUpLayout
     private func setUpLayout() {
         [
-            relatedLabel
+            relatedLabel,
+            searchRelatedCollectionView
         ].forEach { self.addSubview($0) }
     }
     
@@ -55,15 +61,26 @@ final class SearchRelatedListView: UIView {
             $0.top.equalToSuperview().offset(22)
             $0.horizontalEdges.equalToSuperview().inset(16)
         }
+        
+        searchRelatedCollectionView.snp.makeConstraints {
+            $0.top.equalTo(relatedLabel.snp.bottom).offset(16)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().offset(20)
+        }
     }
 }
 
-#Preview {
-    PreviewController(SearchRelatedListView(), snp: { view in
-        view.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(375)
-        }
-    })
+extension SearchRelatedListView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: SearchRelatedCollectionViewCell.id,
+            for: indexPath
+        ) as? SearchRelatedCollectionViewCell else { return UICollectionViewCell() }
+        cell.configure(name: "asdfasdfdfas")
+        return cell
+    }
 }
