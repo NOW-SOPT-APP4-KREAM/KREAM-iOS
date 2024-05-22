@@ -32,16 +32,22 @@ final class SearchSegmentControlView: UIView {
     private let underlineDivider = Divider(color: .black01)
     private let divider = Divider(color: .gray05)
     
+    // MARK: Input Functions
+    private var tabDidTap: ((_ searchType: SearchType) -> Void)?
+    
     // MARK: Internal Logic
     private lazy var tapAction = UIAction { [weak self] action in
         guard let self, let sender = action.sender as? UIButton else { return }
         switch sender {
         case self.productButton:
             self.selectedTab = .product
+            self.tabDidTap?(.product)
         case self.styleButton:
             self.selectedTab = .style
+            self.tabDidTap?(.style)
         case self.profileButton:
             self.selectedTab = .profile
+            self.tabDidTap?(.style)
         default:
             return
         }
@@ -150,4 +156,17 @@ private extension SearchSegmentControlView {
             self.layoutIfNeeded()
         }
     }
+}
+
+extension SearchSegmentControlView: ComponentType {
+    func interface(input: Input) -> Output {
+        self.tabDidTap = input.tabDidTap
+        return Output()
+    }
+    
+    struct Input {
+        let tabDidTap: (_ searchType: SearchType?) -> Void
+    }
+    
+    struct Output {}
 }
