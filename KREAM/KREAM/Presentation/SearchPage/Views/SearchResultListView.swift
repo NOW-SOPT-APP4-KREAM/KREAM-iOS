@@ -12,6 +12,7 @@ import Then
 final class SearchResultListView: UIView {
     
     // MARK: Properties
+    private let cellType = ItemType.compact
     
     // MARK: Views
     // top section
@@ -21,6 +22,13 @@ final class SearchResultListView: UIView {
     private let searchTextLabel = UILabel()
     private let resultTextLabel = UILabel()
     private let moreButton = UIButton()
+    // bottom section
+    private lazy var SearchResultLineListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
+        $0.itemSize = cellType.cellSize
+        $0.scrollDirection = .horizontal
+        $0.minimumLineSpacing = 6
+        $0.sectionInset = .init(top: 0, left: 16, bottom: 0, right: 16)
+    })
     
     // MARK: Init
     override init(frame: CGRect) {
@@ -37,7 +45,8 @@ final class SearchResultListView: UIView {
     
     // MARK: setUpViews
     private func setUpViews() {
-        
+        SearchResultLineListCollectionView.register(ItemInfoDetailCollectionViewCell.self, forCellWithReuseIdentifier: ItemInfoDetailCollectionViewCell.id)
+        SearchResultLineListCollectionView.dataSource = self
     }
     
     // MARK: setUpLayout
@@ -56,7 +65,8 @@ final class SearchResultListView: UIView {
         ].forEach { topSectionView.addSubview($0) }
         
         [
-            topSectionView
+            topSectionView,
+            SearchResultLineListCollectionView
         ].forEach { self.addSubview($0) }
         
     }
@@ -92,6 +102,10 @@ final class SearchResultListView: UIView {
                 ), for: .normal
             )
         }
+        
+        SearchResultLineListCollectionView.do {
+            $0.showsHorizontalScrollIndicator = false
+        }
     }
     // MARK: setUpConstraint
     private func setUpConstraint() {
@@ -113,15 +127,50 @@ final class SearchResultListView: UIView {
             $0.trailing.equalToSuperview().offset(-16)
         }
         
+        SearchResultLineListCollectionView.snp.makeConstraints {
+            $0.top.equalTo(topSectionView.snp.bottom).offset(4)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-18)
+        }
+        
     }
 }
 
-#Preview {
-    PreviewController(SearchResultListView(), snp: { view in
-        view.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(215)
-        }
-    })
+// MARK: UICollectionViewDataSource
+extension SearchResultListView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ItemInfoDetailCollectionViewCell.id,
+            for: indexPath
+        ) as? ItemInfoDetailCollectionViewCell else { return UICollectionViewCell() }
+        _ = cell.interface(
+            input: .init(
+                itemType: self.cellType,
+                itemDetail: .init(
+                    itemId: 1,
+                    isPreviouslySeen: false,
+                    tradeVolume: nil,
+                    imageUrl: "",
+                    isBookmarked: nil,
+                    brandName: nil,
+                    isCheck: false,
+                    englishName: "aidadasad",
+                    koreanName: nil,
+                    isExpress: false,
+                    isCoupon: false,
+                    isFreeShip: false,
+                    price: "1-0194=won",
+                    isBuyNowPrice: false,
+                    bookmarkCount: nil,
+                    heartCount: nil
+                ),
+                bookmarkButtonDidTap: {_ in}
+            )
+        )
+        return cell
+    }
 }
