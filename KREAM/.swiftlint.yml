@@ -27,15 +27,21 @@ opt_in_rules:
   - empty_count                            # count보다 isEmpty 선호
   - empty_string                           # == ""보다 isEmpty 선호
   - empty_collection_literal               # == [] 보다 isEmpty 선호
-  - sorted_imports                         # import 시 알파벳 순 정렬
 
 
-# 행 길이 커스텀 정의
+# 행 길이 제한 커스텀
 line_length:
+  warning: 150
+  error: 250
   ignores_urls: true                       # URL에 대해 행 길이 제한 미적용
   ignores_comments: true                   # 코멘트에 대해 행 길이 제한 미적용
   ignores_interpolated_strings: true       # 보간된 문자열 행 길이 제한 미적용
-
+    
+# 파일 길이 제한 커스텀
+file_length:
+  warning: 500
+  error: 800
+  ignore_comment_only_lines: true          # 주석은 줄 계산에서 무시됩니다
 
 # 룰 적용 제외할 파일
 excluded:
