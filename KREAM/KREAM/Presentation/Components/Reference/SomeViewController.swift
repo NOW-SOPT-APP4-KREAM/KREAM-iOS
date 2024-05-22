@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class someViewController: UIViewController {
+final class SomeViewController: UIViewController {
     
     // MARK: Properties
     // MARK: Views
