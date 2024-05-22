@@ -179,7 +179,3 @@ class ItemInfoStickyView : UIView {
         }
     }
 }
-
-#Preview {
-    ItemInfoStickyView()
-}
