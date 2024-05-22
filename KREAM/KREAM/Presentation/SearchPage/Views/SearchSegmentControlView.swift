@@ -32,6 +32,21 @@ final class SearchSegmentControlView: UIView {
     private let underlineDivider = Divider(color: .black01)
     private let divider = Divider(color: .gray05)
     
+    // MARK: Internal Logic
+    private lazy var tapAction = UIAction { [weak self] action in
+        guard let self, let sender = action.sender as? UIButton else { return }
+        switch sender {
+        case self.productButton:
+            self.selectedTab = .product
+        case self.styleButton:
+            self.selectedTab = .style
+        case self.profileButton:
+            self.selectedTab = .profile
+        default:
+            return
+        }
+    }
+    
     // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,7 +62,9 @@ final class SearchSegmentControlView: UIView {
     
     // MARK: setUpViews
     private func setUpViews() {
-
+        productButton.addAction(tapAction, for: .touchUpInside)
+        styleButton.addAction(tapAction, for: .touchUpInside)
+        profileButton.addAction(tapAction, for: .touchUpInside)
     }
     
     // MARK: setUpLayout
@@ -75,17 +92,17 @@ final class SearchSegmentControlView: UIView {
         
         productButton.do {
             $0.titleLabel?.text = SearchType.product.rawValue
-            applySelectUI(to: $0, isSelected: false)
+            applySelectUI(to: $0, type: .product)
         }
         
         styleButton.do {
             $0.titleLabel?.text = SearchType.style.rawValue
-            applySelectUI(to: $0, isSelected: true)
+            applySelectUI(to: $0, type: .style)
         }
         
         profileButton.do {
             $0.titleLabel?.text = SearchType.profile.rawValue
-            applySelectUI(to: $0, isSelected: false)
+            applySelectUI(to: $0, type: .profile)
         }
     }
     
@@ -101,19 +118,15 @@ final class SearchSegmentControlView: UIView {
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(1)
         }
-        
-        underlineDivider.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
-            $0.height.equalTo(2)
-        }
     }
 }
 
 // MARK: Internal Function
 private extension SearchSegmentControlView {
-    func applySelectUI(to button: UIButton, isSelected: Bool) {
+    func applySelectUI(to button: UIButton, type: SearchType) {
         guard let text = button.titleLabel?.text else { return }
         
+        let isSelected = type == self.selectedTab
         let attrString = NSMutableAttributedString(string: text)
         attrString.setAttributes(
             [
@@ -127,27 +140,14 @@ private extension SearchSegmentControlView {
     }
     
     func moveSelectedLine(below button: UIButton) {
-        underlineDivider.snp.updateConstraints {
-            $0.horizontalEdges.equalTo(button)
-        }
-    }
-}
-
-#Preview {
-    TestVC()
-}
-
-class TestVC: UIViewController {
-    
-    let control = SearchSegmentControlView()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .white
-        self.view.addSubview(control)
-        control.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview()
-            $0.centerY.equalToSuperview()
+        
+        UIView.animate(withDuration: 0.2) {
+            self.underlineDivider.snp.remakeConstraints {
+                $0.horizontalEdges.equalTo(button)
+                $0.bottom.equalToSuperview()
+                $0.height.equalTo(2)
+            }
+            self.layoutIfNeeded()
         }
     }
 }
