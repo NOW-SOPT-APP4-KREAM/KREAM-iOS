@@ -25,6 +25,7 @@ final class SearchResultViewController: UIViewController {
     }
     
     // MARK: Views
+    private let scrollView = UIScrollView()
     private let topSearchBar = TopSearchBarView()
     private let searchSegmentControl = SearchSegmentControlView()
     private let filterTabView = SearchFilterTabsView()
@@ -41,6 +42,7 @@ final class SearchResultViewController: UIViewController {
         setUpStyle()
         setUpConstraint()
         interface()
+        adjustCollectionViewHeight()
     }
     
     // MARK: setUpViews
@@ -59,57 +61,83 @@ final class SearchResultViewController: UIViewController {
             searchResultCollectionView,
             searchRelatedListView,
             searchResultListView
-        ].forEach { self.view.addSubview($0) }
+        ].forEach { scrollView.addSubview($0) }
+        
+        self.view.addSubview(scrollView)
     }
     
     // MARK: setUpStyle
     private func setUpStyle() {
-        
+        searchResultCollectionView.do {
+            $0.isScrollEnabled = false
+        }
     }
     
     // MARK: setUpConstraint
     private func setUpConstraint() {
-        topSearchBar.snp.makeConstraints {
-            $0.top.equalToSuperview()
+        
+        scrollView.snp.makeConstraints {
+            $0.edges.equalTo(self.view.safeAreaLayoutGuide)
+        }
+        
+        scrollView.contentLayoutGuide.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview()
+        }
+        
+        topSearchBar.snp.makeConstraints {
+            $0.top.equalTo(scrollView.contentLayoutGuide)
+            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
             $0.height.equalTo(50)
         }
         
         searchSegmentControl.snp.makeConstraints {
             $0.top.equalTo(topSearchBar.snp.bottom)
-            $0.horizontalEdges.equalToSuperview()
+            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
             $0.height.equalTo(43)
         }
         
         filterTabView.snp.makeConstraints {
             $0.top.equalTo(searchSegmentControl.snp.bottom).offset(12)
-            $0.horizontalEdges.equalToSuperview()
+            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
             $0.height.equalTo(30)
         }
         
         searchResultHeader.snp.makeConstraints {
             $0.top.equalTo(filterTabView.snp.bottom).offset(12)
-            $0.horizontalEdges.equalToSuperview()
+            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
             $0.height.equalTo(32)
         }
         
         searchResultCollectionView.snp.makeConstraints {
             $0.top.equalTo(searchResultHeader.snp.bottom).offset(12)
-            $0.horizontalEdges.equalToSuperview()
+            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
             $0.height.equalTo(1700)
         }
         
         searchResultListView.snp.makeConstraints {
             $0.top.equalTo(searchResultCollectionView.snp.bottom).offset(7)
-            $0.horizontalEdges.equalToSuperview()
+            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
             $0.height.equalTo(310)
         }
         
         searchRelatedListView.snp.makeConstraints {
             $0.top.equalTo(searchResultListView.snp.bottom).offset(18)
-            $0.horizontalEdges.equalToSuperview()
+            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
             $0.height.equalTo(215)
+            $0.bottom.equalTo(scrollView.contentLayoutGuide)
         }
+    }
+}
+
+// MARK: Internal Logic
+private extension SearchResultViewController {
+    func adjustCollectionViewHeight() {
+        // 데이터 로딩 후 컬렉션뷰의 높이 조정
+        searchResultCollectionView.layoutIfNeeded()
+        searchResultCollectionView.snp.updateConstraints {
+            $0.height.equalTo(searchResultCollectionView.contentSize.height)
+        }
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: searchResultCollectionView.contentSize.height)
     }
 }
 
@@ -130,6 +158,7 @@ private extension SearchResultViewController {
                             self.threeColumnLayout,
                             animated: true)
                     }
+                    self.adjustCollectionViewHeight()
                 }
             )
         )
