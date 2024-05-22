@@ -15,6 +15,7 @@
 		883A6FF12BFE31880079D47E /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A6FF02BFE31880079D47E /* PreviewController.swift */; };
 		883A6FF32BFE39B90079D47E /* SearchFilterTabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A6FF22BFE39B90079D47E /* SearchFilterTabsView.swift */; };
 		883A6FF52BFE563B0079D47E /* SearchResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A6FF42BFE563B0079D47E /* SearchResultListView.swift */; };
+		883A6FF92BFE6EB40079D47E /* SearchRelatedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A6FF82BFE6EB40079D47E /* SearchRelatedListView.swift */; };
 		885F96992BF1B97D003FAF2E /* AppleSDGothicNeo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F96982BF1B97D003FAF2E /* AppleSDGothicNeo.swift */; };
 		885F96AC2BF1C597003FAF2E /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F96AB2BF1C597003FAF2E /* AppTabBarController.swift */; };
 		885F96AF2BF1D27A003FAF2E /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F96AE2BF1D27A003FAF2E /* AppTab.swift */; };
@@ -60,6 +61,7 @@
 		883A6FF02BFE31880079D47E /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
 		883A6FF22BFE39B90079D47E /* SearchFilterTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterTabsView.swift; sourceTree = "<group>"; };
 		883A6FF42BFE563B0079D47E /* SearchResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultListView.swift; sourceTree = "<group>"; };
+		883A6FF82BFE6EB40079D47E /* SearchRelatedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRelatedListView.swift; sourceTree = "<group>"; };
 		885F96982BF1B97D003FAF2E /* AppleSDGothicNeo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSDGothicNeo.swift; sourceTree = "<group>"; };
 		885F96AB2BF1C597003FAF2E /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
 		885F96AE2BF1D27A003FAF2E /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				883A6FEC2BFE0E5F0079D47E /* SearchSegmentControlView.swift */,
 				883A6FF22BFE39B90079D47E /* SearchFilterTabsView.swift */,
 				883A6FF42BFE563B0079D47E /* SearchResultListView.swift */,
+				883A6FF82BFE6EB40079D47E /* SearchRelatedListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				88FA87112BFD07DF002F3891 /* testViewController.swift in Sources */,
 				885F96AF2BF1D27A003FAF2E /* AppTab.swift in Sources */,
 				5C78FBC52BFBB6FD00E8499C /* ItemInfoStickyView.swift in Sources */,
+				883A6FF92BFE6EB40079D47E /* SearchRelatedListView.swift in Sources */,
 				883A6FEB2BFE0E280079D47E /* SomeViewController.swift in Sources */,
 				9E3FBA712BFBB10E0085B6F1 /* ScrapRequestBody.swift in Sources */,
 				9E3FBA792BFBD6BC0085B6F1 /* UITextField+.swift in Sources */,
