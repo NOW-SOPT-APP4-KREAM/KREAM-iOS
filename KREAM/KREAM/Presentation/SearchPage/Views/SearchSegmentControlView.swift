@@ -158,6 +158,7 @@ private extension SearchSegmentControlView {
     }
 }
 
+// MARK: ComponentType
 extension SearchSegmentControlView: ComponentType {
     func interface(input: Input) -> Output {
         self.tabDidTap = input.tabDidTap
