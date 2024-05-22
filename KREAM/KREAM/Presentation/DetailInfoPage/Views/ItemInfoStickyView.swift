@@ -43,15 +43,19 @@ class ItemInfoStickyView : UIView {
     
     private let sellSubLabel = UILabel()
     
-    //MARK: -SetUp
+    private let purchaseSegmentView = UIView()
+    
+    private let sellSegmentView = UIView()
+    
+    //MARK: - SetUp
     func setUpStyle() {
         purchaseLabelView.do {
-            $0.backgroundColor = .red04
+            $0.backgroundColor = .red02
             $0.layer.cornerRadius = 10
             $0.layer.masksToBounds = true
         }
         sellLabelView.do {
-            $0.backgroundColor = .green06
+            $0.backgroundColor = .green03
             $0.layer.cornerRadius = 10
             $0.layer.masksToBounds = true
         }
@@ -86,12 +90,18 @@ class ItemInfoStickyView : UIView {
             $0.attributedText = "즉시 판매가".toKreamFontString(.custom(size: 11, weight: .bold))
             $0.textColor = .green04
         }
+        purchaseSegmentView.do {
+            $0.backgroundColor = .red04
+        }
+        sellSegmentView.do {
+            $0.backgroundColor = .green06
+        }
         
     }
     
     //MARK: - Layout
     private func setLayout() {
-        [purchaseLabelView, sellLabelView, numberLabel, scrapImageView, purchaseLabel, priceLabel, purchasesubLabel, sellLabel, priceSellLabel, sellSubLabel].forEach {
+        [purchaseLabelView, sellLabelView, numberLabel, scrapImageView, purchaseLabel, purchaseSegmentView, priceLabel, purchasesubLabel, sellLabel, sellSegmentView,priceSellLabel, sellSubLabel].forEach {
             self.addSubview($0)
         }
     }
@@ -99,18 +109,19 @@ class ItemInfoStickyView : UIView {
     private func setConstraints() {
         
         scrapImageView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(23)
-            $0.leading.equalToSuperview().offset(22.5)
-            $0.width.height.equalTo(24)
+            $0.bottom.equalToSuperview().inset(60.5)
+            $0.leading.equalToSuperview().offset(26.5)
+            $0.width.equalTo(16)
+            $0.height.equalTo(17)
         }
         
         numberLabel.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(10)
+            $0.bottom.equalToSuperview().inset(42)
             $0.leading.equalToSuperview().offset(21)
         }
     
         purchaseLabelView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(4)
+            $0.bottom.equalToSuperview().inset(38)
             $0.leading.equalToSuperview().offset(67)
             $0.width.equalTo(147)
             $0.height.equalTo(49)
@@ -121,18 +132,25 @@ class ItemInfoStickyView : UIView {
             $0.leading.equalTo(purchaseLabelView.snp.leading).offset(10)
         }
         
+        purchaseSegmentView.snp.makeConstraints{
+            $0.bottom.equalToSuperview().inset(38)
+            $0.leading.equalTo(purchaseLabelView.snp.leading).offset(48)
+            $0.width.equalTo(2)
+            $0.height.equalTo(49)
+        }
+        
         priceLabel.snp.makeConstraints {
             $0.top.equalTo(purchaseLabelView.snp.top).offset(9)
-            $0.trailing.equalTo(purchaseLabelView.snp.trailing).offset(-39)
+            $0.leading.equalTo(purchaseSegmentView.snp.trailing).offset(11)
         }
         
         purchasesubLabel.snp.makeConstraints {
             $0.bottom.equalTo(purchaseLabelView.snp.bottom).offset(-9)
-            $0.trailing.equalTo(purchaseLabelView.snp.trailing).offset(-37)
+            $0.leading.equalTo(purchaseSegmentView.snp.trailing).offset(11)
         }
         
         sellLabelView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(4)
+            $0.bottom.equalToSuperview().inset(38)
             $0.leading.equalTo(purchaseLabelView.snp.trailing).offset(6)
             $0.width.equalTo(147)
             $0.height.equalTo(49)
@@ -143,14 +161,21 @@ class ItemInfoStickyView : UIView {
             $0.leading.equalTo(sellLabelView.snp.leading).offset(10)
         }
         
+        sellSegmentView.snp.makeConstraints{
+            $0.bottom.equalToSuperview().inset(38)
+            $0.leading.equalTo(sellLabelView.snp.leading).offset(48)
+            $0.width.equalTo(2)
+            $0.height.equalTo(49)
+        }
+        
         priceSellLabel.snp.makeConstraints {
             $0.top.equalTo(sellLabelView.snp.top).offset(9)
-            $0.trailing.equalTo(sellLabelView.snp.trailing).offset(-38)
+            $0.leading.equalTo(sellSegmentView.snp.trailing).offset(11)
         }
+        
         sellSubLabel.snp.makeConstraints {
             $0.bottom.equalTo(sellLabelView.snp.bottom).offset(-9)
-            $0.trailing.equalTo(sellLabelView.snp.trailing).offset(-37)
-
+            $0.leading.equalTo(sellSegmentView.snp.trailing).offset(11)
         }
     }
 }
