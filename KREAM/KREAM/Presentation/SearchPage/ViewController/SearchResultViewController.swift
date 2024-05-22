@@ -31,7 +31,9 @@ final class SearchResultViewController: UIViewController {
     private let filterTabView = SearchFilterTabsView()
     private let searchResultHeader = SearchResultHeaderView()
     private lazy var searchResultCollectionView = UICollectionView(frame: .zero, collectionViewLayout: self.twoColumnLayout)
+    private let relatedBackView = Divider(color: .gray03)
     private let searchRelatedListView = SearchRelatedListView()
+    private let listBackView = Divider(color: .gray03)
     private let searchResultListView = SearchResultListView()
     
     // MARK: Life Cycle - viewDidLoad
@@ -59,7 +61,9 @@ final class SearchResultViewController: UIViewController {
             filterTabView,
             searchResultHeader,
             searchResultCollectionView,
+            relatedBackView,
             searchRelatedListView,
+            listBackView,
             searchResultListView
         ].forEach { scrollView.addSubview($0) }
         
@@ -70,6 +74,14 @@ final class SearchResultViewController: UIViewController {
     private func setUpStyle() {
         searchResultCollectionView.do {
             $0.isScrollEnabled = false
+        }
+        
+        searchRelatedListView.do {
+            $0.backgroundColor = .white
+        }
+        
+        searchResultListView.do {
+            $0.backgroundColor = .white
         }
     }
     
@@ -86,43 +98,56 @@ final class SearchResultViewController: UIViewController {
         
         topSearchBar.snp.makeConstraints {
             $0.top.equalTo(scrollView.contentLayoutGuide)
-            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
+            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(50)
         }
         
         searchSegmentControl.snp.makeConstraints {
             $0.top.equalTo(topSearchBar.snp.bottom)
-            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
+            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(43)
         }
         
         filterTabView.snp.makeConstraints {
             $0.top.equalTo(searchSegmentControl.snp.bottom).offset(12)
-            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
+            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(30)
         }
         
         searchResultHeader.snp.makeConstraints {
             $0.top.equalTo(filterTabView.snp.bottom).offset(12)
-            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
+            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(32)
         }
         
         searchResultCollectionView.snp.makeConstraints {
             $0.top.equalTo(searchResultHeader.snp.bottom).offset(12)
-            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
+            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(1700)
         }
         
-        searchResultListView.snp.makeConstraints {
-            $0.top.equalTo(searchResultCollectionView.snp.bottom).offset(7)
-            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
-            $0.height.equalTo(310)
+        relatedBackView.snp.makeConstraints {
+            $0.top.equalTo(searchResultCollectionView.snp.bottom)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(323)
         }
         
         searchRelatedListView.snp.makeConstraints {
-            $0.top.equalTo(searchResultListView.snp.bottom).offset(18)
-            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
+            $0.top.equalTo(relatedBackView).offset(7)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalTo(relatedBackView).offset(7)
+        }
+        
+        listBackView.snp.makeConstraints {
+            $0.top.equalTo(relatedBackView.snp.bottom)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(233)
+            $0.bottom.equalTo(scrollView.contentLayoutGuide)
+        }
+        
+        searchResultListView.snp.makeConstraints {
+            $0.top.equalTo(listBackView).offset(18)
+            $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(215)
             $0.bottom.equalTo(scrollView.contentLayoutGuide)
         }
@@ -137,7 +162,6 @@ private extension SearchResultViewController {
         searchResultCollectionView.snp.updateConstraints {
             $0.height.equalTo(searchResultCollectionView.contentSize.height)
         }
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: searchResultCollectionView.contentSize.height)
     }
 }
 
