@@ -8,7 +8,6 @@
 import Foundation
 import Moya
 
-
 enum BaseTargetType: TargetType {
    
 }
@@ -28,7 +27,7 @@ extension BaseTargetType {
        }
     }
     
-    var requestBody: [String : Any]? {
+    var requestBody: [String: Any]? {
        switch self {
        }
     }
@@ -38,7 +37,7 @@ extension BaseTargetType {
         }
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         switch self {
         }
         
