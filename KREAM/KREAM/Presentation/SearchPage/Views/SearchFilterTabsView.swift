@@ -55,7 +55,6 @@ final class SearchFilterTabsView: UIView {
         
         [
             freeShipBtn,
-//            divider,
             dividerContainerView,
             categoryBtn,
             genderBtn,
@@ -170,13 +169,3 @@ private extension SearchFilterTabsView {
         button.configuration = configuration
     }
 }
-
-//#Preview {
-//    PreviewController(SearchFilterTabsView(), snp: { view in
-//        view.snp.makeConstraints {
-//            $0.center.equalToSuperview()
-//            $0.horizontalEdges.equalToSuperview()
-//            $0.height.equalTo(30)
-//        }
-//    })
-//}

@@ -14,6 +14,7 @@
 		883A6FEF2BFE137A0079D47E /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A6FEE2BFE137A0079D47E /* Divider.swift */; };
 		883A6FF12BFE31880079D47E /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A6FF02BFE31880079D47E /* PreviewController.swift */; };
 		883A6FF32BFE39B90079D47E /* SearchFilterTabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A6FF22BFE39B90079D47E /* SearchFilterTabsView.swift */; };
+		883A6FF52BFE563B0079D47E /* SearchResultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A6FF42BFE563B0079D47E /* SearchResultListView.swift */; };
 		885F96992BF1B97D003FAF2E /* AppleSDGothicNeo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F96982BF1B97D003FAF2E /* AppleSDGothicNeo.swift */; };
 		885F96AC2BF1C597003FAF2E /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F96AB2BF1C597003FAF2E /* AppTabBarController.swift */; };
 		885F96AF2BF1D27A003FAF2E /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F96AE2BF1D27A003FAF2E /* AppTab.swift */; };
@@ -58,6 +59,7 @@
 		883A6FEE2BFE137A0079D47E /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
 		883A6FF02BFE31880079D47E /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
 		883A6FF22BFE39B90079D47E /* SearchFilterTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterTabsView.swift; sourceTree = "<group>"; };
+		883A6FF42BFE563B0079D47E /* SearchResultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultListView.swift; sourceTree = "<group>"; };
 		885F96982BF1B97D003FAF2E /* AppleSDGothicNeo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSDGothicNeo.swift; sourceTree = "<group>"; };
 		885F96AB2BF1C597003FAF2E /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
 		885F96AE2BF1D27A003FAF2E /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			children = (
 				883A6FEC2BFE0E5F0079D47E /* SearchSegmentControlView.swift */,
 				883A6FF22BFE39B90079D47E /* SearchFilterTabsView.swift */,
+				883A6FF42BFE563B0079D47E /* SearchResultListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				9E3FBA6D2BFBAF400085B6F1 /* RecommendProductResponseDTO.swift in Sources */,
 				883A6FF32BFE39B90079D47E /* SearchFilterTabsView.swift in Sources */,
 				88FA87012BFBB2E2002F3891 /* ItemDetailCollectionViewCell.swift in Sources */,
+				883A6FF52BFE563B0079D47E /* SearchResultListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
