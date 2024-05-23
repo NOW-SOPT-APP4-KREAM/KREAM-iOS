@@ -55,6 +55,9 @@
 		9E3FBA792BFBD6BC0085B6F1 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA782BFBD6BC0085B6F1 /* UITextField+.swift */; };
 		9E3FBA7B2BFBD7700085B6F1 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA7A2BFBD7700085B6F1 /* CustomNavigationView.swift */; };
 		9E3FBA7D2BFBDB0B0085B6F1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA7C2BFBDB0B0085B6F1 /* UIView+.swift */; };
+		9E9826A92BFF77EA0063CE8B /* ReleaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9826A82BFF77EA0063CE8B /* ReleaseCollectionViewController.swift */; };
+		9E9826AB2BFF78610063CE8B /* ReleaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9826AA2BFF78610063CE8B /* ReleaseCollectionViewCell.swift */; };
+		9E9826AE2BFF7BBF0063CE8B /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9826AD2BFF7BBF0063CE8B /* ItemModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +107,9 @@
 		9E3FBA782BFBD6BC0085B6F1 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		9E3FBA7A2BFBD7700085B6F1 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		9E3FBA7C2BFBDB0B0085B6F1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		9E9826A82BFF77EA0063CE8B /* ReleaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCollectionViewController.swift; sourceTree = "<group>"; };
+		9E9826AA2BFF78610063CE8B /* ReleaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		9E9826AD2BFF7BBF0063CE8B /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +157,7 @@
 		885F969B2BF1C265003FAF2E /* ReleaseInfoPage */ = {
 			isa = PBXGroup;
 			children = (
+				9E9826AC2BFF7BB50063CE8B /* Model */,
 				885F96A12BF1C333003FAF2E /* ViewController */,
 				885F96A02BF1C32D003FAF2E /* Views */,
 				885F969F2BF1C31D003FAF2E /* Cells */,
@@ -191,6 +198,7 @@
 		885F969F2BF1C31D003FAF2E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				9E9826AA2BFF78610063CE8B /* ReleaseCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -207,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				9E3FBA762BFBBE5F0085B6F1 /* ReleaseInfoPageViewController.swift */,
+				9E9826A82BFF77EA0063CE8B /* ReleaseCollectionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -509,6 +518,14 @@
 			path = RequestDTO;
 			sourceTree = "<group>";
 		};
+		9E9826AC2BFF7BB50063CE8B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9E9826AD2BFF7BBF0063CE8B /* ItemModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -631,6 +648,7 @@
 				883A6FED2BFE0E5F0079D47E /* SearchSegmentControlView.swift in Sources */,
 				885F96992BF1B97D003FAF2E /* AppleSDGothicNeo.swift in Sources */,
 				9E3FBA7D2BFBDB0B0085B6F1 /* UIView+.swift in Sources */,
+				9E9826AB2BFF78610063CE8B /* ReleaseCollectionViewCell.swift in Sources */,
 				88FA87042BFBB32C002F3891 /* ComponentType.swift in Sources */,
 				88FA870F2BFD06B2002F3891 /* UIImage+.swift in Sources */,
 				88FA87112BFD07DF002F3891 /* testViewController.swift in Sources */,
@@ -640,6 +658,7 @@
 				883A6FFD2BFE797F0079D47E /* TopSearchBarView.swift in Sources */,
 				883A70012BFE8AC10079D47E /* SearchResultViewController.swift in Sources */,
 				883A6FEB2BFE0E280079D47E /* SomeViewController.swift in Sources */,
+				9E9826AE2BFF7BBF0063CE8B /* ItemModel.swift in Sources */,
 				9E3FBA712BFBB10E0085B6F1 /* ScrapRequestBody.swift in Sources */,
 				9E3FBA792BFBD6BC0085B6F1 /* UITextField+.swift in Sources */,
 				883A6FFF2BFE7E360079D47E /* SearchResultHeaderView.swift in Sources */,
@@ -650,6 +669,7 @@
 				883A6FE92BFE0E030079D47E /* SomeView.swift in Sources */,
 				9E3FBA772BFBBE5F0085B6F1 /* ReleaseInfoPageViewController.swift in Sources */,
 				9E3FBA5E2BFBA6AB0085B6F1 /* MoyaLoggingPlugin.swift in Sources */,
+				9E9826A92BFF77EA0063CE8B /* ReleaseCollectionViewController.swift in Sources */,
 				9E3FBA6B2BFBAE940085B6F1 /* ReleaseProductResponseDTO.swift in Sources */,
 				9E3FBA5C2BFBA6240085B6F1 /* NetworkResult.swift in Sources */,
 				9E3FBA6D2BFBAF400085B6F1 /* RecommendProductResponseDTO.swift in Sources */,
