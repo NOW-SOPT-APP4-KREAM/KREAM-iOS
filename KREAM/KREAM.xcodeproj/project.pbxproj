@@ -53,6 +53,7 @@
 		9E3FBA792BFBD6BC0085B6F1 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA782BFBD6BC0085B6F1 /* UITextField+.swift */; };
 		9E3FBA7B2BFBD7700085B6F1 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA7A2BFBD7700085B6F1 /* CustomNavigationView.swift */; };
 		9E3FBA7D2BFBDB0B0085B6F1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA7C2BFBDB0B0085B6F1 /* UIView+.swift */; };
+		9E9826A72BFED6DD0063CE8B /* CenterChipScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9826A62BFED6DD0063CE8B /* CenterChipScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		9E3FBA782BFBD6BC0085B6F1 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		9E3FBA7A2BFBD7700085B6F1 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		9E3FBA7C2BFBDB0B0085B6F1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		9E9826A62BFED6DD0063CE8B /* CenterChipScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterChipScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				9E3FBA7A2BFBD7700085B6F1 /* CustomNavigationView.swift */,
+				9E9826A62BFED6DD0063CE8B /* CenterChipScrollView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				88FA87042BFBB32C002F3891 /* ComponentType.swift in Sources */,
 				88FA870F2BFD06B2002F3891 /* UIImage+.swift in Sources */,
 				88FA87112BFD07DF002F3891 /* testViewController.swift in Sources */,
+				9E9826A72BFED6DD0063CE8B /* CenterChipScrollView.swift in Sources */,
 				885F96AF2BF1D27A003FAF2E /* AppTab.swift in Sources */,
 				5C78FBC52BFBB6FD00E8499C /* ItemInfoStickyView.swift in Sources */,
 				883A6FF92BFE6EB40079D47E /* SearchRelatedListView.swift in Sources */,
