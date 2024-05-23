@@ -21,7 +21,7 @@ final class AppTabBarController: UITabBarController {
     private func setUpView() {
     
         let homeViewController = ReleaseInfoPageViewController()
-        let styleViewController = UIViewController()
+        let styleViewController = SearchResultViewController()
         let shopViewController = UIViewController()
         let savedViewController = UIViewController()
         let myViewController = UIViewController()
