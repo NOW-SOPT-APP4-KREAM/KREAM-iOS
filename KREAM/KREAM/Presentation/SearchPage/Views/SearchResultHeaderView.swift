@@ -145,6 +145,7 @@ private extension SearchResultHeaderView {
 extension SearchResultHeaderView: ComponentType {
     func interface(input: Input) -> Output {
         self.resultCountLabel.text = "상품 \(input.resultCount)"
+        self.layoutChange = input.layoutChangeButtonDidTap
         return Output()
     }
     

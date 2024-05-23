@@ -23,6 +23,8 @@ final class SearchFilterTabsView: UIView {
     private let genderBtn = UIButton()
     private let colorBtn = UIButton()
     private let brandBtn = UIButton()
+    private let sizeBtn = UIButton()
+    private let benefitBtn = UIButton()
     
     // MARK: Internal Logic
     
@@ -46,6 +48,8 @@ final class SearchFilterTabsView: UIView {
         genderBtn.setTitle("성별", for: .normal)
         colorBtn.setTitle("색상", for: .normal)
         brandBtn.setTitle("브랜드", for: .normal)
+        sizeBtn.setTitle("사이즈", for: .normal)
+        benefitBtn.setTitle("혜택/가격", for: .normal)
     }
     
     // MARK: setUpLayout
@@ -59,7 +63,9 @@ final class SearchFilterTabsView: UIView {
             categoryBtn,
             genderBtn,
             colorBtn,
-            brandBtn
+            brandBtn,
+            sizeBtn,
+            benefitBtn
         ].forEach { tabStack.addArrangedSubview($0) }
         
         scrollView.addSubview(tabStack)
@@ -76,7 +82,9 @@ final class SearchFilterTabsView: UIView {
             categoryBtn,
             genderBtn,
             colorBtn,
-            brandBtn
+            brandBtn,
+            sizeBtn,
+            benefitBtn
         ].forEach { applyButtonUI(to: $0, rightImage: true)}
         
         tabStack.do {
@@ -109,7 +117,9 @@ final class SearchFilterTabsView: UIView {
             categoryBtn,
             genderBtn,
             colorBtn,
-            brandBtn
+            brandBtn,
+            sizeBtn,
+            benefitBtn
         ].forEach { $0.snp.makeConstraints { $0.height.equalTo(30) } }
         
         scrollView.snp.makeConstraints {

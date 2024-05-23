@@ -65,7 +65,7 @@ final class SearchRelatedListView: UIView {
         searchRelatedCollectionView.snp.makeConstraints {
             $0.top.equalTo(relatedLabel.snp.bottom).offset(16)
             $0.horizontalEdges.equalToSuperview().inset(16)
-            $0.bottom.equalToSuperview().offset(20)
+            $0.bottom.equalToSuperview().offset(-20)
         }
     }
 }
