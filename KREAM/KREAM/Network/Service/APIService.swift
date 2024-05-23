@@ -23,16 +23,14 @@ final class APIService<Provider: TargetType>: MoyaProvider<Provider> {
             case .success(let response):
                 do {
                     let stringData = String(data: response.data, encoding: .utf8) ?? "" // Data를 String으로 변환 - 디버깅
-                    self.logger.info("-----\(stringData)------")
+                    print("-----\(stringData)------")
                     try self.validateStatusCode(with: response)
                     let decodedData = try JSONDecoder().decode(Model.self, from: response.data)
                     completion(.success(decodedData))
                 } catch let error as MoyaError {
                     completion(.failure(error)) // status validating에서 발생한 에러가 빠집니다
-                    self.logger.error("\(error.localizedDescription)")
                 } catch {
                     completion(.failure(.underlying(error, response))) // 디코딩 에러는 여기로 빠집니다
-                    self.logger.error("\(error.localizedDescription)")
                 }
                
             case .failure(let error):
