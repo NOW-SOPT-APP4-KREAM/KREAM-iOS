@@ -49,6 +49,7 @@
 		9E3FBA792BFBD6BC0085B6F1 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA782BFBD6BC0085B6F1 /* UITextField+.swift */; };
 		9E3FBA7B2BFBD7700085B6F1 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA7A2BFBD7700085B6F1 /* CustomNavigationView.swift */; };
 		9E3FBA7D2BFBDB0B0085B6F1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3FBA7C2BFBDB0B0085B6F1 /* UIView+.swift */; };
+		9EA162C32BFE76A9009FBACD /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA162C22BFE76A9009FBACD /* UnderlineSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		9E3FBA782BFBD6BC0085B6F1 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		9E3FBA7A2BFBD7700085B6F1 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		9E3FBA7C2BFBDB0B0085B6F1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		9EA162C22BFE76A9009FBACD /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				9E3FBA7A2BFBD7700085B6F1 /* CustomNavigationView.swift */,
+				9EA162C22BFE76A9009FBACD /* UnderlineSegmentedControl.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E3FBA672BFBADC00085B6F1 /* ProductResponseDTO.swift in Sources */,
+				9EA162C32BFE76A9009FBACD /* UnderlineSegmentedControl.swift in Sources */,
 				88FA870D2BFD06A2002F3891 /* UIFont+.swift in Sources */,
 				88FA86FF2BFBACAF002F3891 /* ItemDetail.swift in Sources */,
 				883A6FEF2BFE137A0079D47E /* Divider.swift in Sources */,
