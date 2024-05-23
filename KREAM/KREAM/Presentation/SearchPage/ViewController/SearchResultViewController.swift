@@ -262,3 +262,7 @@ extension SearchResultViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
+#Preview {
+    SearchResultViewController()
+}

@@ -80,7 +80,7 @@ final class SearchResultListView: UIView {
         }
         
         magnifyImageView.do {
-            $0.image = UIImage(systemName: "magnifyingglass")
+            $0.image = UIImage(resource: .icnMagnifier)
             $0.tintColor = .black05
         }
         
