@@ -13,6 +13,7 @@ final class SearchResultListView: UIView {
     
     // MARK: Properties
     private let cellType = ItemType.compact
+    private var itemList: [ItemDetail] = []
     
     // MARK: Views
     // top section
@@ -80,7 +81,7 @@ final class SearchResultListView: UIView {
         }
         
         magnifyImageView.do {
-            $0.image = UIImage(systemName: "magnifyingglass")
+            $0.image = UIImage(resource: .icnMagnifier)
             $0.tintColor = .black05
         }
         
@@ -136,10 +137,18 @@ final class SearchResultListView: UIView {
     }
 }
 
+// MARK: External Function
+extension SearchResultListView {
+    func configure(itemList: [ItemDetail]) {
+        self.itemList = itemList
+        self.SearchResultLineListCollectionView.reloadData()
+    }
+}
+
 // MARK: UICollectionViewDataSource
 extension SearchResultListView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return self.itemList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -147,30 +156,7 @@ extension SearchResultListView: UICollectionViewDataSource {
             withReuseIdentifier: ItemInfoDetailCollectionViewCell.id,
             for: indexPath
         ) as? ItemInfoDetailCollectionViewCell else { return UICollectionViewCell() }
-        _ = cell.interface(
-            input: .init(
-                itemType: self.cellType,
-                itemDetail: .init(
-                    itemId: 1,
-                    isPreviouslySeen: false,
-                    tradeVolume: nil,
-                    imageUrl: "",
-                    isBookmarked: nil,
-                    brandName: nil,
-                    isCheck: false,
-                    englishName: "aidadasad",
-                    koreanName: nil,
-                    isExpress: false,
-                    isCoupon: false,
-                    isFreeShip: false,
-                    price: "1-0194=won",
-                    isBuyNowPrice: false,
-                    bookmarkCount: nil,
-                    heartCount: nil
-                ),
-                bookmarkButtonDidTap: {_ in}
-            )
-        )
+        _ = cell.interface(input: .init(itemType: self.cellType, itemDetail: itemList[indexPath.row], bookmarkButtonDidTap: { _ in}))
         return cell
     }
 }

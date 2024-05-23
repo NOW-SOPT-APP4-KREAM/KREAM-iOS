@@ -29,6 +29,7 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
     private let tagSectionStack = UIStackView()
     private let isExpressTag = UIButton() // none-interacting button
     private let isCouponTag = UIButton() // none-interacting button
+    private let isSaveTag = UIButton() // none-interacting button
     private let isFreeShipTag = UIButton() // none-interacting button
     // bottom section
     private let bottomSectionStack = UIStackView()
@@ -105,6 +106,7 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         [
             isExpressTag,
             isCouponTag,
+            isSaveTag,
             isFreeShipTag,
             UIView()
         ].forEach { tagSectionStack.addArrangedSubview($0) }
@@ -184,7 +186,7 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
                 $0.isHidden = true
                 return
             }
-            $0.attributedText = "거래 \(tradeVolume)".toKreamFontString(.body6(.semibold), textColor: .black04)
+            $0.attributedText = " \(tradeVolume)".toKreamFontString(.body6(.semibold), textColor: .black04)
         }
         
         bookmarkButton.do {
@@ -192,8 +194,7 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
                 $0.isHidden = true
                 return
             }
-            // TODO: 추후 추가된 asset으로 변경
-            $0.setImage(UIImage(systemName: isBookmarked ? "bookmark.fill" : "bookmark"), for: .normal)
+            $0.setImage(UIImage(resource: isBookmarked ? .icnSavedFilled : .icnSaved), for: .normal)
             $0.imageView?.tintColor = .black03
         }
         
@@ -226,9 +227,9 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         itemNameEng.do {
-            guard let itemType = self.itemType else { return }
+            guard let itemType = self.itemType, let name = self.itemDetail?.englishName else { return }
             $0.numberOfLines = (itemType == .full || itemType == .bigMid) ? 2 : 1
-            $0.attributedText = "Adidas German Adicolor Classic 3-Stripe T- shirt Black"
+            $0.attributedText = name
                 .toKreamFontString(.body5(.semibold), textColor: .black02)
             $0.lineBreakMode = .byTruncatingTail
         }
@@ -260,7 +261,7 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
             config.cornerStyle = .small
             config.contentInsets = .init(top: 3, leading: 3, bottom: 3, trailing: 3)
             // TODO: 추후 추가된 asset으로 변경
-            config.image = UIImage(systemName: "bolt")?
+            config.image = UIImage(resource: .icnBolt)
                 .resized(to: .init(width: 14, height: 16))?.withRenderingMode(.alwaysTemplate)
             config.imagePadding = 2
             config.titleLineBreakMode = .byTruncatingTail // 라인 브레이크 모드를 설정하여 텍스트가 줄바꿈되지 않도록 합니다.
@@ -294,6 +295,28 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
             
             $0.configuration = config
             $0.setTitle("쿠폰", for: .normal)
+        }
+        
+        isSaveTag.do {
+            guard self.itemDetail?.isSave == true else {
+                $0.isHidden = true
+                return
+            }
+            var config = UIButton.Configuration.filled()
+            
+            config.baseForegroundColor = .black05
+            config.baseBackgroundColor = .gray05
+            config.cornerStyle = .small
+            config.contentInsets = .init(top: 3, leading: 3, bottom: 3, trailing: 3)
+            config.titleLineBreakMode = .byTruncatingTail
+            config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+                var outgoing = incoming
+                outgoing.font = UIFont.kreamFont(.body7(.regular))
+                return outgoing
+            }
+            
+            $0.configuration = config
+            $0.setTitle("적립", for: .normal)
         }
         
         isFreeShipTag.do {
@@ -337,7 +360,8 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         price.do {
-            $0.attributedText = "447,000원".toKreamFontString(.body4(.black, isLh150: false), textColor: .black02)
+            guard let price = self.itemDetail?.price else { return }
+            $0.attributedText = price.toKreamFontString(.body4(.black, isLh150: false), textColor: .black02)
         }
         
         isBuyNowPriceTag.do {
@@ -353,8 +377,8 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
                 $0.isHidden = true
                 return
             }
-            // TODO: 추후 추가된 asset으로 변경
-            $0.setImage(UIImage(systemName: "bookmark"), for: .normal)
+            let image = UIImage(resource: .icnScrap).resized(to: .init(width: 14, height: 14))?.withRenderingMode(.alwaysTemplate)
+            $0.setImage(image, for: .normal)
             $0.imageView?.tintColor = .black06
             $0.setAttributedTitle(bookmarkCount.toKreamFontString(.body6(.semibold), textColor: .black06), for: .normal)
         }
@@ -364,8 +388,8 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
                 $0.isHidden = true
                 return
             }
-            // TODO: 추후 추가된 asset으로 변경
-            $0.setImage(UIImage(systemName: "doc.plaintext"), for: .normal)
+            let image = UIImage(resource: .icnStyle).resized(to: .init(width: 16, height: 16))?.withRenderingMode(.alwaysTemplate)
+            $0.setImage(image, for: .normal)
             $0.imageView?.tintColor = .black06
             $0.setAttributedTitle(heartCount.toKreamFontString(.body6(.semibold), textColor: .black06), for: .normal)
         }
@@ -485,13 +509,14 @@ extension ItemInfoDetailCollectionViewCell: ComponentType {
                 isPreviouslySeen: true,
                 tradeVolume: "1.9만",
                 imageUrl: "https://c0.klipartz.com/pngpicture/685/946/gratis-png-zapato-de-zapato-de-oxford-zapatos-de-calzado-de-brogue-zapatos-de-hombres-thumbnail.png",
-                isBookmarked: true,
+                isBookmarked: false,
                 brandName: nil,
                 isCheck: false,
                 englishName: "Adidas German Adicolor Classic 3-Stripe T- shirt Black",
                 koreanName: nil,
-                isExpress: false,
-                isCoupon: false,
+                isExpress: true,
+                isCoupon: true, 
+                isSave: true,
                 isFreeShip: false,
                 price: "447,000원",
                 isBuyNowPrice: false,

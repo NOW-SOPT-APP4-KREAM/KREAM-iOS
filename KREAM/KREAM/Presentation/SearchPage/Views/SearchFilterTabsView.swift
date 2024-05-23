@@ -159,7 +159,7 @@ private extension SearchFilterTabsView {
         // 좌측 이미지
         if leftImage {
             // TODO: 추후 이미지 변경
-            let image = UIImage(systemName: "bolt")?.resized(to: .init(width: 14, height: 16))?.withRenderingMode(.alwaysTemplate)
+            let image = UIImage(resource: .icnBolt).resized(to: .init(width: 14, height: 16))?.withRenderingMode(.alwaysTemplate)
             configuration.baseForegroundColor = .green02
             configuration.image = image
             configuration.imagePadding = 4

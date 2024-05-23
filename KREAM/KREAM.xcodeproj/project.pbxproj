@@ -25,6 +25,8 @@
 		883A6FFD2BFE797F0079D47E /* TopSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A6FFC2BFE797F0079D47E /* TopSearchBarView.swift */; };
 		883A6FFF2BFE7E360079D47E /* SearchResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A6FFE2BFE7E360079D47E /* SearchResultHeaderView.swift */; };
 		883A70012BFE8AC10079D47E /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A70002BFE8AC10079D47E /* SearchResultViewController.swift */; };
+		884799532BFFCB2A00CFFA42 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884799522BFFCB2A00CFFA42 /* APIService.swift */; };
+		884799552BFFD25900CFFA42 /* KreamTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884799542BFFD25900CFFA42 /* KreamTargetType.swift */; };
 		885F96992BF1B97D003FAF2E /* AppleSDGothicNeo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F96982BF1B97D003FAF2E /* AppleSDGothicNeo.swift */; };
 		885F96AC2BF1C597003FAF2E /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F96AB2BF1C597003FAF2E /* AppTabBarController.swift */; };
 		885F96AF2BF1D27A003FAF2E /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885F96AE2BF1D27A003FAF2E /* AppTab.swift */; };
@@ -85,6 +87,8 @@
 		883A6FFC2BFE797F0079D47E /* TopSearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSearchBarView.swift; sourceTree = "<group>"; };
 		883A6FFE2BFE7E360079D47E /* SearchResultHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultHeaderView.swift; sourceTree = "<group>"; };
 		883A70002BFE8AC10079D47E /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		884799522BFFCB2A00CFFA42 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		884799542BFFD25900CFFA42 /* KreamTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KreamTargetType.swift; sourceTree = "<group>"; };
 		885F96982BF1B97D003FAF2E /* AppleSDGothicNeo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSDGothicNeo.swift; sourceTree = "<group>"; };
 		885F96AB2BF1C597003FAF2E /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
 		885F96AE2BF1D27A003FAF2E /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
@@ -421,6 +425,7 @@
 		88B0777D2BF18582002142BC /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				884799522BFFCB2A00CFFA42 /* APIService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -428,6 +433,7 @@
 		88B0777E2BF18588002142BC /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				884799542BFFD25900CFFA42 /* KreamTargetType.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -674,8 +680,10 @@
 				5C869EB42BFF86CD007D9521 /* InfoModel.swift in Sources */,
 				5C869EAD2BFE6E01007D9521 /* InfoTabBarView.swift in Sources */,
 				88B077672BF1804C002142BC /* SceneDelegate.swift in Sources */,
+				884799552BFFD25900CFFA42 /* KreamTargetType.swift in Sources */,
 				9E3FBA7B2BFBD7700085B6F1 /* CustomNavigationView.swift in Sources */,
 				883A6FED2BFE0E5F0079D47E /* SearchSegmentControlView.swift in Sources */,
+				884799532BFFCB2A00CFFA42 /* APIService.swift in Sources */,
 				885F96992BF1B97D003FAF2E /* AppleSDGothicNeo.swift in Sources */,
 				9E3FBA7D2BFBDB0B0085B6F1 /* UIView+.swift in Sources */,
 				9E9826AB2BFF78610063CE8B /* ReleaseCollectionViewCell.swift in Sources */,

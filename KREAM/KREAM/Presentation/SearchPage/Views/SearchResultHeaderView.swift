@@ -87,7 +87,7 @@ final class SearchResultHeaderView: UIView {
         }
         
         layoutChangeButton.do {
-            $0.setImage(UIImage(systemName: "square.grid.2x2"), for: .normal)
+            $0.setImage(UIImage(resource: .icnGrid2), for: .normal)
             $0.tintColor = .black06
         }
     }
@@ -126,9 +126,9 @@ private extension SearchResultHeaderView {
         switch self.columns {
             
         case .two:
-            self.layoutChangeButton.setImage(UIImage(systemName: "square.grid.2x2"), for: .normal)
+            self.layoutChangeButton.setImage(UIImage(resource: .icnGrid2), for: .normal)
         case .three:
-            self.layoutChangeButton.setImage(UIImage(systemName: "square.grid.3x3"), for: .normal)
+            self.layoutChangeButton.setImage(UIImage(resource: .icnGrid3), for: .normal)
         }
     }
 }

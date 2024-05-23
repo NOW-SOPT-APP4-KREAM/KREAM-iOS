@@ -29,6 +29,9 @@ final class SearchResultViewController: UIViewController {
         $0.sectionInset = .init(top: 10, left: 16, bottom: 10, right: 16)
     }
     
+    private var searchProducts: [ItemDetail] = []
+    private var relatedProducts: [ItemDetail] = []
+    
     // MARK: Views
     private let scrollView = UIScrollView()
     private let topSearchBar = TopSearchBarView()
@@ -62,6 +65,8 @@ final class SearchResultViewController: UIViewController {
         
         secondSearchResultCollectionView.register(ItemInfoDetailCollectionViewCell.self, forCellWithReuseIdentifier: ItemInfoDetailCollectionViewCell.id)
         secondSearchResultCollectionView.dataSource = self
+        
+        topSearchBar.searchTextField.delegate = self
     }
     
     // MARK: setUpLayout
@@ -197,7 +202,7 @@ private extension SearchResultViewController {
     func interface() {
         _ = searchResultHeader.interface(
             input: .init(
-                resultCount: "1,234",
+                resultCount: "\(searchProducts.count)",
                 layoutChangeButtonDidTap: { column in
                     if column == 2 {
                         self.searchResultCollectionView.setCollectionViewLayout(
@@ -227,7 +232,7 @@ private extension SearchResultViewController {
 // MARK: UICollectionViewDataSource
 extension SearchResultViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return self.searchProducts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -238,27 +243,76 @@ extension SearchResultViewController: UICollectionViewDataSource {
         _ = cell.interface(
             input: .init(
                 itemType: self.cellType,
-                itemDetail: .init(
-                    itemId: 1,
-                    isPreviouslySeen: false, // 고정
-                    tradeVolume: "1.5만",
-                    imageUrl: "",
-                    isBookmarked: nil,
-                    brandName: "ASDF",
-                    isCheck: false, // 고정
-                    englishName: "asdfasdfasdfkaujh",
-                    koreanName: "ㅁㄴㅇㄹㅁㄴㅇㄹ",
-                    isExpress: true,
-                    isCoupon: false,
-                    isFreeShip: false,
-                    price: "123124원",
-                    isBuyNowPrice: true,
-                    bookmarkCount: "1.4만",
-                    heartCount: "1.2만"
-                ),
+                itemDetail: self.searchProducts[indexPath.row],
                 bookmarkButtonDidTap: { print($0 ?? -1) }
             )
         )
         return cell
     }
+}
+
+// MARK: UITextFieldDelegate
+extension SearchResultViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let text = textField.text else { return true }
+        getSearchResult(query: text)
+        return true
+    }
+}
+
+// MARK: API Logic
+private extension SearchResultViewController {
+    func getSearchResult(query: String) {
+        APIService<KreamTargetType>()
+            .sendRequest(target: .getProducts(query: query),
+                         instance: ProductResponseDTO.self,
+                         completion: {
+                result in
+                switch result {
+                    
+                case .success(let success):
+                    print(success.data)
+                    self.searchProducts = success.data.searchFindProductResponses.map { $0.toItemDetail() }
+                    self.relatedProducts = success.data.relateRecommendProductResponses.map {
+                        .init(
+                            itemId: 0,
+                            isPreviouslySeen: false,
+                            tradeVolume: nil,
+                            imageUrl: $0.thumbnailURL,
+                            isBookmarked: nil,
+                            brandName: nil,
+                            isCheck: false,
+                            englishName: $0.engTitle,
+                            koreanName: nil,
+                            isExpress: false,
+                            isCoupon: false,
+                            isSave: false,
+                            isFreeShip: false,
+                            price: $0.price,
+                            isBuyNowPrice: false,
+                            bookmarkCount: nil,
+                            heartCount: nil
+                        )
+                    }
+                    self.refreshViewDatas()
+                case .failure(let error):
+                    print(error)
+                    return
+                }
+            })
+    }
+}
+
+private extension SearchResultViewController {
+    func refreshViewDatas() {
+        self.searchResultListView.configure(itemList: relatedProducts)
+        self.searchResultCollectionView.reloadData()
+        self.secondSearchResultCollectionView.reloadData()
+        self.searchRelatedListView.configure(isHidden: false)
+        self.adjustCollectionViewHeight()
+    }
+}
+
+#Preview {
+    SearchResultViewController()
 }

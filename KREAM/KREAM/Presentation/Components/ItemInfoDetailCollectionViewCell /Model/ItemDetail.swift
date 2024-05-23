@@ -22,6 +22,7 @@ struct ItemDetail {
     // tag info
     let isExpress: Bool
     let isCoupon: Bool
+    let isSave: Bool
     let isFreeShip: Bool
     // bottom info
     let price: String

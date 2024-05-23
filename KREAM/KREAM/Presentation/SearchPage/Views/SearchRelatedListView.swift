@@ -12,6 +12,19 @@ import Then
 final class SearchRelatedListView: UIView {
     
     // MARK: Properties
+    private let literalList = [
+        "아디다스  흰색",
+        "아디다스 다임",
+        "아디다스 다임",
+        "아디다스 오리지날",
+        "아디다스 자메이카",
+        "아디다스 00s",
+        "아디다스 클래식",
+        "아디다스 오리지널 반팔",
+        "아디다스 골드",
+        "아디다스 노랑"
+    ]
+    
     // MARK: Views
     private let relatedLabel = UILabel()
     private lazy var searchRelatedCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
@@ -37,6 +50,7 @@ final class SearchRelatedListView: UIView {
     private func setUpViews() {
         searchRelatedCollectionView.register(SearchRelatedCollectionViewCell.self, forCellWithReuseIdentifier: SearchRelatedCollectionViewCell.id)
         searchRelatedCollectionView.dataSource = self
+        searchRelatedCollectionView.isHidden = true
     }
     
     // MARK: setUpLayout
@@ -70,9 +84,17 @@ final class SearchRelatedListView: UIView {
     }
 }
 
+// MARK: External Function
+extension SearchRelatedListView {
+    func configure(isHidden: Bool) {
+        searchRelatedCollectionView.isHidden = isHidden
+    }
+}
+
+// MARK: UICollectionViewDataSource
 extension SearchRelatedListView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return literalList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -80,7 +102,7 @@ extension SearchRelatedListView: UICollectionViewDataSource {
             withReuseIdentifier: SearchRelatedCollectionViewCell.id,
             for: indexPath
         ) as? SearchRelatedCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(name: "asdfasdfdfas")
+        cell.configure(name: literalList[indexPath.row])
         return cell
     }
 }
