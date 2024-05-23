@@ -34,26 +34,27 @@ struct RelateRecommendProductResponse: Decodable {
 }
 
 extension RelateRecommendProductResponse {
-//    func toItemDetail() -> ItemDetail {
-//        return .init(
-//            itemId: 0,
-//            isPreviouslySeen: false,
-//            tradeVolume: <#T##String?#>,
-//            imageUrl: thumbnailURL,
-//            isBookmarked: <#T##Bool?#>,
-//            brandName: <#T##String?#>,
-//            isCheck: <#T##Bool#>,
-//            englishName: engTitle,
-//            koreanName: <#T##String?#>,
-//            isExpress: isFast,
-//            isCoupon: isCoupon,
-//            isFreeShip: isFreeDevliver,
-//            price: price,
-//            isBuyNowPrice: <#T##Bool#>,
-//            bookmarkCount: scrapCount,
-//            heartCount: styleCount
-//        )
-//    }
+    func toItemDetail() -> ItemDetail {
+        return .init(
+            itemId: 0,
+            isPreviouslySeen: false,
+            tradeVolume: nil,
+            imageUrl: thumbnailURL,
+            isBookmarked: nil,
+            brandName: nil,
+            isCheck: false,
+            englishName: engTitle,
+            koreanName: nil,
+            isExpress: isFast,
+            isCoupon: isCoupon, 
+            isSave: isSave,
+            isFreeShip: isFreeDevliver,
+            price: price,
+            isBuyNowPrice: false,
+            bookmarkCount: scrapCount,
+            heartCount: styleCount
+        )
+    }
 }
 
 // MARK: - SearchFindProductResponse

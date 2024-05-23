@@ -186,7 +186,7 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
                 $0.isHidden = true
                 return
             }
-            $0.attributedText = "거래 \(tradeVolume)".toKreamFontString(.body6(.semibold), textColor: .black04)
+            $0.attributedText = " \(tradeVolume)".toKreamFontString(.body6(.semibold), textColor: .black04)
         }
         
         bookmarkButton.do {
