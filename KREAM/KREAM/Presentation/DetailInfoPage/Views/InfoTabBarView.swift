@@ -18,7 +18,7 @@ class InfoTabBarView : UIView {
         setUpStyle()
         setLayout()
         setConstraints()
-        goBack()
+        setUpViews()
     }
     
     required init?(coder: NSCoder) {
@@ -52,7 +52,7 @@ class InfoTabBarView : UIView {
     
     private func setConstraints(){
         backButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(52)
+            $0.top.equalToSuperview().inset(54)
             $0.leading.equalToSuperview().inset(16)
             $0.width.height.equalTo(32)
         }
@@ -72,7 +72,7 @@ class InfoTabBarView : UIView {
         
     }
     //MARK: - GoToBack(Button)
-        private func goBack() {
+        private func setUpViews() {
             backButton.addTarget(self, action: #selector(BackButtonDidTap), for: .touchUpInside)
         }
         
@@ -81,4 +81,3 @@ class InfoTabBarView : UIView {
         }
     
 }
-
