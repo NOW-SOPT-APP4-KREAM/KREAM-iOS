@@ -110,10 +110,3 @@ extension ItemDataStackViewCell {
     }
 }
 
-#Preview {
-    PreviewController(ItemDataStackViewCell(), snp: {
-        $0.snp.makeConstraints {
-            $0.center.equalToSuperview()
-        }
-    })
-}
