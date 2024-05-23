@@ -82,6 +82,3 @@ class InfoTabBarView : UIView {
     
 }
 
-#Preview {
-    InfoTabBarView()
-}
