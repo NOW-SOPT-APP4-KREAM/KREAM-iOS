@@ -62,6 +62,8 @@ final class SearchResultViewController: UIViewController {
         
         secondSearchResultCollectionView.register(ItemInfoDetailCollectionViewCell.self, forCellWithReuseIdentifier: ItemInfoDetailCollectionViewCell.id)
         secondSearchResultCollectionView.dataSource = self
+        
+        topSearchBar.searchTextField.delegate = self
     }
     
     // MARK: setUpLayout
@@ -260,6 +262,34 @@ extension SearchResultViewController: UICollectionViewDataSource {
             )
         )
         return cell
+    }
+}
+
+// MARK: UITextFieldDelegate
+extension SearchResultViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let text = textField.text else { return true }
+        getSearchResult(query: text)
+        return true
+    }
+}
+
+// MARK: API Logic
+private extension SearchResultViewController {
+    func getSearchResult(query: String) {
+        APIService<KreamTargetType>()
+            .sendRequest(target: .getProducts(query: query),
+                         instance: ProductResponseDTO.self,
+                         completion: { result in
+                switch result {
+                    
+                case .success(let success):
+                    print(success.data)
+                case .failure(let error):
+                    print(error)
+                    return
+                }
+            })
     }
 }
 

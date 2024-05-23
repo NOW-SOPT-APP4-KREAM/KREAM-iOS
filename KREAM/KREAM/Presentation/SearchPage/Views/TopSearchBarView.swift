@@ -14,7 +14,7 @@ final class TopSearchBarView: UIView {
     // MARK: Properties
     // MARK: Views
     private let dismissButton = UIButton()
-    private let searchTextField = UITextField()
+    let searchTextField = UITextField()
     
     // MARK: Init
     override init(frame: CGRect) {
@@ -57,6 +57,7 @@ final class TopSearchBarView: UIView {
             $0.backgroundColor = .gray06
             $0.layer.cornerRadius = 8
             $0.clearButtonMode = .whileEditing
+            $0.keyboardType = .webSearch
         }
     }
     
