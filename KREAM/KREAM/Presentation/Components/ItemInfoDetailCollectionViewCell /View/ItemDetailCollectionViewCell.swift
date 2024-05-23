@@ -227,9 +227,9 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         itemNameEng.do {
-            guard let itemType = self.itemType else { return }
+            guard let itemType = self.itemType, let name = self.itemDetail?.englishName else { return }
             $0.numberOfLines = (itemType == .full || itemType == .bigMid) ? 2 : 1
-            $0.attributedText = "Adidas German Adicolor Classic 3-Stripe T- shirt Black"
+            $0.attributedText = name
                 .toKreamFontString(.body5(.semibold), textColor: .black02)
             $0.lineBreakMode = .byTruncatingTail
         }
@@ -360,7 +360,8 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         }
         
         price.do {
-            $0.attributedText = "999,999원".toKreamFontString(.body4(.black, isLh150: false), textColor: .black02)
+            guard let price = self.itemDetail?.price else { return }
+            $0.attributedText = price.toKreamFontString(.body4(.black, isLh150: false), textColor: .black02)
         }
         
         isBuyNowPriceTag.do {

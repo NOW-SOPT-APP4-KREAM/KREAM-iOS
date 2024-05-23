@@ -266,14 +266,34 @@ private extension SearchResultViewController {
         APIService<KreamTargetType>()
             .sendRequest(target: .getProducts(query: query),
                          instance: ProductResponseDTO.self,
-                         completion: { result in
+                         completion: {
+                result in
                 switch result {
                     
                 case .success(let success):
                     print(success.data)
                     self.searchProducts = success.data.searchFindProductResponses.map { $0.toItemDetail() }
                     self.relatedProducts = success.data.relateRecommendProductResponses.map {
-                        $0.toItemDetail() }
+                        .init(
+                            itemId: 0,
+                            isPreviouslySeen: false,
+                            tradeVolume: nil,
+                            imageUrl: $0.thumbnailURL,
+                            isBookmarked: nil,
+                            brandName: nil,
+                            isCheck: false,
+                            englishName: $0.engTitle,
+                            koreanName: nil,
+                            isExpress: false,
+                            isCoupon: false,
+                            isSave: false,
+                            isFreeShip: false,
+                            price: $0.price,
+                            isBuyNowPrice: false,
+                            bookmarkCount: nil,
+                            heartCount: nil
+                        )
+                    }
                     self.refreshViewDatas()
                 case .failure(let error):
                     print(error)
