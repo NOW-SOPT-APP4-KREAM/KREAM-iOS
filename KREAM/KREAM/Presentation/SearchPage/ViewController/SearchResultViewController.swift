@@ -29,6 +29,9 @@ final class SearchResultViewController: UIViewController {
         $0.sectionInset = .init(top: 10, left: 16, bottom: 10, right: 16)
     }
     
+    private var searchProducts: [SearchFindProductResponse]?
+    private var relatedProducts: [RelateRecommendProductResponse]?
+    
     // MARK: Views
     private let scrollView = UIScrollView()
     private let topSearchBar = TopSearchBarView()
@@ -251,7 +254,8 @@ extension SearchResultViewController: UICollectionViewDataSource {
                     englishName: "asdfasdfasdfkaujh",
                     koreanName: "ㅁㄴㅇㄹㅁㄴㅇㄹ",
                     isExpress: true,
-                    isCoupon: false,
+                    isCoupon: false, 
+                    isSave: false,
                     isFreeShip: false,
                     price: "123124원",
                     isBuyNowPrice: true,

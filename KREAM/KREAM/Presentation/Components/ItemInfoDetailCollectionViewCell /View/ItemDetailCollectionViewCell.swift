@@ -29,6 +29,7 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
     private let tagSectionStack = UIStackView()
     private let isExpressTag = UIButton() // none-interacting button
     private let isCouponTag = UIButton() // none-interacting button
+    private let isSaveTag = UIButton() // none-interacting button
     private let isFreeShipTag = UIButton() // none-interacting button
     // bottom section
     private let bottomSectionStack = UIStackView()
@@ -105,6 +106,7 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
         [
             isExpressTag,
             isCouponTag,
+            isSaveTag,
             isFreeShipTag,
             UIView()
         ].forEach { tagSectionStack.addArrangedSubview($0) }
@@ -293,6 +295,28 @@ final class ItemInfoDetailCollectionViewCell: UICollectionViewCell {
             
             $0.configuration = config
             $0.setTitle("쿠폰", for: .normal)
+        }
+        
+        isSaveTag.do {
+            guard self.itemDetail?.isSave == true else {
+                $0.isHidden = true
+                return
+            }
+            var config = UIButton.Configuration.filled()
+            
+            config.baseForegroundColor = .black05
+            config.baseBackgroundColor = .gray05
+            config.cornerStyle = .small
+            config.contentInsets = .init(top: 3, leading: 3, bottom: 3, trailing: 3)
+            config.titleLineBreakMode = .byTruncatingTail
+            config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+                var outgoing = incoming
+                outgoing.font = UIFont.kreamFont(.body7(.regular))
+                return outgoing
+            }
+            
+            $0.configuration = config
+            $0.setTitle("적립", for: .normal)
         }
         
         isFreeShipTag.do {
@@ -490,7 +514,8 @@ extension ItemInfoDetailCollectionViewCell: ComponentType {
                 englishName: "Adidas German Adicolor Classic 3-Stripe T- shirt Black",
                 koreanName: nil,
                 isExpress: true,
-                isCoupon: false,
+                isCoupon: true, 
+                isSave: true,
                 isFreeShip: false,
                 price: "447,000원",
                 isBuyNowPrice: false,
