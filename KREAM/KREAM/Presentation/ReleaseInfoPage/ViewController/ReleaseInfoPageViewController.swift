@@ -13,6 +13,7 @@ class ReleaseInfoPageViewController: UIViewController {
    
    let customNavigationView = CustomNavigationView()
    private let segmentedControl = UnderlineSegmentedControl(items: ["시즌오프", "추천", "랭킹", "발매정보", "럭셔리", "남성", "여성"])
+   let centerChipScrollView = CenterChipScrollView()
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -30,7 +31,7 @@ class ReleaseInfoPageViewController: UIViewController {
    
    // MARK: setUpLayout
    private func setUpLayout() {
-      self.view.addSubviews(customNavigationView, segmentedControl)
+      self.view.addSubviews(customNavigationView, segmentedControl, centerChipScrollView)
    }
    
    // MARK: setUpStyle
@@ -40,6 +41,10 @@ class ReleaseInfoPageViewController: UIViewController {
       
       segmentedControl.do {
          $0.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
+      }
+      
+      centerChipScrollView.do {
+         $0.showsHorizontalScrollIndicator = false
       }
    }
    
@@ -54,6 +59,12 @@ class ReleaseInfoPageViewController: UIViewController {
          $0.top.equalTo(customNavigationView.snp.bottom)
          $0.horizontalEdges.equalToSuperview()
          $0.height.equalTo(44)
+      }
+      
+      centerChipScrollView.snp.makeConstraints {
+         $0.top.equalTo(segmentedControl.snp.bottom)
+         $0.horizontalEdges.equalToSuperview()
+         $0.height.equalTo(57)
       }
    }
    

@@ -15,8 +15,8 @@ class CenterChipScrollView: UIScrollView {
    override init(frame: CGRect) {
       super.init(frame: frame)
       setUpStyle()
-      addLabels()
       setupViews()
+      addLabels()
    }
    
    required init?(coder: NSCoder) {
@@ -134,24 +134,21 @@ class CenterChipScrollView: UIScrollView {
       
       stackView.do {
          $0.axis = .horizontal
-         $0.distribution = .fill
+         $0.distribution = .equalSpacing
          $0.spacing = 10
          $0.backgroundColor = .white
       }
    }
    
    private func setupViews() {
-      self.snp.makeConstraints {
-         $0.height.equalTo(57)
-      }
-      
       addSubview(stackView)
       
       stackView.snp.makeConstraints {
-         $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
-         $0.height.equalToSuperview()
+         $0.verticalEdges.equalTo(self.contentLayoutGuide).inset(6)
+         $0.height.equalTo(38)
+         $0.centerY.equalToSuperview()
+         $0.horizontalEdges.equalTo(self.contentLayoutGuide).inset(16)
       }
-      
    }
    
    func addArrangedSubviews(_ views: [UIView]) {
