@@ -173,14 +173,3 @@ class GoodsInfoView : UIView{
         
     }
 }
-
-//#Preview {
-//    PreviewController(GoodsInfoView(), snp: { view in
-//        view.snp.makeConstraints {
-//            $0.center.equalToSuperview()
-////            $0.top.equalToSuperview()
-//            $0.horizontalEdges.equalToSuperview()
-//            $0.height.equalTo(222)
-//        }
-//    })
-//}
