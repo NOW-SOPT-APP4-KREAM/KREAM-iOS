@@ -13,7 +13,7 @@ final class JustDroppedView: UIView {
     
     // MARK: Properties
     private let cellType = ItemType.full
-    private let itemList: [ItemDetail] = []
+    private var itemList: [ItemDetail] = []
     private let justDroppedLabel = UILabel()
     private let justDroppedKoreanLabel = UILabel()
     private let showMoreButton = UIButton()
@@ -95,7 +95,6 @@ final class JustDroppedView: UIView {
         justDroppedCollectionView.snp.makeConstraints {
             $0.top.equalTo(justDroppedKoreanLabel.snp.bottom).offset(14)
             $0.horizontalEdges.equalToSuperview()
-//            $0.bottom.equalTo(27)
             $0.bottom.equalToSuperview()
         }
     }
@@ -103,48 +102,33 @@ final class JustDroppedView: UIView {
 
 extension JustDroppedView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.itemList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemInfoDetailCollectionViewCell.id, for: indexPath) as? ItemInfoDetailCollectionViewCell else { return UICollectionViewCell() }
-        _ = cell.interface(
-            input: .init(
-                itemType: self.cellType,
-                itemDetail: .init(
-                    itemId: 1,
-                    isPreviouslySeen: false,
-                    tradeVolume: "24",
-                    imageUrl: "",
-                    isBookmarked: nil,
-                    brandName: "nike",
-                    isCheck: true,
-                    englishName: "asdf",
-                    koreanName: nil,
-                    isExpress: true,
-                    isCoupon: false,
-                    isSave: true,
-                    isFreeShip: true,
-                    price: "1234123",
-                    isBuyNowPrice: true,
-                    bookmarkCount: nil,
-                    heartCount: nil
-                ),
-                bookmarkButtonDidTap: {
-                    _ in
-                }
-            )
+        
+        cell.interface(
+            input: .init(itemType: self.cellType, itemDetail: itemList[indexPath.row], bookmarkButtonDidTap: {_ in})
         )
         return cell
     }
 }
 
-#Preview {
-    PreviewController(JustDroppedView(), snp: {
-        $0.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(363)
-        }
-    })
+// MARK: External Function
+extension JustDroppedView {
+    func configure(list: [ItemDetail]) {
+        self.itemList = list
+        self.justDroppedCollectionView.reloadData()
+    }
 }
+
+//#Preview {
+//    PreviewController(JustDroppedView(), snp: {
+//        $0.snp.makeConstraints {
+//            $0.center.equalToSuperview()
+//            $0.horizontalEdges.equalToSuperview()
+//            $0.height.equalTo(363)
+//        }
+//    })
+//}
