@@ -40,7 +40,7 @@ final class ReleaseCollectionViewController: UIViewController {
    private func setLayout() {
       self.view.addSubview(collectionView)
       self.view.snp.makeConstraints {
-         $0.width.equalTo(375)
+//         $0.width.equalTo(375)
          $0.height.equalTo(1090)
       }
       
