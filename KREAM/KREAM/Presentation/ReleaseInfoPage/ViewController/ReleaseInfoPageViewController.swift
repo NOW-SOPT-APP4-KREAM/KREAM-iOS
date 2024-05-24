@@ -20,8 +20,9 @@ class ReleaseInfoPageViewController: UIViewController {
    private let anotherScrollView = AnotherScrollView() // 얘랑 교대
    private let releaseScrollView = UIScrollView()
    private let releaseContentView = UIView()
-   private let testLuckyDrawView = UIView()
+   private let testLuckyDrawView = UIImageView()
    private let releaseCollectionVC = ReleaseCollectionViewController()
+   private let luckyDrawCollectionVC = LuckyDrawCollectionViewController()
    private let tabView = TabView()
    
    private let items = [
@@ -42,8 +43,6 @@ class ReleaseInfoPageViewController: UIViewController {
       setUpStyle()
       setUpLayout()
       setUpConstraint()
-      self.addChild(releaseCollectionVC)
-      releaseCollectionVC.didMove(toParent: self)
       toggleScrollView(index: selectedIndex)
    }
    
@@ -54,9 +53,15 @@ class ReleaseInfoPageViewController: UIViewController {
    
    // MARK: setUpLayout
    private func setUpLayout() {
+      self.addChild(releaseCollectionVC)
+      releaseCollectionVC.didMove(toParent: self)
+      
+      self.addChild(luckyDrawCollectionVC)
+      luckyDrawCollectionVC.didMove(toParent: self)
+      
       self.view.addSubviews(customNavigationView, tabView, releaseScrollView, anotherScrollView)
       releaseScrollView.addSubview(releaseContentView)
-      releaseContentView.addSubviews(testLuckyDrawView, centerChipScrollView, releaseCollectionVC.view)
+      releaseContentView.addSubviews(luckyDrawCollectionVC.view, centerChipScrollView, releaseCollectionVC.view)
    }
    
    // MARK: setUpStyle
@@ -78,9 +83,9 @@ class ReleaseInfoPageViewController: UIViewController {
          $0.isScrollEnabled = true
       }
       
-      testLuckyDrawView.do {
-         $0.backgroundColor = .blue03
-      }
+//      testLuckyDrawView.do {
+//         $0.backgroundColor = .blue03
+//      }
       
       releaseCollectionVC.collectionView.do {
          $0.isScrollEnabled = false
@@ -130,14 +135,14 @@ class ReleaseInfoPageViewController: UIViewController {
          $0.height.greaterThanOrEqualToSuperview().priority(.low)
       }
       
-      testLuckyDrawView.snp.makeConstraints {
+      luckyDrawCollectionVC.view.snp.makeConstraints {
          $0.top.equalToSuperview()
          $0.horizontalEdges.equalToSuperview()
          $0.height.equalTo(337)
       }
       
       centerChipScrollView.snp.makeConstraints {
-         $0.top.equalTo(testLuckyDrawView.snp.bottom)
+         $0.top.equalTo(luckyDrawCollectionVC.view.snp.bottom)
          $0.horizontalEdges.equalToSuperview()
          $0.height.equalTo(57)
       }

@@ -188,8 +188,7 @@ final class ReleaseCollectionViewCell: UICollectionViewCell {
          options: [
             .forceTransition,
             .cacheOriginalImage,
-            .scaleFactor(UIScreen.main.scale),
-            
+            .scaleFactor(UIScreen.main.scale)
          ],
          completionHandler: nil
       )
