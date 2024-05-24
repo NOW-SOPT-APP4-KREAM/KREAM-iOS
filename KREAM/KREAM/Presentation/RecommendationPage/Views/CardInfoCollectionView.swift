@@ -21,6 +21,8 @@ final class CardInfoCollectionView: UIView {
     ]
     
     // MARK: Views
+    private let titleLabel = UILabel()
+    
     private let cardCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.itemSize = .init(width: 126, height: 168)
         $0.minimumLineSpacing = 8
@@ -49,11 +51,15 @@ final class CardInfoCollectionView: UIView {
     
     // MARK: setUpLayout
     private func setUpLayout() {
-        self.addSubview(cardCollectionView)
+        self.addSubviews(titleLabel, cardCollectionView)
     }
     
     // MARK: setUpStyle
     private func setUpStyle() {
+        titleLabel.do {
+            $0.attributedText = "애매한 날씨에도 폭룡적인 코디센스".toKreamFontString(.body1(.bold), textColor: .black01)
+        }
+        
         cardCollectionView.do {
             $0.showsHorizontalScrollIndicator = false
         }
@@ -61,8 +67,15 @@ final class CardInfoCollectionView: UIView {
     
     // MARK: setUpConstraint
     private func setUpConstraint() {
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(22)
+            $0.leading.equalToSuperview().offset(16)
+        }
+        
         cardCollectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(titleLabel.snp.bottom).offset(14)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
     }
 }
@@ -81,12 +94,12 @@ extension CardInfoCollectionView: UICollectionViewDataSource {
     
 }
 
-#Preview {
-    PreviewController(CardInfoCollectionView(), snp: {
-        $0.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(168)
-        }
-    })
-}
+//#Preview {
+//    PreviewController(CardInfoCollectionView(), snp: {
+//        $0.snp.makeConstraints {
+//            $0.center.equalToSuperview()
+//            $0.horizontalEdges.equalToSuperview()
+//            $0.height.equalTo(224)
+//        }
+//    })
+//}

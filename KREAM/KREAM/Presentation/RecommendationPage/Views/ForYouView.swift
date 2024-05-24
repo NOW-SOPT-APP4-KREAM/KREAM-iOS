@@ -270,13 +270,13 @@ extension ForYouView {
     }
 }
 
-#Preview {
-    PreviewController(ForYouView(), snp: {
-        $0.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(565)
-        }
-    })
-}
+//#Preview {
+//    PreviewController(ForYouView(), snp: {
+//        $0.snp.makeConstraints {
+//            $0.center.equalToSuperview()
+//            $0.horizontalEdges.equalToSuperview()
+//            $0.height.equalTo(565)
+//        }
+//    })
+//}
 
