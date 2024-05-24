@@ -5,6 +5,10 @@
 //  Created by 박신영 on 5/23/24.
 //
 
+#Preview {
+   ReleaseCollectionViewController()
+}
+
 import UIKit
 import SnapKit
 import Then
@@ -16,11 +20,7 @@ final class ReleaseCollectionViewController: UIViewController {
    final let cellHeight: CGFloat = 165
    final let inset = UIEdgeInsets(top: 0, left: 16, bottom: 14, right: 16)
    
-   private var itemData = ItemModel.dummy() {
-      didSet {
-         self.collectionView.reloadData()
-      }
-   }
+   private var releaseInfo: [ItemModel] = []
    
    let collectionView : UICollectionView = {
       let layout = UICollectionViewFlowLayout()
@@ -35,12 +35,13 @@ final class ReleaseCollectionViewController: UIViewController {
       setLayout()
       register()
       setDelegate()
+      getReleaseInfo()
    }
    
    private func setLayout() {
       self.view.addSubview(collectionView)
       self.view.snp.makeConstraints {
-//         $0.width.equalTo(375)
+         //         $0.width.equalTo(375)
          $0.height.equalTo(1090)
       }
       
@@ -62,7 +63,7 @@ final class ReleaseCollectionViewController: UIViewController {
    }
    
    private func calculateCellHeight() -> CGFloat {
-      let count = CGFloat(itemData.count)
+      let count = CGFloat(self.releaseInfo.count)
       let heightCount = count / 2 + count.truncatingRemainder(dividingBy: 2)
       return heightCount * cellHeight + (heightCount - 1) * lineSpacing + inset.top + inset.bottom
    }
@@ -104,23 +105,54 @@ extension ReleaseCollectionViewController: UICollectionViewDelegateFlowLayout {
 
 extension ReleaseCollectionViewController: UICollectionViewDataSource {
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return itemData.count
+      return self.releaseInfo.count
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      guard let cell = collectionView.dequeueReusableCell(
-         withReuseIdentifier: ReleaseCollectionViewCell.identifier,
-         for: indexPath
-      ) as? ReleaseCollectionViewCell else { return UICollectionViewCell() }
-      cell.delegate = self
-      cell.dataBind(itemData[indexPath.item], itemRow: indexPath.item)
-      cell.newOrUpdateChip()
-      return cell
+           guard let cell = collectionView.dequeueReusableCell(
+               withReuseIdentifier: ReleaseCollectionViewCell.identifier,
+               for: indexPath
+           ) as? ReleaseCollectionViewCell else { return UICollectionViewCell() }
+
+           cell.delegate = self
+           cell.dataBind(self.releaseInfo[indexPath.item], itemRow: indexPath.item)
+           cell.newOrUpdateChip()
+           cell.loadProfileImage(url: self.releaseInfo[indexPath.row].itemURL)
+           
+      cell.onScrapButtonTapped =
+      { print("ASDF") }
+
+           return cell
+       }
+
+       private func scrapButtonAction(at indexPath: IndexPath) {
+           // 여기에 실제 버튼 터치 시 수행할 동작을 구현
+           print("Scrap action for item at \(indexPath)")
+       }
+}
+
+extension ReleaseCollectionViewController: ReleaseCollectionViewCellDelegate {
+   func scrapButtonDidTapEvent(state: Bool, row: Int) {
+      print("출력")
    }
 }
 
-extension ReleaseCollectionViewController: ItemCollectoinViewCellDelegate {
-   func heartButtonDidTapEvent(state: Bool, row: Int) {
-      itemData[row].isScrap = state
+private extension ReleaseCollectionViewController {
+   func getReleaseInfo() {
+      APIService<KreamTargetType>()
+         .sendRequest(target: .getProductReleaseInfo(memberId: 1),
+                      instance: ReleaseProductResponseDTO.self,
+                      completion: { result in
+            switch result {
+            case .success(let success):
+               self.releaseInfo = success.data.releaseProducts.map {
+                  $0.toItemModel()
+               }
+               self.collectionView.reloadData()
+            case .failure(let error):
+               print(error)
+               return
+            }
+         })
    }
 }

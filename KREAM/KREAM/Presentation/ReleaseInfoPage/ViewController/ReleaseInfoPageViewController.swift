@@ -11,16 +11,13 @@ import Then
 
 class ReleaseInfoPageViewController: UIViewController {
    
-   let customNavigationView = CustomNavigationView()
+   private let customNavigationView = CustomNavigationView()
    private let segmentedControl = UnderlineSegmentedControl(items: ["시즌오프", "추천", "랭킹", "발매정보", "럭셔리", "남성", "여성"])
-   let centerChipScrollView = CenterChipScrollView()
-   
-   let releaseScrollView = UIScrollView()
-   let releaseContentView = UIView()
-   
-   let testLuckyDrawView = UIView()
-   let releaseCollectionVC = ReleaseCollectionViewController()
-   
+   private let centerChipScrollView = CenterChipScrollView()
+   private let releaseScrollView = UIScrollView()
+   private let releaseContentView = UIView()
+   private let testLuckyDrawView = UIView()
+   private let releaseCollectionVC = ReleaseCollectionViewController()
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -30,7 +27,6 @@ class ReleaseInfoPageViewController: UIViewController {
       setUpConstraint()
       self.addChild(releaseCollectionVC)
       releaseCollectionVC.didMove(toParent: self)
-      //      changeTitleColorOfFirstSegment()
    }
    
    // MARK: setUpViews
@@ -56,6 +52,7 @@ class ReleaseInfoPageViewController: UIViewController {
       
       releaseScrollView.do {
          $0.showsVerticalScrollIndicator = false
+         $0.isUserInteractionEnabled = true
       }
       
       releaseContentView.do {
@@ -64,7 +61,7 @@ class ReleaseInfoPageViewController: UIViewController {
       
       centerChipScrollView.do {
          $0.showsHorizontalScrollIndicator = false
-         $0.isScrollEnabled = false
+         $0.isScrollEnabled = true
       }
       
       testLuckyDrawView.do {
@@ -115,20 +112,10 @@ class ReleaseInfoPageViewController: UIViewController {
       
       releaseCollectionVC.view.snp.makeConstraints {
          $0.top.equalTo(centerChipScrollView.snp.bottom)
-           $0.horizontalEdges.equalToSuperview()
+         $0.horizontalEdges.equalToSuperview()
          $0.bottom.equalToSuperview().inset(14)
       }
    }
-   
-   //   private func changeTitleColorOfFirstSegment() {
-   //      if let title = segmentedControl.titleForSegment(at: 0) {
-   //         let attributedTitle = NSAttributedString(string: title, attributes: [
-   //            .foregroundColor: UIColor.brown,
-   //            .font: UIFont.systemFont(ofSize: 16) // 원하는 폰트로 조정하세요.
-   //         ])
-   //         segmentedControl.setTitle(attributedTitle.string, forSegmentAt: 0)
-   //      }
-   //   }
    
    @objc
    private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
@@ -137,8 +124,4 @@ class ReleaseInfoPageViewController: UIViewController {
       }
    }
    
-}
-
-#Preview {
-   ReleaseInfoPageViewController()
 }
