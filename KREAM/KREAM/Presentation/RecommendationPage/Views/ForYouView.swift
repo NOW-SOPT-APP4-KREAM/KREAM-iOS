@@ -1,5 +1,5 @@
 //
-//  JustDroppedView.swift
+//  ForYouView.swift
 //  KREAM
 //
 //  Created by 박민서 on 5/24/24.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class JustDroppedView: UIView {
+final class ForYouView: UIView {
     
     // MARK: Properties
     private let cellType = ItemType.full
@@ -100,7 +100,7 @@ final class JustDroppedView: UIView {
     }
 }
 
-extension JustDroppedView: UICollectionViewDataSource {
+extension ForYouView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.itemList.count
     }
@@ -116,7 +116,7 @@ extension JustDroppedView: UICollectionViewDataSource {
 }
 
 // MARK: External Function
-extension JustDroppedView {
+extension ForYouView {
     func configure(list: [ItemDetail]) {
         self.itemList = list
         self.justDroppedCollectionView.reloadData()
@@ -124,7 +124,7 @@ extension JustDroppedView {
 }
 
 //#Preview {
-//    PreviewController(JustDroppedView(), snp: {
+//    PreviewController(ForYouView(), snp: {
 //        $0.snp.makeConstraints {
 //            $0.center.equalToSuperview()
 //            $0.horizontalEdges.equalToSuperview()
@@ -132,3 +132,4 @@ extension JustDroppedView {
 //        }
 //    })
 //}
+
