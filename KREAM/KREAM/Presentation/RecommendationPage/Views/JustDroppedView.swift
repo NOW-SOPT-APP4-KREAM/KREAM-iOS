@@ -14,11 +14,11 @@ final class JustDroppedView: UIView {
     // MARK: Properties
     private let cellType = ItemType.full
     private var itemList: [ItemDetail] = []
+    
+    // MARK: Views
     private let justDroppedLabel = UILabel()
     private let justDroppedKoreanLabel = UILabel()
     private let showMoreButton = UIButton()
-    
-    // MARK: Views
     private let justDroppedCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.itemSize = CGSize(width: 143, height: 262)
         $0.minimumLineSpacing = 7
