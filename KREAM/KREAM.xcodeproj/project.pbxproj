@@ -19,6 +19,7 @@
 		5C869EC02C007C84007D9521 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C869EBF2C007C84007D9521 /* ViewController.swift */; };
 		5C869EC22C007CB6007D9521 /* ProductImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C869EC12C007CB6007D9521 /* ProductImageCell.swift */; };
 		5C869EC42C00A247007D9521 /* StyleTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C869EC32C00A247007D9521 /* StyleTopView.swift */; };
+		5C869EC82C00B775007D9521 /* ForthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C869EC72C00B775007D9521 /* ForthViewController.swift */; };
 		883A6FE92BFE0E030079D47E /* SomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A6FE82BFE0E030079D47E /* SomeView.swift */; };
 		883A6FEB2BFE0E280079D47E /* SomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A6FEA2BFE0E280079D47E /* SomeViewController.swift */; };
 		883A6FED2BFE0E5F0079D47E /* SearchSegmentControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A6FEC2BFE0E5F0079D47E /* SearchSegmentControlView.swift */; };
@@ -87,6 +88,7 @@
 		5C869EBF2C007C84007D9521 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5C869EC12C007CB6007D9521 /* ProductImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageCell.swift; sourceTree = "<group>"; };
 		5C869EC32C00A247007D9521 /* StyleTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleTopView.swift; sourceTree = "<group>"; };
+		5C869EC72C00B775007D9521 /* ForthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForthViewController.swift; sourceTree = "<group>"; };
 		883A6FE82BFE0E030079D47E /* SomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeView.swift; sourceTree = "<group>"; };
 		883A6FEA2BFE0E280079D47E /* SomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeViewController.swift; sourceTree = "<group>"; };
 		883A6FEC2BFE0E5F0079D47E /* SearchSegmentControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSegmentControlView.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				5C869EBF2C007C84007D9521 /* ViewController.swift */,
+				5C869EC72C00B775007D9521 /* ForthViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				883A70012BFE8AC10079D47E /* SearchResultViewController.swift in Sources */,
 				883A6FEB2BFE0E280079D47E /* SomeViewController.swift in Sources */,
 				9E9826AE2BFF7BBF0063CE8B /* ItemModel.swift in Sources */,
+				5C869EC82C00B775007D9521 /* ForthViewController.swift in Sources */,
 				9E3FBA712BFBB10E0085B6F1 /* ScrapRequestBody.swift in Sources */,
 				9E3FBA792BFBD6BC0085B6F1 /* UITextField+.swift in Sources */,
 				883A6FFF2BFE7E360079D47E /* SearchResultHeaderView.swift in Sources */,

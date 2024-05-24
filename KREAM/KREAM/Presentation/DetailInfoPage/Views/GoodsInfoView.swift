@@ -41,7 +41,7 @@ class GoodsInfoView : UIView{
             $0.textColor = .black02
         }
         priceLabel.do{
-            $0.text = "0원"
+            $0.text = "129,000원"
             $0.font = .kreamFont(.custom(size: 19, weight: .heavy))
             $0.textColor = .black02
         }
@@ -119,7 +119,7 @@ class GoodsInfoView : UIView{
         priceLabel.snp.makeConstraints {
             $0.top.equalTo(priceSubLabel.snp.bottom).offset(3)
             $0.leading.equalToSuperview().offset(16)
-            $0.width.equalTo(87)
+            $0.width.equalTo(95)
             $0.height.equalTo(23)
         }
         
