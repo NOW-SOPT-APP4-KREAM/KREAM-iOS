@@ -41,13 +41,3 @@ class ProductImageView : UIView {
         }
     }
 }
-#Preview {
-    PreviewController(ProductImageView(), snp: { view in
-        view.snp.makeConstraints {
-            $0.center.equalToSuperview()
-//            $0.top.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(375)
-        }
-    })
-}
