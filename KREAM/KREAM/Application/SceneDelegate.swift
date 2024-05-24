@@ -19,13 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
-        self.window?.rootViewController = PreviewController(CardInfoCollectionView(), snp: {
-            $0.snp.makeConstraints {
-                $0.center.equalToSuperview()
-                $0.horizontalEdges.equalToSuperview()
-                $0.height.equalTo(168)
-            }
-        })
+        self.window?.rootViewController = AppTabBarController()
         self.window?.makeKeyAndVisible()
     }
 

@@ -22,7 +22,7 @@ final class AppTabBarController: UITabBarController {
     
         let homeViewController = ReleaseInfoPageViewController()
         let styleViewController = SearchResultViewController()
-        let shopViewController = UIViewController()
+        let shopViewController = RecommendationViewController()
         let savedViewController = UIViewController()
         let myViewController = UIViewController()
         

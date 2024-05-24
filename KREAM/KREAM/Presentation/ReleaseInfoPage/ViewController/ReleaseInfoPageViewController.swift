@@ -23,6 +23,7 @@ class ReleaseInfoPageViewController: UIViewController {
    private let testLuckyDrawView = UIImageView()
    private let releaseCollectionVC = ReleaseCollectionViewController()
    private let luckyDrawCollectionVC = LuckyDrawCollectionViewController()
+   private let recommendationVC = RecommendationViewController()
    private let tabView = TabView()
    
    private let items = [
@@ -59,7 +60,10 @@ class ReleaseInfoPageViewController: UIViewController {
       self.addChild(luckyDrawCollectionVC)
       luckyDrawCollectionVC.didMove(toParent: self)
       
-      self.view.addSubviews(customNavigationView, tabView, releaseScrollView, anotherScrollView)
+      self.addChild(recommendationVC)
+      recommendationVC.didMove(toParent: self)
+      
+      self.view.addSubviews(customNavigationView, tabView, releaseScrollView, recommendationVC.wholeScrollView)
       releaseScrollView.addSubview(releaseContentView)
       releaseContentView.addSubviews(luckyDrawCollectionVC.view, centerChipScrollView, releaseCollectionVC.view)
    }
@@ -123,7 +127,13 @@ class ReleaseInfoPageViewController: UIViewController {
          $0.bottom.equalToSuperview()
       }
       
-      anotherScrollView.snp.makeConstraints {
+//      anotherScrollView.snp.makeConstraints {
+//         $0.top.equalTo(tabView.snp.bottom)
+//         $0.horizontalEdges.equalToSuperview()
+//         $0.bottom.equalToSuperview()
+//      }
+      
+      recommendationVC.wholeScrollView.snp.makeConstraints {
          $0.top.equalTo(tabView.snp.bottom)
          $0.horizontalEdges.equalToSuperview()
          $0.bottom.equalToSuperview()
@@ -167,10 +177,10 @@ class ReleaseInfoPageViewController: UIViewController {
    private func toggleScrollView(index: Int) {
       if index == 1 { // '추천' 인덱스 1
          releaseScrollView.isHidden = true
-         anotherScrollView.isHidden = false
+         recommendationVC.wholeScrollView.isHidden = false
       } else {
          releaseScrollView.isHidden = false
-         anotherScrollView.isHidden = true
+         recommendationVC.wholeScrollView.isHidden = true
       }
    }
    
