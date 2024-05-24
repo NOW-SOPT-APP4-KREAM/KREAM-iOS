@@ -62,6 +62,7 @@ class ReleaseInfoPageViewController: UIViewController {
       
       self.addChild(recommendationVC)
       recommendationVC.didMove(toParent: self)
+      view.bringSubviewToFront(recommendationVC.view)
       
       self.view.addSubviews(customNavigationView, tabView, releaseScrollView, recommendationVC.wholeScrollView)
       releaseScrollView.addSubview(releaseContentView)
