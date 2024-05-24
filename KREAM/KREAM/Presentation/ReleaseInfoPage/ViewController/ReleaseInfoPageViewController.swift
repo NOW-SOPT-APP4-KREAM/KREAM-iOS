@@ -9,24 +9,42 @@ import UIKit
 import SnapKit
 import Then
 
+#Preview {
+   ReleaseInfoPageViewController()
+}
+
 class ReleaseInfoPageViewController: UIViewController {
-   
+   private var selectedIndex = 0
    private let customNavigationView = CustomNavigationView()
-   private let segmentedControl = UnderlineSegmentedControl(items: ["시즌오프", "추천", "랭킹", "발매정보", "럭셔리", "남성", "여성"])
    private let centerChipScrollView = CenterChipScrollView()
+   private let anotherScrollView = AnotherScrollView() // 얘랑 교대
    private let releaseScrollView = UIScrollView()
    private let releaseContentView = UIView()
    private let testLuckyDrawView = UIView()
    private let releaseCollectionVC = ReleaseCollectionViewController()
+   private let tabView = TabView()
+   
+   private let items = [
+      "시즌오프",
+      "추천",
+      "랭킹",
+      "발매정보",
+      "럭셔리",
+      "남성",
+      "여성"
+   ]
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      tabView.dataSource = items
+      handleScroll()
       setUpViews()
       setUpStyle()
       setUpLayout()
       setUpConstraint()
       self.addChild(releaseCollectionVC)
       releaseCollectionVC.didMove(toParent: self)
+      toggleScrollView(index: selectedIndex)
    }
    
    // MARK: setUpViews
@@ -36,7 +54,7 @@ class ReleaseInfoPageViewController: UIViewController {
    
    // MARK: setUpLayout
    private func setUpLayout() {
-      self.view.addSubviews(customNavigationView, segmentedControl, releaseScrollView)
+      self.view.addSubviews(customNavigationView, tabView, releaseScrollView, anotherScrollView)
       releaseScrollView.addSubview(releaseContentView)
       releaseContentView.addSubviews(testLuckyDrawView, centerChipScrollView, releaseCollectionVC.view)
    }
@@ -45,10 +63,6 @@ class ReleaseInfoPageViewController: UIViewController {
    private func setUpStyle() {
       self.navigationController?.navigationBar.isHidden = true
       self.view.backgroundColor = .white
-      
-      segmentedControl.do {
-         $0.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
-      }
       
       releaseScrollView.do {
          $0.showsVerticalScrollIndicator = false
@@ -71,6 +85,18 @@ class ReleaseInfoPageViewController: UIViewController {
       releaseCollectionVC.collectionView.do {
          $0.isScrollEnabled = false
       }
+      
+      anotherScrollView.do {
+         $0.backgroundColor = .red02
+      }
+      
+      tabView.didTap = { [weak self] index in
+         guard let self else { return }
+         self.selectedIndex = index // 선택된 인덱스 할당
+         self.tabView.scroll(to: index)
+         self.tabView.syncUnderlineView(index: index, underlineView: self.tabView.highlightView)
+         self.toggleScrollView(index: index) // 선택된 인덱스에 따라 ScrollView 토글
+      }
    }
    
    // MARK: setUpConstraint
@@ -80,14 +106,20 @@ class ReleaseInfoPageViewController: UIViewController {
          $0.horizontalEdges.equalToSuperview()
       }
       
-      segmentedControl.snp.makeConstraints {
+      tabView.snp.makeConstraints {
          $0.top.equalTo(customNavigationView.snp.bottom)
-         $0.horizontalEdges.equalToSuperview()
-         $0.height.equalTo(44)
+         $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+         $0.height.equalTo(48)
       }
       
       releaseScrollView.snp.makeConstraints {
-         $0.top.equalTo(segmentedControl.snp.bottom)
+         $0.top.equalTo(tabView.snp.bottom)
+         $0.horizontalEdges.equalToSuperview()
+         $0.bottom.equalToSuperview()
+      }
+      
+      anotherScrollView.snp.makeConstraints {
+         $0.top.equalTo(tabView.snp.bottom)
          $0.horizontalEdges.equalToSuperview()
          $0.bottom.equalToSuperview()
       }
@@ -117,10 +149,23 @@ class ReleaseInfoPageViewController: UIViewController {
       }
    }
    
-   @objc
-   private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-      for _ in 0..<1 {
-         print("click")
+   private func handleScroll() {
+      tabView.syncUnderlineView(index: 0, underlineView: tabView.highlightView)
+      
+      tabView.didTap = { [weak self] index in
+         guard let self else { return }
+         tabView.scroll(to: index)
+         tabView.syncUnderlineView(index: index, underlineView: tabView.highlightView)
+      }
+   }
+   
+   private func toggleScrollView(index: Int) {
+      if index == 1 { // '추천' 인덱스 1
+         releaseScrollView.isHidden = true
+         anotherScrollView.isHidden = false
+      } else {
+         releaseScrollView.isHidden = false
+         anotherScrollView.isHidden = true
       }
    }
    
