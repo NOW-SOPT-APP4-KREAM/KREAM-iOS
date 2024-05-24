@@ -48,6 +48,7 @@
 		88E13A3C2C00C10D00C4D12A /* ItemCircleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E13A3B2C00C10D00C4D12A /* ItemCircleInfoView.swift */; };
 		88E13A3E2C00C46200C4D12A /* CardInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E13A3D2C00C46200C4D12A /* CardInfoCollectionViewCell.swift */; };
 		88E13A402C00C4FF00C4D12A /* CardInfoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E13A3F2C00C4FF00C4D12A /* CardInfoCollectionView.swift */; };
+		88E13A422C00C80700C4D12A /* RecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E13A412C00C80700C4D12A /* RecommendationViewController.swift */; };
 		88FA86FF2BFBACAF002F3891 /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA86FE2BFBACAF002F3891 /* ItemDetail.swift */; };
 		88FA87012BFBB2E2002F3891 /* ItemDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA87002BFBB2E2002F3891 /* ItemDetailCollectionViewCell.swift */; };
 		88FA87042BFBB32C002F3891 /* ComponentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA87032BFBB32C002F3891 /* ComponentType.swift */; };
@@ -118,6 +119,7 @@
 		88E13A3B2C00C10D00C4D12A /* ItemCircleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCircleInfoView.swift; sourceTree = "<group>"; };
 		88E13A3D2C00C46200C4D12A /* CardInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		88E13A3F2C00C4FF00C4D12A /* CardInfoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoCollectionView.swift; sourceTree = "<group>"; };
+		88E13A412C00C80700C4D12A /* RecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewController.swift; sourceTree = "<group>"; };
 		88FA86FE2BFBACAF002F3891 /* ItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetail.swift; sourceTree = "<group>"; };
 		88FA87002BFBB2E2002F3891 /* ItemDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		88FA87032BFBB32C002F3891 /* ComponentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentType.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 		885F96A22BF1C33A003FAF2E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				88E13A412C00C80700C4D12A /* RecommendationViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -751,6 +754,7 @@
 				88E13A402C00C4FF00C4D12A /* CardInfoCollectionView.swift in Sources */,
 				9E3FBA5C2BFBA6240085B6F1 /* NetworkResult.swift in Sources */,
 				88E13A3A2C00BEF500C4D12A /* ItemCircleInfoCollectionViewCell.swift in Sources */,
+				88E13A422C00C80700C4D12A /* RecommendationViewController.swift in Sources */,
 				88E13A3C2C00C10D00C4D12A /* ItemCircleInfoView.swift in Sources */,
 				9E3FBA6D2BFBAF400085B6F1 /* RecommendProductResponseDTO.swift in Sources */,
 				883A6FF32BFE39B90079D47E /* SearchFilterTabsView.swift in Sources */,
