@@ -14,6 +14,8 @@ final class ForYouView: UIView {
     // MARK: Properties
     private let cellType = ItemType.full
     private var itemList: [ItemDetail] = []
+    private var presentItemList: [ItemDetail] = []
+    private var page: Int = 1
     
     // MARK: Views
     // top section
@@ -55,8 +57,20 @@ final class ForYouView: UIView {
     
     // MARK: setUpViews
     private func setUpViews() {
-//        justDroppedCollectionView.register(ItemInfoDetailCollectionViewCell.self, forCellWithReuseIdentifier: ItemInfoDetailCollectionViewCell.id)
-//        justDroppedCollectionView.dataSource = self
+        forYouCollectionView.register(ItemInfoDetailCollectionViewCell.self, forCellWithReuseIdentifier: ItemInfoDetailCollectionViewCell.id)
+        forYouCollectionView.dataSource = self
+        
+        leftButton.addAction(UIAction { _ in
+            self.page = 1
+            self.indicateLabel.text = "1 / 2"
+            self.configure(list: self.itemList)
+        }, for: .touchUpInside)
+        
+        rightButton.addAction(UIAction { _ in
+            self.page = 2
+            self.indicateLabel.text = "2 / 2"
+            self.configure(list: self.itemList)
+        }, for: .touchUpInside)
     }
     
     // MARK: setUpLayout
@@ -229,14 +243,14 @@ final class ForYouView: UIView {
 
 extension ForYouView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.itemList.count
+        return self.presentItemList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemInfoDetailCollectionViewCell.id, for: indexPath) as? ItemInfoDetailCollectionViewCell else { return UICollectionViewCell() }
         
         _ = cell.interface(
-            input: .init(itemType: self.cellType, itemDetail: itemList[indexPath.row], bookmarkButtonDidTap: {_ in})
+            input: .init(itemType: self.cellType, itemDetail: presentItemList[indexPath.row], bookmarkButtonDidTap: {_ in})
         )
         return cell
     }
@@ -244,10 +258,16 @@ extension ForYouView: UICollectionViewDataSource {
 
 // MARK: External Function
 extension ForYouView {
-//    func configure(list: [ItemDetail]) {
-//        self.itemList = list
-//        self.justDroppedCollectionView.reloadData()
-//    }
+    func configure(list: [ItemDetail]) {
+        self.itemList = list
+        guard !itemList.isEmpty else { return }
+        if page == 1 {
+            presentItemList = Array(itemList[0..<6])
+        } else {
+            presentItemList = Array(itemList[6..<12])
+        }
+        self.forYouCollectionView.reloadData()
+    }
 }
 
 #Preview {
