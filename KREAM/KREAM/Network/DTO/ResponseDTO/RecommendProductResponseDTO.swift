@@ -23,7 +23,7 @@ struct RecommendProductDataClass: Decodable {
 // MARK: - ForYouList
 struct RecommendForYouList: Decodable {
     let thumbnailURL: String
-    let brandTitle: RecommendBrandTitle
+    let brandTitle: String
     let engTitle, price, transactionCount: String
 
     enum CodingKeys: String, CodingKey {
@@ -32,19 +32,15 @@ struct RecommendForYouList: Decodable {
     }
 }
 
-enum RecommendBrandTitle: String, Decodable {
-    case adidas = "Adidas"
-}
-
 // MARK: - JustDropList
 struct RecommendJustDropList: Decodable {
     let thumbnailURL: String
-    let brandTitle: RecommendBrandTitle
+    let brandTitle: String
     let engTitle, price, transactionCount: String
-    let isScrap, isFast: Bool
+    let isScrap, isFast, isFreeDeliver, isSave, isCoupon: Bool
 
     enum CodingKeys: String, CodingKey {
         case thumbnailURL = "thumbnailUrl"
-        case brandTitle, engTitle, price, transactionCount, isScrap, isFast
+        case brandTitle, engTitle, price, transactionCount, isScrap, isFast, isFreeDeliver, isSave, isCoupon
     }
 }
