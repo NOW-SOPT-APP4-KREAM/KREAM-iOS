@@ -8,38 +8,41 @@
 import UIKit
 import SnapKit
 import Then
+import Kingfisher
 
-protocol ItemCollectoinViewCellDelegate: AnyObject {
-   func heartButtonDidTapEvent(state: Bool, row: Int)
+protocol ReleaseCollectionViewCellDelegate: AnyObject {
+   func scrapButtonDidTapEvent(state: Bool, row: Int)
 }
 
 final class ReleaseCollectionViewCell: UICollectionViewCell {
    
    static let identifier = "ItemCollectionViewCell"
    var itemRow: Int?
+   private var itemModel: ItemModel?
    
-   weak var delegate: ItemCollectoinViewCellDelegate?
+   weak var delegate: ReleaseCollectionViewCellDelegate?
+   var onScrapButtonTapped: (() -> Void)?
    
    private var updateChipState: Bool?
-   private let itemImageView = UIImageView()
+   private var newChipState: Bool?
+   private var itemImageView = UIImageView()
    private let brandTitle = UILabel()
    private let engTitle = UILabel()
-   private let scrapBtn = UIButton()
    private let updateChip = UIView()
    private let newChip = UIView()
    private let chipLabel = UILabel()
+   let scrapBtn = UIButton()
    
    override init(frame: CGRect) {
       super.init(frame: frame)
       
       self.backgroundColor = .white
       setLayout()
-      setStyle()
+      setUpStyle()
    }
    
    override func prepareForReuse() {
       super.prepareForReuse()
-      
       self.scrapBtn.isSelected = false
    }
    
@@ -48,9 +51,13 @@ final class ReleaseCollectionViewCell: UICollectionViewCell {
       fatalError("init(coder:) has not been implemented")
    }
    
-   private func setStyle() {
+   func setUpStyle() {
       itemImageView.do {
-         $0.backgroundColor = .blue03
+         if let imageUrl = self.itemModel?.itemURL {
+            self.itemImageView.kf.setImage(with: URL(string: imageUrl), placeholder: UIImage(systemName: "tshirt.fill"))
+         } else {
+            $0.image = UIImage(systemName: "tshirt.fill")
+         }
          $0.layer.cornerRadius = 10
          $0.layer.borderColor = .none
       }
@@ -74,18 +81,19 @@ final class ReleaseCollectionViewCell: UICollectionViewCell {
       scrapBtn.do {
          $0.setImage(UIImage(resource: .icnScrap), for: .normal)
          $0.setImage(UIImage(resource: .icnScrapIsSelected), for: .selected)
+         $0.addTarget(self, action: #selector(scrapButtonTapped), for: .touchUpInside)
       }
       
       updateChip.do {
          $0.backgroundColor = .white
-         $0.layer.cornerRadius = 10
+         $0.layer.cornerRadius = 8
          $0.layer.borderColor = UIColor.gray03.cgColor
          $0.layer.borderWidth = 1
       }
       
       newChip.do {
          $0.backgroundColor = .red02
-         $0.layer.cornerRadius = 10
+         $0.layer.cornerRadius = 8
          $0.layer.borderColor = UIColor.red02.cgColor
          $0.layer.borderWidth = 1
       }
@@ -124,8 +132,11 @@ final class ReleaseCollectionViewCell: UICollectionViewCell {
    func newOrUpdateChip() {
       if updateChipState == true {
          itemImageView.addSubviews(updateChip)
-         updateChip.addSubview(chipLabel)
+         itemImageView.do {
+            $0.backgroundColor = .blue03
+         }
          
+         updateChip.addSubview(chipLabel)
          updateChip.snp.makeConstraints {
             $0.top.equalToSuperview().offset(12)
             $0.leading.equalToSuperview().offset(11)
@@ -142,10 +153,14 @@ final class ReleaseCollectionViewCell: UICollectionViewCell {
             $0.centerX.centerY.equalToSuperview()
          }
          
-      } else if updateChipState == false {
+      }
+      if newChipState == true {
          itemImageView.addSubviews(newChip)
-         newChip.addSubview(chipLabel)
+         itemImageView.do {
+            $0.backgroundColor = .red01
+         }
          
+         newChip.addSubview(chipLabel)
          newChip.snp.makeConstraints {
             $0.top.equalToSuperview().offset(12)
             $0.leading.equalToSuperview().offset(11)
@@ -162,26 +177,54 @@ final class ReleaseCollectionViewCell: UICollectionViewCell {
             $0.centerX.centerY.equalToSuperview()
          }
       }
+      
+      if updateChipState == false && newChipState == false {
+         itemImageView.do {
+            $0.backgroundColor = .gray06
+         }
+      }
    }
    
-   @objc func heartButtonDidTap() {
+   func loadProfileImage(url: String) {
+      guard !url.isEmpty, let imageURL = URL(string: url) else {
+         itemImageView.backgroundColor = .white
+         return
+      }
+      itemImageView.kf.indicatorType = .none
+      itemImageView.kf.setImage(
+         with: imageURL,
+         placeholder: nil,
+         options: [
+            .forceTransition,
+            .cacheOriginalImage,
+            .scaleFactor(UIScreen.main.scale),
+            
+         ],
+         completionHandler: nil
+      )
+   }
+   
+   @objc func scrapButtonDidTap() {
       self.scrapBtn.isSelected.toggle()
-      if let itemRow {
-         self.delegate?.heartButtonDidTapEvent(
+      if let itemRow = itemRow {
+         self.delegate?.scrapButtonDidTapEvent(
             state: self.scrapBtn.isSelected,
             row: itemRow
          )
       }
    }
+   @objc private func scrapButtonTapped() {
+           onScrapButtonTapped?()
+       }
 }
 
 extension ReleaseCollectionViewCell {
    func dataBind(_ itemData: ItemModel, itemRow: Int) {
-      itemImageView.image = itemData.itemImg
       brandTitle.text = itemData.brandTitle
       engTitle.text =  itemData.engTitle
       scrapBtn.isSelected = itemData.isScrap
       updateChipState = itemData.isUpdate
+      newChipState = itemData.isNew
       self.itemRow = itemRow
    }
 }

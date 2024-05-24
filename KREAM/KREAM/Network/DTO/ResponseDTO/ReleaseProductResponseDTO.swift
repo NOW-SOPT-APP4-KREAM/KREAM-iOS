@@ -23,15 +23,28 @@ struct ReleaseProductDataClass: Decodable {
 struct ReleaseProduct: Decodable {
     let thumbnailURL: String
     let brandTitle: BrandTitle
-    let title: String
+    let engTitle: String
     let isScrap, isUpdate, isNew: Bool
 
     enum CodingKeys: String, CodingKey {
         case thumbnailURL = "thumbnailUrl"
-        case brandTitle, title, isScrap, isUpdate, isNew
+        case brandTitle, engTitle, isScrap, isUpdate, isNew
     }
 }
 
 enum BrandTitle: String, Decodable {
     case adidas = "Adidas"
+}
+
+extension ReleaseProduct {
+   func toItemModel() -> ItemModel {
+      return .init(
+         itemURL: thumbnailURL,
+         brandTitle: brandTitle.rawValue,
+         engTitle: engTitle,
+         isScrap: isScrap,
+         isUpdate: isUpdate,
+         isNew: isNew
+      )
+   }
 }

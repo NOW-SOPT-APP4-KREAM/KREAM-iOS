@@ -32,9 +32,18 @@ class CenterChipScrollView: UIScrollView {
          }
          
          if idx == 1 {
-            view.snp.makeConstraints {
+            let divider = UIView()
+            view.addSubview(divider)
+            
+            divider.snp.makeConstraints {
                $0.width.equalTo(1)
                $0.height.equalTo(23)
+               $0.center.equalToSuperview()
+            }
+            
+            view.snp.makeConstraints {
+               $0.height.equalTo(38)
+               $0.width.equalTo(1)
             }
          } else if idx == 0 {
             view.snp.makeConstraints {
@@ -144,7 +153,7 @@ class CenterChipScrollView: UIScrollView {
       addSubview(stackView)
       
       stackView.snp.makeConstraints {
-         $0.verticalEdges.equalTo(self.contentLayoutGuide).inset(6)
+         $0.verticalEdges.equalTo(self.contentLayoutGuide).inset(9.5)
          $0.height.equalTo(38)
          $0.centerY.equalToSuperview()
          $0.horizontalEdges.equalTo(self.contentLayoutGuide).inset(16)
