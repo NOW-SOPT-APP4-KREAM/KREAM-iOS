@@ -109,31 +109,26 @@ extension ReleaseCollectionViewController: UICollectionViewDataSource {
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-           guard let cell = collectionView.dequeueReusableCell(
-               withReuseIdentifier: ReleaseCollectionViewCell.identifier,
-               for: indexPath
-           ) as? ReleaseCollectionViewCell else { return UICollectionViewCell() }
-
-           cell.delegate = self
-           cell.dataBind(self.releaseInfo[indexPath.item], itemRow: indexPath.item)
-           cell.newOrUpdateChip()
-           cell.loadProfileImage(url: self.releaseInfo[indexPath.row].itemURL)
-           
+      guard let cell = collectionView.dequeueReusableCell(
+         withReuseIdentifier: ReleaseCollectionViewCell.identifier,
+         for: indexPath
+      ) as? ReleaseCollectionViewCell else { return UICollectionViewCell() }
+      
+      //           cell.delegate = self
+      cell.dataBind(self.releaseInfo[indexPath.item], itemRow: indexPath.item)
+      cell.newOrUpdateChip()
+      cell.loadProfileImage(url: self.releaseInfo[indexPath.row].itemURL)
+      
       cell.onScrapButtonTapped =
-      { print("ASDF") }
-
-           return cell
-       }
-
-       private func scrapButtonAction(at indexPath: IndexPath) {
-           // 여기에 실제 버튼 터치 시 수행할 동작을 구현
-           print("Scrap action for item at \(indexPath)")
-       }
-}
-
-extension ReleaseCollectionViewController: ReleaseCollectionViewCellDelegate {
-   func scrapButtonDidTapEvent(state: Bool, row: Int) {
-      print("출력")
+      {
+         if cell.isSelected == true {
+            self.delScrap()
+         } else if cell.isSelected == false {
+            self.postScrap()
+         }
+      }
+      return cell
+      
    }
 }
 
@@ -155,4 +150,37 @@ private extension ReleaseCollectionViewController {
             }
          })
    }
+   
+   func postScrap() {
+      APIService<KreamTargetType>()
+         .sendRequest(target: .postScrap(memberId: 1, productId: 1),
+                      instance: ScrapResponseDTO.self,
+                      completion: { result in
+            switch result {
+            case .success(let success):
+               print(success.data ?? "~~~")
+               self.collectionView.reloadData()
+            case .failure(let error):
+               print(error)
+               return
+            }
+         })
+   }
+   
+   func delScrap() {
+      APIService<KreamTargetType>()
+         .sendRequest(target: .deleteScrap(memberId: 1, productId: 1),
+                      instance: ScrapResponseDTO.self,
+                      completion: { result in
+            switch result {
+            case .success(let success):
+               print(success.data ?? "~~~")
+               self.collectionView.reloadData()
+            case .failure(let error):
+               print(error)
+               return
+            }
+         })
+   }
 }
+
