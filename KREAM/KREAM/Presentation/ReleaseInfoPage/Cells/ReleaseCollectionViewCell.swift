@@ -10,17 +10,11 @@ import SnapKit
 import Then
 import Kingfisher
 
-protocol ReleaseCollectionViewCellDelegate: AnyObject {
-   func scrapButtonDidTapEvent(state: Bool, row: Int)
-}
-
 final class ReleaseCollectionViewCell: UICollectionViewCell {
    
    static let identifier = "ItemCollectionViewCell"
    var itemRow: Int?
    private var itemModel: ItemModel?
-   
-   weak var delegate: ReleaseCollectionViewCellDelegate?
    var onScrapButtonTapped: (() -> Void)?
    
    private var updateChipState: Bool?
@@ -43,7 +37,7 @@ final class ReleaseCollectionViewCell: UICollectionViewCell {
    
    override func prepareForReuse() {
       super.prepareForReuse()
-      self.scrapBtn.isSelected = false
+//      self.scrapBtn.isSelected = false
    }
    
    @available(*, unavailable)
@@ -121,7 +115,7 @@ final class ReleaseCollectionViewCell: UICollectionViewCell {
          $0.leading.trailing.equalTo(brandTitle)
       }
       
-      itemImageView.addSubview(scrapBtn)
+      self.addSubview(scrapBtn)
       
       scrapBtn.snp.makeConstraints {
          $0.top.trailing.equalToSuperview().inset(10)
@@ -153,8 +147,7 @@ final class ReleaseCollectionViewCell: UICollectionViewCell {
             $0.centerX.centerY.equalToSuperview()
          }
          
-      }
-      if newChipState == true {
+      } else if newChipState == true {
          itemImageView.addSubviews(newChip)
          itemImageView.do {
             $0.backgroundColor = .red01
@@ -176,9 +169,7 @@ final class ReleaseCollectionViewCell: UICollectionViewCell {
          chipLabel.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
          }
-      }
-      
-      if updateChipState == false && newChipState == false {
+      } else if updateChipState == false && newChipState == false {
          itemImageView.do {
             $0.backgroundColor = .gray06
          }
@@ -204,16 +195,8 @@ final class ReleaseCollectionViewCell: UICollectionViewCell {
       )
    }
    
-   @objc func scrapButtonDidTap() {
-      self.scrapBtn.isSelected.toggle()
-      if let itemRow = itemRow {
-         self.delegate?.scrapButtonDidTapEvent(
-            state: self.scrapBtn.isSelected,
-            row: itemRow
-         )
-      }
-   }
    @objc private func scrapButtonTapped() {
+      scrapBtn.isSelected.toggle()
            onScrapButtonTapped?()
        }
 }
