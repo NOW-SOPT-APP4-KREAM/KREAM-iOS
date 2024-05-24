@@ -12,9 +12,10 @@ import Then
 final class ItemCircleInfoCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties
+    static let id = "ItemCircleInfoCollectionViewCell"
     // MARK: Views
-    private let itemImageView = UIImageView()
-    private let itemTitleLabel = UILabel()
+    let itemImageView = UIImageView()
+    let itemTitleLabel = UILabel()
     
     // MARK: Init
     override init(frame: CGRect) {
@@ -50,6 +51,8 @@ final class ItemCircleInfoCollectionViewCell: UICollectionViewCell {
         itemTitleLabel.do {
             $0.font = .kreamFont(.body6(.semibold))
             $0.textColor = .black02
+            $0.numberOfLines = 2
+            $0.textAlignment = .center
         }
     }
     
