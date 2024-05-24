@@ -52,19 +52,22 @@ class InfoTabBarView : UIView {
     
     private func setConstraints(){
         backButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(54)
+//            $0.top.equalToSuperview().inset(54)
+            $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().inset(16)
             $0.width.height.equalTo(32)
         }
         
         addAlarmImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(54)
+//            $0.top.equalToSuperview().inset(54)
+            $0.centerY.equalToSuperview()
             $0.leading.equalTo(backButton.snp.trailing).offset(232)
             $0.width.height.equalTo(32)
         }
         
         shareImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(54)
+//            $0.top.equalToSuperview().inset(54)
+            $0.centerY.equalToSuperview()
             $0.leading.equalTo(addAlarmImageView.snp.trailing).offset(15)
             $0.width.height.equalTo(32)
         }
