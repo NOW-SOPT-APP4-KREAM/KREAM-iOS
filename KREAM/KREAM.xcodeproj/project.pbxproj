@@ -67,8 +67,6 @@
 		9E9826A92BFF77EA0063CE8B /* ReleaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9826A82BFF77EA0063CE8B /* ReleaseCollectionViewController.swift */; };
 		9E9826AB2BFF78610063CE8B /* ReleaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9826AA2BFF78610063CE8B /* ReleaseCollectionViewCell.swift */; };
 		9E9826AE2BFF7BBF0063CE8B /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9826AD2BFF7BBF0063CE8B /* ItemModel.swift */; };
-		9E9826B22C007FAA0063CE8B /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9826B12C007FAA0063CE8B /* UIViewController.swift */; };
-		9E9826B42C007FF90063CE8B /* HorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9826B32C007FF90063CE8B /* HorizontalCell.swift */; };
 		9EA162C32BFE76A9009FBACD /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA162C22BFE76A9009FBACD /* UnderlineSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
@@ -131,8 +129,6 @@
 		9E9826A82BFF77EA0063CE8B /* ReleaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCollectionViewController.swift; sourceTree = "<group>"; };
 		9E9826AA2BFF78610063CE8B /* ReleaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		9E9826AD2BFF7BBF0063CE8B /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
-		9E9826B12C007FAA0063CE8B /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		9E9826B32C007FF90063CE8B /* HorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCell.swift; sourceTree = "<group>"; };
 		9EA162C22BFE76A9009FBACD /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,7 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				9E9826AA2BFF78610063CE8B /* ReleaseCollectionViewCell.swift */,
-				9E9826B32C007FF90063CE8B /* HorizontalCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -252,7 +247,6 @@
 			children = (
 				9E3FBA762BFBBE5F0085B6F1 /* ReleaseInfoPageViewController.swift */,
 				9E9826A82BFF77EA0063CE8B /* ReleaseCollectionViewController.swift */,
-				9E9826B12C007FAA0063CE8B /* UIViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -690,7 +684,6 @@
 				885F96AC2BF1C597003FAF2E /* AppTabBarController.swift in Sources */,
 				5C869EAF2BFF4750007D9521 /* GoodsInfoView.swift in Sources */,
 				5C869EB42BFF86CD007D9521 /* InfoModel.swift in Sources */,
-				9E9826B22C007FAA0063CE8B /* UIViewController.swift in Sources */,
 				5C869EAD2BFE6E01007D9521 /* InfoTabBarView.swift in Sources */,
 				88B077672BF1804C002142BC /* SceneDelegate.swift in Sources */,
 				884799552BFFD25900CFFA42 /* KreamTargetType.swift in Sources */,
@@ -725,7 +718,6 @@
 				9E3FBA5E2BFBA6AB0085B6F1 /* MoyaLoggingPlugin.swift in Sources */,
 				9E9826A92BFF77EA0063CE8B /* ReleaseCollectionViewController.swift in Sources */,
 				5C869EBA2C005A70007D9521 /* DeliveryInfoView.swift in Sources */,
-				9E9826B42C007FF90063CE8B /* HorizontalCell.swift in Sources */,
 				9E3FBA6B2BFBAE940085B6F1 /* ReleaseProductResponseDTO.swift in Sources */,
 				9E3FBA5C2BFBA6240085B6F1 /* NetworkResult.swift in Sources */,
 				9E3FBA6D2BFBAF400085B6F1 /* RecommendProductResponseDTO.swift in Sources */,
