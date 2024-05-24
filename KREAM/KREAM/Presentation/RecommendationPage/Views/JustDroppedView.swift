@@ -12,6 +12,7 @@ import Then
 final class JustDroppedView: UIView {
     
     // MARK: Properties
+    private let cellType = ItemType.full
     private let itemList: [ItemDetail] = []
     private let justDroppedLabel = UILabel()
     private let justDroppedKoreanLabel = UILabel()
@@ -19,7 +20,7 @@ final class JustDroppedView: UIView {
     
     // MARK: Views
     private let justDroppedCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
-        $0.itemSize = ItemType.full.cellSize
+        $0.itemSize = CGSize(width: 143, height: 262)
         $0.minimumLineSpacing = 7
         $0.scrollDirection = .horizontal
         $0.sectionInset = .init(top: 0, left: 16, bottom: 0, right: 16)
@@ -41,6 +42,7 @@ final class JustDroppedView: UIView {
     // MARK: setUpViews
     private func setUpViews() {
         justDroppedCollectionView.register(ItemInfoDetailCollectionViewCell.self, forCellWithReuseIdentifier: ItemInfoDetailCollectionViewCell.id)
+        justDroppedCollectionView.dataSource = self
     }
     
     // MARK: setUpLayout
@@ -66,11 +68,16 @@ final class JustDroppedView: UIView {
         showMoreButton.do {
             $0.setAttributedTitle("더보기".toKreamFontString(.body4(.bold, isLh150: false), textColor: .black06), for: .normal)
         }
+        
+        justDroppedCollectionView.do {
+            $0.bouncesVertically = false
+            $0.showsHorizontalScrollIndicator = false
+        }
     }
     
     // MARK: setUpConstraint
     private func setUpConstraint() {
-        justDroppedLabel.snp.makeConstraints{
+        justDroppedLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(22)
             $0.leading.equalToSuperview().offset(16)
         }
@@ -84,6 +91,51 @@ final class JustDroppedView: UIView {
             $0.centerY.equalTo(justDroppedKoreanLabel)
             $0.trailing.equalToSuperview().offset(-16)
         }
+        
+        justDroppedCollectionView.snp.makeConstraints {
+            $0.top.equalTo(justDroppedKoreanLabel.snp.bottom).offset(14)
+            $0.horizontalEdges.equalToSuperview()
+//            $0.bottom.equalTo(27)
+            $0.bottom.equalToSuperview()
+        }
+    }
+}
+
+extension JustDroppedView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemInfoDetailCollectionViewCell.id, for: indexPath) as? ItemInfoDetailCollectionViewCell else { return UICollectionViewCell() }
+        _ = cell.interface(
+            input: .init(
+                itemType: self.cellType,
+                itemDetail: .init(
+                    itemId: 1,
+                    isPreviouslySeen: false,
+                    tradeVolume: "24",
+                    imageUrl: "",
+                    isBookmarked: nil,
+                    brandName: "nike",
+                    isCheck: true,
+                    englishName: "asdf",
+                    koreanName: nil,
+                    isExpress: true,
+                    isCoupon: false,
+                    isSave: true,
+                    isFreeShip: true,
+                    price: "1234123",
+                    isBuyNowPrice: true,
+                    bookmarkCount: nil,
+                    heartCount: nil
+                ),
+                bookmarkButtonDidTap: {
+                    _ in
+                }
+            )
+        )
+        return cell
     }
 }
 
