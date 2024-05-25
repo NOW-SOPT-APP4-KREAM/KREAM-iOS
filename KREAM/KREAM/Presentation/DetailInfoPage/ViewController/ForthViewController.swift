@@ -21,12 +21,11 @@ class ForthViewController: UIViewController, UIScrollViewDelegate {
     let goodsInfoView = GoodsInfoView()
     let productBenefitView = ProductBenefitView()
     let deliveryInfoView = DeliveryInfoView()
-    let styleTopView = UIView().then {
-        $0.backgroundColor = .black
-    }
+    let styleTopView = StyleTopView()
     let itemInfoStickyView = ItemInfoStickyView().then {
         $0.backgroundColor = .white
     }
+    let moreStyleView = MoreStyleView()
     let imageViewController = ViewController()
     
     override func viewDidLoad() {
@@ -41,7 +40,7 @@ class ForthViewController: UIViewController, UIScrollViewDelegate {
         let contentView = UIView()
         scrollView.addSubview(contentView)
 
-        contentView.addSubviews( productImageView, goodsInfoView, productBenefitView, deliveryInfoView, styleTopView, infoTabBarView)
+        contentView.addSubviews( productImageView, goodsInfoView, productBenefitView, deliveryInfoView, styleTopView, infoTabBarView,moreStyleView)
         
         self.addChild(imageViewController)
         
@@ -104,11 +103,17 @@ class ForthViewController: UIViewController, UIScrollViewDelegate {
         imageViewController.view.snp.makeConstraints {
             $0.top.equalTo(styleTopView.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(500)
+            $0.height.equalTo(550)
             $0.bottom.equalToSuperview()
         }
         
         imageViewController.didMove(toParent: self)
+        
+        moreStyleView.snp.makeConstraints{
+            $0.top.equalTo(imageViewController.view.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(40)
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
