@@ -24,7 +24,7 @@ class ProductImageView : UIView {
     //MARK: Set Elements
     private let productImage = UIView()
     
-    //MARK: SetU[
+    //MARK: SetUp
     func setUpStyle(){
         productImage.do {
             $0.backgroundColor = .yellow01

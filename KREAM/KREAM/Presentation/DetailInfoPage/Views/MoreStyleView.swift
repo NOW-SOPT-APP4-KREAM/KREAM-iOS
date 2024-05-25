@@ -13,7 +13,9 @@ class MoreStyleView : UIView {
     
     override init(frame: CGRect){
         super.init(frame: frame)
-        
+        setupStyle()
+        setLayout()
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -35,5 +37,28 @@ class MoreStyleView : UIView {
             $0.layer.cornerRadius = 10
         }
     }
-
+    //MARK: - Layout
+    private func setLayout(){
+        addSubview(moreStyle)
+    }
+    private func setConstraints(){
+        moreStyle.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)
+            $0.trailing.leading.equalToSuperview().inset(16)
+            $0.width.equalTo(343)
+            $0.height.equalTo(40)
+        }
+    }
 }
+
+#Preview {
+    PreviewController(MoreStyleView(), snp: { view in
+        view.snp.makeConstraints {
+            $0.center.equalToSuperview()
+//            $0.top.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(222)
+        }
+    })
+}
+
