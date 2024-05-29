@@ -54,6 +54,8 @@ final class ReleaseCollectionViewCell: UICollectionViewCell {
          }
          $0.layer.cornerRadius = 10
          $0.layer.borderColor = .none
+         $0.clipsToBounds = true
+         $0.contentMode = .scaleAspectFit
       }
       
       brandTitle.do {
