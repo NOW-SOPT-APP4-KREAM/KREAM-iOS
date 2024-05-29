@@ -34,7 +34,7 @@ final class SearchResultViewController: UIViewController {
     
     // MARK: Views
     private let scrollView = UIScrollView()
-    private let topSearchBar = TopSearchBarView()
+   let topSearchBar = TopSearchBarView()
     private let searchSegmentControl = SearchSegmentControlView()
     private let filterTabView = SearchFilterTabsView()
     private let searchResultHeader = SearchResultHeaderView()
@@ -67,6 +67,9 @@ final class SearchResultViewController: UIViewController {
         secondSearchResultCollectionView.dataSource = self
         
         topSearchBar.searchTextField.delegate = self
+       topSearchBar.dismissAction = {
+          self.navigationController?.popViewController(animated: true)
+       }
     }
     
     // MARK: setUpLayout

@@ -19,7 +19,14 @@ final class CustomNavigationView: UIView {
    
    let searchTextField = UITextField()
    private let rightBtn = UIButton()
-   private var navigationType: NavigationType = .cancel
+   var navigationType: NavigationType = .cancel {
+      didSet {
+         self.rightBtn.setAttributedTitle(nil, for: .normal)
+         self.rightBtn.setTitle(nil, for: .normal)
+         self.rightBtn.setImage(nil, for: .normal)
+         setUpStyle()
+      }
+   }
    
    // MARK: Init
    override init(frame: CGRect) {
