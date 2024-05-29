@@ -17,21 +17,44 @@ class ImageCell: UICollectionViewCell {
         return imageView
     }()
     
+    private let overlayView: UIView = {
+            let view = UIView()
+            view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+            view.isHidden = true // Hidden by default
+            return view
+        }()
+        
+        private let moreLabel: UILabel = {
+            let label = UILabel()
+            label.text = "+더보기"
+            label.textColor = .white
+            label.font = UIFont.boldSystemFont(ofSize: 16)
+            label.textAlignment = .center
+            label.isHidden = true // Hidden by default
+            return label
+        }()
+    
     override init(frame: CGRect) {
-        super.init(frame: frame)
-        contentView.addSubview(imageView)
-        imageView.snp.makeConstraints { $0.edges.equalToSuperview() }
+            super.init(frame: frame)
+            contentView.addSubview(imageView)
+            contentView.addSubview(overlayView)
+            overlayView.addSubview(moreLabel)
+            
+            imageView.snp.makeConstraints { $0.edges.equalToSuperview() }
+            overlayView.snp.makeConstraints { $0.edges.equalToSuperview() }
+            moreLabel.snp.makeConstraints { $0.center.equalToSuperview() }
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        func configure(with url: URL, isLastCell: Bool) {
+            imageView.load(url: url)
+            overlayView.isHidden = !isLastCell
+            moreLabel.isHidden = !isLastCell
+        }
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configure(with url: URL) {
-//        imageView.loadImage(from: url) // 변경된 부분: loadImage(from:) 메서드 호출
-        imageView.load(url: url)
-    }
-}
 
 class ViewController: UIViewController {
     
@@ -77,12 +100,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let style = styles[indexPath.item]
         if let url = URL(string: style.imageUrl) {
-            cell.configure(with: url)
+            let isLastCell = indexPath.item == styles.count - 1
+            cell.configure(with: url, isLastCell: isLastCell)
         }
         
         return cell
     }
 }
+
 
 class CustomLayout: UICollectionViewLayout {
     private var layoutAttributes = [UICollectionViewLayoutAttributes]()
