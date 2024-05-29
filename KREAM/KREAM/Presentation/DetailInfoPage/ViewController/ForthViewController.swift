@@ -13,7 +13,9 @@ import Moya
 
 class ForthViewController: UIViewController, UIScrollViewDelegate {
 
-    let scrollView = UIScrollView()
+    let scrollView = UIScrollView().then {
+        $0.backgroundColor = .white
+    }
     let provider = APIService<KreamTargetType>()
     
     let infoTabBarView = InfoTabBarView().then {
@@ -22,50 +24,67 @@ class ForthViewController: UIViewController, UIScrollViewDelegate {
     let productImageView = ProductImageView().then {
         $0.backgroundColor = .yellow01
     }
-    let goodsInfoView = GoodsInfoView()
-    let productBenefitView = ProductBenefitView()
-    let deliveryInfoView = DeliveryInfoView()
-    let styleTopView = StyleTopView()
+    let goodsInfoView = GoodsInfoView().then {
+        $0.backgroundColor = .white
+    }
+    let divider1 = Divider(color: .gray06)
+    let productBenefitView = ProductBenefitView().then {
+        $0.backgroundColor = .white
+    }
+    let deliveryInfoView = DeliveryInfoView().then {
+        $0.backgroundColor = .white
+    }
+    let styleTopView = StyleTopView().then {
+        $0.backgroundColor = .white
+    }
     let itemInfoStickyView = ItemInfoStickyView().then {
         $0.backgroundColor = .white
     }
-    let moreStyleView = MoreStyleView()
-    let imageViewController = ViewController()
+    let moreStyleView = MoreStyleView().then {
+        $0.backgroundColor = .red
+    }
+    let imageViewController = ViewController().then {
+        $0.view.backgroundColor = .white
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
-        view.addSubviews(scrollView, itemInfoStickyView, infoTabBarView)
+        view.addSubviews(infoTabBarView, itemInfoStickyView, scrollView)
 
         scrollView.delegate = self
         self.view.backgroundColor = .white
 
         let contentView = UIView()
         scrollView.addSubview(contentView)
+        contentView.backgroundColor = .gray05
 
-        contentView.addSubviews(productImageView, goodsInfoView, productBenefitView, deliveryInfoView, styleTopView, moreStyleView)
+        contentView.addSubviews(productImageView, goodsInfoView, divider1, productBenefitView, deliveryInfoView, styleTopView, imageViewController.view, moreStyleView)
 
         self.addChild(imageViewController)
         
-        contentView.addSubview(imageViewController.view)
+//        contentView.addSubview()
 
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
+//        scrollView.translatesAutoresizingMaskIntoConstraints = false
 
         scrollView.snp.makeConstraints {
-            $0.top.equalTo(infoTabBarView)
+            $0.top.equalTo(infoTabBarView.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(itemInfoStickyView.snp.top)
         }
 
         itemInfoStickyView.snp.makeConstraints {
-            $0.height.equalTo(100)
+            $0.height.equalTo(95)
             $0.leading.trailing.bottom.equalToSuperview()
         }
 
         contentView.snp.makeConstraints {
-            $0.edges.equalTo(scrollView.contentLayoutGuide)
+            $0.verticalEdges.equalTo(scrollView.contentLayoutGuide)
+            $0.horizontalEdges.equalTo(scrollView)
+//            $0.edges.equalTo(scrollView.contentLayoutGuide)
+//            $0.edges.equalToSuperview()
             $0.width.equalToSuperview()
-            $0.height.greaterThanOrEqualTo(scrollView.snp.height).priority(.low)
+//            $0.height.greaterThanOrEqualTo(scrollView.snp.height).priority(.low)
         }
 
         infoTabBarView.snp.makeConstraints {
@@ -81,9 +100,16 @@ class ForthViewController: UIViewController, UIScrollViewDelegate {
         }
 
         goodsInfoView.snp.makeConstraints {
-            $0.top.equalTo(productImageView.snp.bottom).offset(31)
+            $0.top.equalTo(productImageView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(222)
+            $0.height.equalTo(265)
+        }
+        
+        divider1.snp.makeConstraints {
+            $0.bottom.equalTo(productBenefitView.snp.top)
+            $0.width.equalTo(343)
+            $0.height.equalTo(1)
+            $0.centerX.equalToSuperview()
         }
 
         productBenefitView.snp.makeConstraints {
@@ -93,13 +119,13 @@ class ForthViewController: UIViewController, UIScrollViewDelegate {
         }
 
         deliveryInfoView.snp.makeConstraints {
-            $0.top.equalTo(productBenefitView.snp.bottom)
+            $0.top.equalTo(productBenefitView.snp.bottom).offset(1)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(200)
         }
 
         styleTopView.snp.makeConstraints {
-            $0.top.equalTo(deliveryInfoView.snp.bottom)
+            $0.top.equalTo(deliveryInfoView.snp.bottom).offset(6)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(61)
         }
@@ -115,13 +141,14 @@ class ForthViewController: UIViewController, UIScrollViewDelegate {
 
         moreStyleView.snp.makeConstraints {
             $0.top.equalTo(imageViewController.view.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(40)
-            $0.bottom.equalTo(scrollView.snp.bottom).inset(20)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(60)
+            $0.bottom.equalToSuperview()
         }
 
         fetchData()
     }
+    
     
     func fetchData() {
         provider.request(.getProductDetail(memberId: 1, productId: 1)) { result in
@@ -190,7 +217,7 @@ extension GoodsInfoView {
         
         let apiData = ["최근 거래가", "발매가", "모델번호", "출시일"]
         let priceData = [
-            "\(recentPrice)\n\(variablePrice) \((variablePercent))",
+            "\(recentPrice)",
             releasePrice,
             modelNumber,
             releaseDate
@@ -198,9 +225,12 @@ extension GoodsInfoView {
         
         for (index, item) in apiData.enumerated() {
             let cell = ItemDataStackViewCell()
-            let waveImage: UIImage? = (index == 0 && includeImage) ? UIImage(named: "icn_down") : nil
+            let waveImage: UIImage? = index == 0 ? UIImage(named: "icn_down") : nil
             cell.configure(title: item, content: priceData[index], wave: waveImage)
-
+            if index == 0 {
+                cell.addBottomData(variablePrice:variablePrice, variablePercent: variablePercent)
+            }
+            
             // 스택 뷰에 셀 추가
             dataStackView.addArrangedSubview(cell)
             
@@ -208,7 +238,7 @@ extension GoodsInfoView {
             if index < apiData.count - 1 {
                 let divider = UIView()
                 divider.snp.makeConstraints {
-                    $0.width.equalTo(3)
+                    $0.width.equalTo(1)
                     $0.height.equalTo(45)
                 }
                 divider.backgroundColor = .gray06

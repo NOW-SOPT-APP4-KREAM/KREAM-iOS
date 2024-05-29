@@ -75,6 +75,7 @@ class ViewController: UIViewController {
         collectionView.dataSource = self
         
         collectionView.isScrollEnabled = false
+        collectionView.backgroundColor = .white
         
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()

@@ -24,9 +24,11 @@ class MoreStyleView : UIView {
     
     //MARK: - Set Elements
     private let moreStyle = UIButton()
+    private let backView = UIView()
     
     //MARK: - SetUp
     private func setupStyle(){
+        self.backgroundColor = .white
         moreStyle.do {
             $0.setTitle("스타일 더보기", for: .normal)
             $0.setTitleColor(.black02, for: .normal)
@@ -36,10 +38,15 @@ class MoreStyleView : UIView {
             $0.layer.borderWidth = 1
             $0.layer.cornerRadius = 10
         }
+        backView.do {
+            $0.backgroundColor = .white
+        }
     }
     //MARK: - Layout
     private func setLayout(){
+        addSubview(backView)
         addSubview(moreStyle)
+        
     }
     private func setConstraints(){
         moreStyle.snp.makeConstraints {
@@ -47,6 +54,9 @@ class MoreStyleView : UIView {
             $0.trailing.leading.equalToSuperview().inset(16)
             $0.width.equalTo(343)
             $0.height.equalTo(40)
+        }
+        backView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 }

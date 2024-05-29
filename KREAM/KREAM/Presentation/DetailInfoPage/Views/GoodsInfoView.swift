@@ -94,7 +94,7 @@ class GoodsInfoView : UIView{
         
         for (index, item) in apiData.enumerated() {
             let cell = ItemDataStackViewCell()
-//            cell.configure(title: item, content: priceData[index], wave: waveData[index])
+//            cell.configure(title: item, content: priceData[index], wave: UIImage(named: "icn_down"))
             
             let divider = UIView()
             divider.snp.makeConstraints {
@@ -111,7 +111,7 @@ class GoodsInfoView : UIView{
     private func setConstraints(){
         
         priceSubLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().offset(31)
             $0.leading.equalToSuperview().offset(16)
             $0.width.equalTo(81)
             $0.height.equalTo(14)
@@ -181,7 +181,7 @@ class GoodsInfoView : UIView{
         
         // Update stack view with dynamic data
         let apiData = ["최근 거래가", "발매가", "모델번호", "출시일"]
-        let priceData = ["\(data.recentPrice)\n\(data.variablePrice) \(data.variablePercent)%", data.releasePrice, data.modelNumber, data.releaseDate]
+        let priceData = ["\(data.recentPrice)", data.releasePrice, data.modelNumber, data.releaseDate]
         
         dataStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         
@@ -189,6 +189,9 @@ class GoodsInfoView : UIView{
             let cell = ItemDataStackViewCell()
             let waveImage = (index == 0) ? UIImage(named: "icn_downarrow") : nil
             cell.configure(title: item, content: priceData[index], wave: waveImage)
+            if index == 0 {
+                cell.addBottomData(variablePrice: data.variablePrice, variablePercent: data.variablePercent)
+            }
             
             let divider = UIView()
             divider.snp.makeConstraints {
@@ -196,6 +199,7 @@ class GoodsInfoView : UIView{
                 $0.height.equalTo(45)
             }
             divider.backgroundColor = .gray06
+            
             dataStackView.addArrangedSubview(cell)
             dataStackView.addArrangedSubview(divider)
         }

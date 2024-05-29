@@ -109,4 +109,9 @@ extension ItemDataStackViewCell {
             self.bottomStackView.isHidden = true
         }
     }
+    
+    func addBottomData(variablePrice: String, variablePercent: String) {
+//        self.waveImage.image = 
+        self.waveLabel.text = "\(variablePrice) \(variablePercent)%"
+    }
 }
