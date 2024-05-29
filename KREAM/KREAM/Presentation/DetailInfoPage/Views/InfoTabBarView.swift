@@ -81,6 +81,7 @@ class InfoTabBarView : UIView {
         
         @objc private func BackButtonDidTap() {
             navigationController?.popViewController(animated: true)
+            print("print")
         }
     
 }

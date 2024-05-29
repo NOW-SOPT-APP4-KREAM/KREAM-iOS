@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C71641F2C06498600AE62C1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71641E2C06498600AE62C1 /* Product.swift */; };
 		5C78FBC52BFBB6FD00E8499C /* ItemInfoStickyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C78FBC42BFBB6FD00E8499C /* ItemInfoStickyView.swift */; };
 		5C869EAD2BFE6E01007D9521 /* InfoTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C869EAC2BFE6E01007D9521 /* InfoTabBarView.swift */; };
 		5C869EAF2BFF4750007D9521 /* GoodsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C869EAE2BFF4750007D9521 /* GoodsInfoView.swift */; };
@@ -88,6 +89,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C71641E2C06498600AE62C1 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		5C78FBC42BFBB6FD00E8499C /* ItemInfoStickyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfoStickyView.swift; sourceTree = "<group>"; };
 		5C869EAC2BFE6E01007D9521 /* InfoTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTabBarView.swift; sourceTree = "<group>"; };
 		5C869EAE2BFF4750007D9521 /* GoodsInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsInfoView.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				5C869EB32BFF86CD007D9521 /* InfoModel.swift */,
+				5C71641E2C06498600AE62C1 /* Product.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -786,6 +789,7 @@
 				88E13A3A2C00BEF500C4D12A /* ItemCircleInfoCollectionViewCell.swift in Sources */,
 				88E13A422C00C80700C4D12A /* RecommendationViewController.swift in Sources */,
 				88E13A3C2C00C10D00C4D12A /* ItemCircleInfoView.swift in Sources */,
+				5C71641F2C06498600AE62C1 /* Product.swift in Sources */,
 				5C869ECF2C022C56007D9521 /* MoreStyleView.swift in Sources */,
 				9E3FBA6D2BFBAF400085B6F1 /* RecommendProductResponseDTO.swift in Sources */,
 				883A6FF32BFE39B90079D47E /* SearchFilterTabsView.swift in Sources */,

@@ -178,4 +178,19 @@ class ItemInfoStickyView : UIView {
             $0.leading.equalTo(sellSegmentView.snp.trailing).offset(11)
         }
     }
+    //MARK: - Configure
+        func configureScrapCount(_ scrapCount: String) {
+            numberLabel.attributedText = scrapCount.toKreamFontString(.custom(size: 11, weight: .semibold))
+            numberLabel.textColor = .black // 이 부분에서 색상을 조정합니다.
+        }
+        
+        func configureCellPrice(_ cellPrice: String) {
+            priceSellLabel.attributedText = cellPrice.toKreamFontString(.custom(size: 13, weight: .heavy))
+            priceSellLabel.textColor = .white
+        }
+        
+        func configure(scrapCount: String, cellPrice: String) {
+            configureScrapCount(scrapCount)
+            configureCellPrice(cellPrice)
+        }
 }

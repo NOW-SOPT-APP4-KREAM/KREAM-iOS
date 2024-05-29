@@ -74,4 +74,13 @@ class StyleTopView : UIView {
             $0.height.equalTo(29)
         }
     }
+    //MARK: Configure
+    func configureStyleCount(_ count: String) {
+            let attributedString = NSMutableAttributedString(string: "스타일 ", attributes: [
+                NSAttributedString.Key.font: UIFont.kreamFont(.custom(size: 16, weight: .bold)),
+                NSAttributedString.Key.foregroundColor: UIColor.black02
+            ])
+            attributedString.append(count.toKreamFontString(.custom(size: 17, weight: .heavy)))
+            styleNumber.attributedText = attributedString
+        }
 }
