@@ -9,6 +9,7 @@ import UIKit
 
 struct InfoModel {
     let price: String
+    
 }
 
 extension InfoModel {

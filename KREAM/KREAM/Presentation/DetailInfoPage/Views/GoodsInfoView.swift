@@ -23,16 +23,16 @@ class GoodsInfoView : UIView{
     }
     
     //MARK: - Set Elements
-    private let dataStackView = UIStackView()
-    private let scrollView = UIScrollView()
-    private let divider = UIView()
-    private let priceSubLabel = UILabel()
-    private let priceLabel = UILabel()
-    private let productNameEng = UILabel()
-    private let productNameKor = UILabel()
-    private let buttonBound = UIView()
-    private let buttonLabel = UILabel()
-    private let downArrow = UIImageView()
+    let dataStackView = UIStackView()
+    let scrollView = UIScrollView()
+    let divider = UIView()
+    let priceSubLabel = UILabel()
+    let priceLabel = UILabel()
+    let productNameEng = UILabel()
+    let productNameKor = UILabel()
+    let buttonBound = UIView()
+    let buttonLabel = UILabel()
+    let downArrow = UIImageView()
     
     //MARK: - SetUp
     func setUpStyle() {
@@ -76,25 +76,25 @@ class GoodsInfoView : UIView{
         dataStackView.do {
             $0.spacing = 20
         }
-
+        
     }
     
     //MARK: - Layout
     private func setLayout(){
-                
+        
         [priceSubLabel, priceLabel, productNameEng, productNameKor,buttonBound,buttonLabel,downArrow, scrollView].forEach{
             self.addSubview($0)
         }
         
         scrollView.addSubview(dataStackView)
-             
+        
         let apiData = ["최근 거래가", "발매가", "모델번호", "출시일"]
         let priceData = ["132,000원", "139,000원", "B75806", "2018/01/07"]
         let waveData = ["16,000(-10.8)", nil, nil, nil]
-
+        
         for (index, item) in apiData.enumerated() {
             let cell = ItemDataStackViewCell()
-            cell.configure(title: item, content: priceData[index], wave: waveData[index])
+//            cell.configure(title: item, content: priceData[index], wave: UIImage(named: "icn_down"))
             
             let divider = UIView()
             divider.snp.makeConstraints {
@@ -111,7 +111,7 @@ class GoodsInfoView : UIView{
     private func setConstraints(){
         
         priceSubLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().offset(31)
             $0.leading.equalToSuperview().offset(16)
             $0.width.equalTo(81)
             $0.height.equalTo(14)
@@ -119,7 +119,7 @@ class GoodsInfoView : UIView{
         priceLabel.snp.makeConstraints {
             $0.top.equalTo(priceSubLabel.snp.bottom).offset(3)
             $0.leading.equalToSuperview().offset(16)
-            $0.width.equalTo(95)
+            $0.width.equalTo(150)
             $0.height.equalTo(23)
         }
         
@@ -164,12 +164,44 @@ class GoodsInfoView : UIView{
             $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide).inset(16)
             $0.centerY.equalTo(scrollView.contentLayoutGuide)
         }
-//        divider.snp.makeConstraints {
-//            $0.width.equalTo(1)
-//            $0.height.equalTo(45)
-//            $0.center.equalToSuperview()
-//        }
+        
+        //        divider.snp.makeConstraints {
+        //            $0.width.equalTo(1)
+        //            $0.height.equalTo(45)
+        //            $0.center.equalToSuperview()
+        //        }
         
         
+    }
+    
+    func configure(with data: ProductData) {
+        priceLabel.text = data.price
+        productNameEng.text = data.engTitle
+        productNameKor.text = data.title
+        
+        // Update stack view with dynamic data
+        let apiData = ["최근 거래가", "발매가", "모델번호", "출시일"]
+        let priceData = ["\(data.recentPrice)", data.releasePrice, data.modelNumber, data.releaseDate]
+        
+        dataStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        
+        for (index, item) in apiData.enumerated() {
+            let cell = ItemDataStackViewCell()
+            let waveImage = (index == 0) ? UIImage(named: "icn_downarrow") : nil
+            cell.configure(title: item, content: priceData[index], wave: waveImage)
+            if index == 0 {
+                cell.addBottomData(variablePrice: data.variablePrice, variablePercent: data.variablePercent)
+            }
+            
+            let divider = UIView()
+            divider.snp.makeConstraints {
+                $0.width.equalTo(1)
+                $0.height.equalTo(45)
+            }
+            divider.backgroundColor = .gray06
+            
+            dataStackView.addArrangedSubview(cell)
+            dataStackView.addArrangedSubview(divider)
+        }
     }
 }

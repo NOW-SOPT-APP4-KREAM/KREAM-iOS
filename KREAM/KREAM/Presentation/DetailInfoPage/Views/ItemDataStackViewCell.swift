@@ -27,7 +27,7 @@ final class ItemDataStackViewCell: UIView {
         setUpLayout()
         setUpStyle()
         setUpConstraint()
-        self.configure(title: "최근 거래가", content: "132,000원", wave: "16,000(-10.8%)")
+//        self.configure(title: "최근 거래가", content: "132,000원", wave: "16,000(-10.8%)")
     }
     
     required init?(coder: NSCoder) {
@@ -65,11 +65,13 @@ final class ItemDataStackViewCell: UIView {
         titleLabel.do {
             $0.font = .kreamFont(.body6(.semibold))
             $0.textColor = .black06
+            $0.numberOfLines = 0
         }
         
         priceLabel.do {
             $0.font = .kreamFont(.body5(.semibold))
             $0.textColor = .black03
+            $0.numberOfLines = 0
         }
         
         waveImage.do {
@@ -78,8 +80,9 @@ final class ItemDataStackViewCell: UIView {
         
         waveLabel.do {
             $0.font = .kreamFont(.body6(.bold))
-            $0.textColor = .green02 // default, change by some value
+            $0.textColor = .green02
         }
+        
     }
     // MARK: setUpConstraint
     private func setUpConstraint() {
@@ -95,18 +98,20 @@ final class ItemDataStackViewCell: UIView {
 
 // MARK: External Function
 extension ItemDataStackViewCell {
-    func configure(title: String, content: String, wave: String?) {
+    func configure(title: String, content: String, wave: UIImage?) {
         self.titleLabel.text = title
         self.priceLabel.text = content
-        if let waveText = wave {
-            self.waveLabel.text = wave
-            
-//            self.waveImage.image = ??
+        
+        if let waveImage = wave {
+            self.waveImage.image = waveImage
             self.bottomStackView.isHidden = false
         } else {
             self.bottomStackView.isHidden = true
-            self.waveLabel.text = ""
         }
     }
+    
+    func addBottomData(variablePrice: String, variablePercent: String) {
+//        self.waveImage.image = 
+        self.waveLabel.text = "\(variablePrice) \(variablePercent)%"
+    }
 }
-

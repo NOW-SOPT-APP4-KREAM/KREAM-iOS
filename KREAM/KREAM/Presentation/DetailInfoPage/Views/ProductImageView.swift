@@ -9,25 +9,24 @@ import UIKit
 import Then
 import SnapKit
 
-class ProductImageView : UIView {
-    override init(frame: CGRect){
+class ProductImageView: UIView {
+    let productImage = UIImageView()
+
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()
         setUpStyle()
         setConstraints()
-        
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    //MARK: Set Elements
-    private let productImage = UIView()
-    
-    //MARK: SetU[
-    func setUpStyle(){
+
+    // MARK: SetUp
+    func setUpStyle() {
         productImage.do {
-            $0.backgroundColor = .yellow01
+            $0.contentMode = .scaleAspectFit 
         }
     }
     //MARK: - Layout
