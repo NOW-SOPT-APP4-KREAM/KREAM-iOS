@@ -50,6 +50,11 @@ class ForthViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
+       
+       infoTabBarView.dismissAction = {
+          self.navigationController?.popViewController(animated: true)
+       }
+       
         view.addSubviews(infoTabBarView, itemInfoStickyView, scrollView)
 
         scrollView.delegate = self

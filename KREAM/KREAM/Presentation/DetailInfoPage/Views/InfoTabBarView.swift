@@ -12,6 +12,7 @@ import SnapKit
 class InfoTabBarView : UIView {
     
     weak var navigationController: UINavigationController?
+   var dismissAction: (() -> Void)?
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -35,6 +36,9 @@ class InfoTabBarView : UIView {
     func setUpStyle(){
         backButton.do{
             $0.setImage(UIImage(named: "icn_back"),for: .normal)
+           $0.addAction(UIAction { _ in
+              self.dismissAction?()
+           }, for: .touchUpInside)
         }
         addAlarmImageView.do{
             $0.image = UIImage(named: "icn_addalarm")
@@ -76,12 +80,12 @@ class InfoTabBarView : UIView {
     }
     //MARK: - GoToBack(Button)
         private func setUpViews() {
-            backButton.addTarget(self, action: #selector(BackButtonDidTap), for: .touchUpInside)
+//            backButton.addTarget(self, action: #selector(BackButtonDidTap), for: .touchUpInside)
         }
         
-        @objc private func BackButtonDidTap() {
-            navigationController?.popViewController(animated: true)
-            print("print")
-        }
+//        @objc private func BackButtonDidTap() {
+//           self.navigationController?.popViewController(animated: true)
+//            print("print")
+//        }
     
 }
