@@ -21,10 +21,10 @@ final class AppTabBarController: UITabBarController {
     private func setUpView() {
     
         let homeViewController = UINavigationController(rootViewController: ReleaseInfoPageViewController())
-        let styleViewController = SearchResultViewController()
-        let shopViewController = RecommendationViewController()
-        let savedViewController = ForthViewController()
-        let myViewController = UIViewController()
+        let styleViewController = UINavigationController(rootViewController: ReleaseInfoPageViewController())
+        let shopViewController = UINavigationController(rootViewController: ReleaseInfoPageViewController())
+        let savedViewController = UINavigationController(rootViewController: ReleaseInfoPageViewController())
+        let myViewController = UINavigationController(rootViewController: ReleaseInfoPageViewController())
         
         let viewControllerList = [
             homeViewController,

@@ -197,6 +197,7 @@ extension ReleaseInfoPageViewController: UITextFieldDelegate {
       _ = searchVC.textFieldShouldReturn(textField)
       searchVC.topSearchBar.searchTextField.text = textField.text
       self.navigationController?.pushViewController(searchVC, animated: true)
+      textField.text = ""
        return true
    }
 }
