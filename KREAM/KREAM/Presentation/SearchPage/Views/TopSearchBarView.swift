@@ -47,6 +47,9 @@ final class TopSearchBarView: UIView {
         
         dismissButton.do {
             $0.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+           $0.addAction(UIAction { _ in
+              self.dismissAction?()
+           }, for: .touchUpInside)
             $0.tintColor = .black02
         }
         
@@ -76,4 +79,7 @@ final class TopSearchBarView: UIView {
             $0.centerY.equalToSuperview()
         }
     }
+   
+   // MARK: External Logic
+   var dismissAction: (() -> Void)?
 }

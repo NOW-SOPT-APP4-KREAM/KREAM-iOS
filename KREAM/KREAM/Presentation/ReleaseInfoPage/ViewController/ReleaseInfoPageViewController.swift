@@ -49,7 +49,7 @@ class ReleaseInfoPageViewController: UIViewController {
    
    // MARK: setUpViews
    private func setUpViews() {
-      
+      customNavigationView.searchTextField.delegate = self
    }
    
    // MARK: setUpLayout
@@ -179,10 +179,24 @@ class ReleaseInfoPageViewController: UIViewController {
       if index == 1 { // '추천' 인덱스 1
          releaseScrollView.isHidden = true
          recommendationVC.wholeScrollView.isHidden = false
+         customNavigationView.navigationType = .alarm
       } else {
          releaseScrollView.isHidden = false
          recommendationVC.wholeScrollView.isHidden = true
+         customNavigationView.navigationType = .cancel
       }
    }
    
+}
+
+extension ReleaseInfoPageViewController: UITextFieldDelegate {
+   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      textField.resignFirstResponder()
+       guard let text = textField.text else { return true }
+       let searchVC = SearchResultViewController()
+      _ = searchVC.textFieldShouldReturn(textField)
+      searchVC.topSearchBar.searchTextField.text = textField.text
+      self.navigationController?.pushViewController(searchVC, animated: true)
+       return true
+   }
 }
