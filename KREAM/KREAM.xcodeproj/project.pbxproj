@@ -362,8 +362,8 @@
 			children = (
 				5C78FBC42BFBB6FD00E8499C /* ItemInfoStickyView.swift */,
 				5C869EAC2BFE6E01007D9521 /* InfoTabBarView.swift */,
-				5C869EAE2BFF4750007D9521 /* GoodsInfoView.swift */,
 				5C869EB52BFFAB50007D9521 /* ItemDataStackViewCell.swift */,
+				5C869EAE2BFF4750007D9521 /* GoodsInfoView.swift */,
 				5C869EB72BFFF149007D9521 /* ProductBenefitView.swift */,
 				5C869EB92C005A70007D9521 /* DeliveryInfoView.swift */,
 				5C869EBB2C007471007D9521 /* ProductImageView.swift */,

@@ -163,6 +163,7 @@ class GoodsInfoView : UIView{
             $0.verticalEdges.equalTo(scrollView.contentLayoutGuide)
             $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide).inset(16)
             $0.centerY.equalTo(scrollView.contentLayoutGuide)
+            
         }
         
         //        divider.snp.makeConstraints {
@@ -179,7 +180,6 @@ class GoodsInfoView : UIView{
         productNameEng.text = data.engTitle
         productNameKor.text = data.title
         
-        // Update stack view with dynamic data
         let apiData = ["최근 거래가", "발매가", "모델번호", "출시일"]
         let priceData = ["\(data.recentPrice)", data.releasePrice, data.modelNumber, data.releaseDate]
         
@@ -188,7 +188,7 @@ class GoodsInfoView : UIView{
         for (index, item) in apiData.enumerated() {
             let cell = ItemDataStackViewCell()
             let waveImage = (index == 0) ? UIImage(named: "icn_downarrow") : nil
-            cell.configure(title: item, content: priceData[index], wave: waveImage)
+            cell.configure(title: item, content: priceData[index], wave: waveImage, isFirstCell: false)
             if index == 0 {
                 cell.addBottomData(variablePrice: data.variablePrice, variablePercent: data.variablePercent)
             }

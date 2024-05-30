@@ -231,15 +231,15 @@ extension GoodsInfoView {
         for (index, item) in apiData.enumerated() {
             let cell = ItemDataStackViewCell()
             let waveImage: UIImage? = index == 0 ? UIImage(named: "icn_down") : nil
-            cell.configure(title: item, content: priceData[index], wave: waveImage)
-            if index == 0 {
-                cell.addBottomData(variablePrice:variablePrice, variablePercent: variablePercent)
+            let isFirstCell = index == 0
+            cell.configure(title: item, content: priceData[index], wave: waveImage, isFirstCell: isFirstCell)
+            
+            if isFirstCell {
+                cell.addBottomData(variablePrice: variablePrice, variablePercent: variablePercent)
             }
             
-            // 스택 뷰에 셀 추가
             dataStackView.addArrangedSubview(cell)
             
-            // 마지막 셀인지 확인하여 divider 추가
             if index < apiData.count - 1 {
                 let divider = UIView()
                 divider.snp.makeConstraints {
