@@ -101,7 +101,7 @@ final class ItemDataStackViewCell: UIView {
         }
         
         self.snp.remakeConstraints { make in
-            make.width.equalTo(isFirstCell ? 130 : 75)
+            make.width.equalTo(isFirstCell ? 117 : 75)
 //            make.height.equalTo(45)
 //            make.verticalEdges.equalToSuperview()
         }
