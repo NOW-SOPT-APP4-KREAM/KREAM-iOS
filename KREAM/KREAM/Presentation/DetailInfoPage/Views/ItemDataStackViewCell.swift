@@ -82,10 +82,9 @@ final class ItemDataStackViewCell: UIView {
             $0.width.height.equalTo(8)
         }
         
-        waveLabel.snp.makeConstraints {
-            $0.height.equalTo(14)
-            $0.width.equalTo(110)
-        }
+//        waveLabel.snp.makeConstraints {
+//            $0.height.equalTo(14)
+//        }
     }
     
     // MARK: External Function
@@ -102,15 +101,20 @@ final class ItemDataStackViewCell: UIView {
         }
         
         self.snp.remakeConstraints { make in
-            make.width.equalTo(isFirstCell ? 106 : 75)
-            make.height.equalTo(45)
+            make.width.equalTo(isFirstCell ? 130 : 75)
+//            make.height.equalTo(45)
+//            make.verticalEdges.equalToSuperview()
+        }
+        
+        bottomStackView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
         }
     }
     
     func addBottomData(variablePrice: String, variablePercent: String) {
         self.waveLabel.text = "\(variablePrice)\(variablePercent)%"
-        self.bottomStackView.snp.makeConstraints{
-            $0.width.equalTo(106)
-        }
+//        self.bottomStackView.snp.makeConstraints {
+//            $0.width.equalTo(106)
+//        }
     }
 }

@@ -154,14 +154,15 @@ class GoodsInfoView : UIView{
         }
         
         scrollView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(45)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(60)
             $0.top.equalTo(buttonBound.snp.bottom).offset(15)
         }
         
         dataStackView.snp.makeConstraints {
             $0.verticalEdges.equalTo(scrollView.contentLayoutGuide)
-            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide).inset(16)
+            $0.height.equalTo(60)
+            $0.horizontalEdges.equalTo(scrollView.contentLayoutGuide)
             $0.centerY.equalTo(scrollView.contentLayoutGuide)
             
         }

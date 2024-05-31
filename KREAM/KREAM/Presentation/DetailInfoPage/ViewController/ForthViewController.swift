@@ -107,7 +107,8 @@ class ForthViewController: UIViewController, UIScrollViewDelegate {
         goodsInfoView.snp.makeConstraints {
             $0.top.equalTo(productImageView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(265)
+            $0.height.equalTo(285)
+//            $0.height.equalTo(300)
         }
         
         divider1.snp.makeConstraints {
