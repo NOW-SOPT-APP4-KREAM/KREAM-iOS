@@ -4,7 +4,6 @@
 //
 //  Created by 송여경 on 5/24/24.
 //
-
 import UIKit
 import SnapKit
 import Then
@@ -19,15 +18,14 @@ final class ItemDataStackViewCell: UIView {
     private let bottomStackView = UIStackView()
     private let waveImage = UIImageView()
     private let waveLabel = UILabel()
-    
+    private var isFirstCell: Bool = false
+
     // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
-        setUpLayout()
         setUpStyle()
-        setUpConstraint()
-//        self.configure(title: "최근 거래가", content: "132,000원", wave: "16,000(-10.8%)")
+        setUpLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -36,23 +34,12 @@ final class ItemDataStackViewCell: UIView {
     
     // MARK: setUpViews
     private func setUpViews() {
-        
-    }
-    
-    // MARK: setUpLayout
-    private func setUpLayout() {
-        [
-            waveImage,
-            waveLabel
-        ].forEach { bottomStackView.addArrangedSubview($0) }
-        
-        [
-            titleLabel,
-            priceLabel,
-            bottomStackView
-        ].forEach { detailStackView.addArrangedSubview($0) }
-        
-        self.addSubviews(detailStackView)
+        addSubview(detailStackView)
+        detailStackView.addArrangedSubview(titleLabel)
+        detailStackView.addArrangedSubview(priceLabel)
+        detailStackView.addArrangedSubview(bottomStackView)
+        bottomStackView.addArrangedSubview(waveImage)
+        bottomStackView.addArrangedSubview(waveLabel)
     }
     
     // MARK: setUpStyle
@@ -69,7 +56,7 @@ final class ItemDataStackViewCell: UIView {
         }
         
         priceLabel.do {
-            $0.font = .kreamFont(.body5(.semibold))
+            $0.font = .kreamFont(.body5(.semibold)).withSize(12)
             $0.textColor = .black03
             $0.numberOfLines = 0
         }
@@ -79,26 +66,30 @@ final class ItemDataStackViewCell: UIView {
         }
         
         waveLabel.do {
-            $0.font = .kreamFont(.body6(.bold))
+            $0.font = .systemFont(ofSize: 11, weight: .bold)
             $0.textColor = .green02
+            $0.numberOfLines = 1
         }
-        
     }
-    // MARK: setUpConstraint
-    private func setUpConstraint() {
-        self.snp.makeConstraints {
-            $0.height.equalTo(45)
-        }
-        
+    
+    // MARK: setUpLayout
+    private func setUpLayout() {
         detailStackView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview()
+            $0.edges.equalToSuperview().inset(8)
         }
+        
+        waveImage.snp.makeConstraints {
+            $0.width.height.equalTo(8)
+        }
+        
+//        waveLabel.snp.makeConstraints {
+//            $0.height.equalTo(14)
+//        }
     }
-}
-
-// MARK: External Function
-extension ItemDataStackViewCell {
-    func configure(title: String, content: String, wave: UIImage?) {
+    
+    // MARK: External Function
+    func configure(title: String, content: String, wave: UIImage?, isFirstCell: Bool) {
+        self.isFirstCell = isFirstCell
         self.titleLabel.text = title
         self.priceLabel.text = content
         
@@ -108,10 +99,22 @@ extension ItemDataStackViewCell {
         } else {
             self.bottomStackView.isHidden = true
         }
+        
+        self.snp.remakeConstraints { make in
+            make.width.equalTo(isFirstCell ? 117 : 75)
+//            make.height.equalTo(45)
+//            make.verticalEdges.equalToSuperview()
+        }
+        
+        bottomStackView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+        }
     }
     
     func addBottomData(variablePrice: String, variablePercent: String) {
-//        self.waveImage.image = 
-        self.waveLabel.text = "\(variablePrice) \(variablePercent)%"
+        self.waveLabel.text = "\(variablePrice)\(variablePercent)%"
+//        self.bottomStackView.snp.makeConstraints {
+//            $0.width.equalTo(106)
+//        }
     }
 }

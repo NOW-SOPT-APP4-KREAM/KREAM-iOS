@@ -44,8 +44,21 @@ class ProductBenefitView : UIView {
             $0.textColor = .black06
         }
         pointSentence.do {
-            $0.attributedText = "계좌 간편 결제 시1% 적립".toKreamFontString(.custom(size: 13, weight: .bold))
-            $0.textColor = .black02
+            let fullText = "계좌 간편 결제 시1%적립"
+            let highlightedText = "1%"
+            let fullRange = (fullText as NSString).range(of: fullText)
+            let highlightedRange = (fullText as NSString).range(of: highlightedText)
+            
+            let attributedString = NSMutableAttributedString(string: fullText)
+            attributedString.addAttributes([
+                .font: UIFont.kreamFont(.custom(size: 13, weight: .bold)),
+                .foregroundColor: UIColor.black02
+            ], range: fullRange)
+            attributedString.addAttributes([
+                .font: UIFont.systemFont(ofSize: 13, weight: .black)
+            ], range: highlightedRange)
+            
+            $0.attributedText = attributedString
         }
         payment.do {
             $0.attributedText = "결제".toKreamFontString(.custom(size: 12, weight: .semibold))
@@ -98,7 +111,7 @@ class ProductBenefitView : UIView {
         pointSentence.snp.makeConstraints {
             $0.top.equalToSuperview().inset(48)
             $0.leading.equalTo(point.snp.trailing).offset(20)
-            $0.width.equalTo(130)
+            $0.width.equalTo(150)
             $0.height.equalTo(14)
         }
         payment.snp.makeConstraints {
