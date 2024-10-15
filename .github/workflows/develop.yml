@@ -1,0 +1,48 @@
+name: iOS starter workflow
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  build:
+    name: Build and Test default scheme using any available iPhone simulator
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Check current directory
+        run: pwd  # 현재 디렉토리 확인
+
+      - name: List files in current directory
+        run: ls -la  # 디렉토리의 파일 목록 확인
+
+      - name: Set Default Scheme
+        run: |
+          scheme_list=$(xcodebuild -list -json -project ./KREAM/KREAM.xcodeproj | tr -d "\n")
+          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
+          echo $default | cat >default
+          echo Using default scheme: $default
+
+      - name: Build
+        env:
+          scheme: ${{ 'default' }}
+          platform: ${{ 'iOS Simulator' }}
+        run: |
+          device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
+          if [ $scheme = default ]; then scheme=$(cat default); fi
+          filetype_parameter="project" && file_to_build="./KREAM/KREAM.xcodeproj"
+          xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
+
+      - name: Test
+        env:
+          scheme: ${{ 'default' }}
+          platform: ${{ 'iOS Simulator' }}
+        run: |
+          device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
+          if [ $scheme = default ]; then scheme=$(cat default); fi
+          filetype_parameter="project" && file_to_build="./KREAM/KREAM.xcodeproj"
+          xcodebuild test-without-building -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
